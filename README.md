@@ -1,2 +1,3 @@
-# tariff-manager
-Tariff-Manager Specification and Backend Service for Tutoring Java &amp; Spring in Enterprise Contexts
+# Tariff-Manager Java & Spring Enterprise Application
+
+Tariff-Manager Specification and Backend Service for Tutoring Java & Spring Boot in Enterprise Contexts
