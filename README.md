@@ -36,6 +36,10 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 
 <img src="https://user-images.githubusercontent.com/2828581/160578353-e8435cf0-3e6d-4c6f-939f-ba3d48ae8ec9.png" width="80%"/>
 
+## Deployment Diagram (Components & Interactions)
+
+<img src="https://user-images.githubusercontent.com/2828581/160689334-98d8ea9f-555f-41be-ad83-1636bd8e728e.png" width="80%"/>
+
 ## Data Model (Class Diagram)
 
 <img src="https://user-images.githubusercontent.com/2828581/160578346-ac7083b8-121f-4cfc-91ab-b1f131166384.png" width="80%"/>
