@@ -44,6 +44,10 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 
 <img src="https://user-images.githubusercontent.com/2828581/160578346-ac7083b8-121f-4cfc-91ab-b1f131166384.png" width="80%"/>
 
+## Entity Relationship Diagram
+
+<img src="https://user-images.githubusercontent.com/2828581/160789917-6705780e-8392-404f-8ace-1b851b3fbe36.png" width="100%"/>
+
 ## Component Interactions (Sequence Diagram) 
 
 <img src="https://user-images.githubusercontent.com/2828581/160578355-7b4351e2-e8df-4db3-b6c8-fdb6984c3304.png" width="80%"/>
