@@ -51,3 +51,16 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 ## Component Interactions (Sequence Diagram) 
 
 <img src="https://user-images.githubusercontent.com/2828581/160578355-7b4351e2-e8df-4db3-b6c8-fdb6984c3304.png" width="80%"/>
+
+## Spring Boot Specifics
+
+### Developer Database
+
+### OAPI / Swagger Support
+
+* https://springdoc.org/
+![img.png](docs/img/openapi-doc.png)
+
+### Env-Specific Properties
+
+### Automatic Schema Generation
