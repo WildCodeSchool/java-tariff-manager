@@ -5,8 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tariff")
@@ -22,7 +22,10 @@ public class Tariff {
     private String name;
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "tariff", orphanRemoval = true)
-    private List<Option> options = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "tariff_options",
+            joinColumns = @JoinColumn(name = "tariff_id"),
+            inverseJoinColumns = @JoinColumn(name = "options_id"))
+    private Set<Option> possibleOptions = new LinkedHashSet<>();
 
 }
