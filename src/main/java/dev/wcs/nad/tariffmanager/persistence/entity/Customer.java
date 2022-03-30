@@ -23,6 +23,7 @@ public class Customer {
     private String lastname;
     private LocalDate birthdate;
     private String passportNo;
+    private boolean blocked;
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)
     private List<Contract> contracts = new ArrayList<>();
