@@ -14,6 +14,7 @@ public class ContractService {
     }
 
     public Iterable<Contract> readContractsForUser(String userId) {
-        return contractRepository.findAll();
+        Iterable<Contract> contracts = contractRepository.findAll();
+        return contracts;
     }
 }

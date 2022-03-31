@@ -23,16 +23,17 @@ public class InitialDatabaseSetupManualTest {
     @Autowired private OptionRepository optionRepository;
     @Autowired private TariffRepository tariffRepository;
 
-    //@Test
+    @Test
     public void setupDatabase() {
         // Create customers
         Customer[] customers = new Customer[10];
         for (int i=0; i<10; i++) {
             Customer customer = createFakeCustomer();
-            Contact contact = createFakeContact();
             Address address = createFakeAddress();
+            Contact contact = createFakeContact();
             customer.setContact(contact);
-            contact.getAddresses().add(address);
+            contact.addAddress(address);
+            addressRepository.save(address);
             customer = customerRepository.save(customer);
             customers[i] = customer;
         }
@@ -50,7 +51,7 @@ public class InitialDatabaseSetupManualTest {
         }
     }
 
-    //@Test
+    @Test
     public void clearDatabase() {
         customerRepository.deleteAll();
         contactRepository.deleteAll();

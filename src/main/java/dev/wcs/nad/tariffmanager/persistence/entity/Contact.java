@@ -24,4 +24,9 @@ public class Contact {
     @OneToMany(mappedBy = "contact", orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
 
+    public void addAddress(Address address) {
+        this.getAddresses().add(address);
+        address.setContact(this);
+    }
+
 }

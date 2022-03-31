@@ -1,11 +1,13 @@
 package dev.wcs.nad.tariffmanager.adapter.rest;
 
-import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
+import dev.wcs.nad.tariffmanager.adapter.rest.dto.CustomerDto;
 import dev.wcs.nad.tariffmanager.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/customer")
+import java.util.List;
+
+@RestController
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -14,8 +16,8 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping()
-    public Iterable<Customer> displayCustomers() {
+    @GetMapping("/customer")
+    public List<CustomerDto> displayCustomers() {
         return customerService.readAllCustomers();
     }
 }
