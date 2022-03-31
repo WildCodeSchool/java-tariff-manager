@@ -52,6 +52,17 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 
 <img src="https://user-images.githubusercontent.com/2828581/160578355-7b4351e2-e8df-4db3-b6c8-fdb6984c3304.png" width="80%"/>
 
+## Spring Boot Configuration
+
+```
+spring.datasource.url=jdbc:h2:./data/tariff
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.h2.console.enabled=true
+spring.jpa.hibernate.ddl-auto=update
+```
+
 ## Spring Boot Specifics
 
 ### Developer Database

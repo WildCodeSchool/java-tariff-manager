@@ -5,7 +5,7 @@ import dev.wcs.nad.tariffmanager.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/customer")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -14,7 +14,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customer")
+    @GetMapping()
     public Iterable<Customer> displayCustomers() {
         return customerService.readAllCustomers();
     }
