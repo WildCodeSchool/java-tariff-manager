@@ -21,8 +21,4 @@ public class Option {
     private BigDecimal price;
     private BigDecimal setup;
 
-    @ManyToOne
-    @JoinColumn(name = "tariff_id")
-    private Tariff tariff;
-
 }
