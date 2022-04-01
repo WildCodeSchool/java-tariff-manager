@@ -52,6 +52,96 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 
 <img src="https://user-images.githubusercontent.com/2828581/160578355-7b4351e2-e8df-4db3-b6c8-fdb6984c3304.png" width="80%"/>
 
+## REST Interface
+
+### [UC1] Display Customers
+
+<img src="docs/img/ds_uc_display_contracts.png" width="80%"/>
+
+#### Request
+
+`GET /customer`
+
+#### Response
+
+<details>
+    <summary>Datatypes</summary>
+
+```
+[
+  {
+    "firstname": "string",
+    "lastname": "string",
+    "birthdate": "date",
+    "passportNo": "string",
+    "addresses": [
+      {
+        "address": "string"
+      }
+    ],
+    "contractInfo": [
+      {
+        "tariff": "string",
+        "options": [
+          "string"
+        ]
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+##### Sample Response
+
+<details>
+    <summary>Sample Response</summary>
+
+```json
+[
+  {
+    "firstname": "Kendrick",
+    "lastname": "Ortiz",
+    "birthdate": "1981-08-21",
+    "passportNo": "036-53-2166",
+    "addresses": [
+      {
+        "address": "031 Becker Islands 308 31966-4886 Lake Fredland"
+      }
+    ],
+    "contractInfo": [
+      {
+        "tariff": "SYNERGISTIC-CONCRETE-BENCH",
+        "options": [
+          "small wooden pants v 17.48322"
+        ]
+      }
+    ]
+  },
+  {
+    "firstname": "Jc",
+    "lastname": "Towne",
+    "birthdate": "1979-04-29",
+    "passportNo": "736-86-8610",
+    "addresses": [
+      {
+        "address": "631 Norman Brooks 92208 37890-8042 Kendallview"
+      }
+    ],
+    "contractInfo": [
+      {
+        "tariff": "DURABLE-PAPER-KNIFE",
+        "options": [
+          "synergistic wool keyboard v 17.19142"
+        ]
+      }
+    ]
+  }
+]
+```
+</details>
+
 ## Spring Boot Configuration
 
 ```

@@ -51,7 +51,7 @@ public class InitialDatabaseSetupManualTest {
         }
     }
 
-    @Test
+    //@Test
     public void clearDatabase() {
         customerRepository.deleteAll();
         contactRepository.deleteAll();
