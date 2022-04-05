@@ -92,7 +92,7 @@ In this block, Students learn how to implement enterprise-grade, modular softwar
 
 #### How will Students learn?
 
-* Project
+* Project "Tariff Manager"
 * TDD from scratch
 * Project w/o Spring -> Project with Spring
 
