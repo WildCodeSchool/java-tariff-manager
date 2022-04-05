@@ -12,8 +12,7 @@ see https://docs.google.com/spreadsheets/d/1z0E0svLaQ_HEVNHPzaotCJkrySs7GZPxCerf
 * What kind of Version Control Systems do exist?
 * What advantages do distributes VCS like Git have?
 * How do workflow with Git look like?
-* What is GitHub?
-* How is a user story implemented with Git, GitHub and a workflow?
+* Setup a modern Java environment with Git, GitLab, IntelliJ and Gradle
 
 #### How will Students learn?
 
@@ -25,12 +24,11 @@ see https://docs.google.com/spreadsheets/d/1z0E0svLaQ_HEVNHPzaotCJkrySs7GZPxCerf
 
 In this block, Students learn how to collaborate in an agile development team with distributed VCS and specified workflows.
 
-### 2. Advanced Versioning & Intro Java
+### Introduction to OOP & Java
 
 #### What will Students learn?
-
-* How to deal with conflicts in software development projects?
-* Setup a modern Java environment with Git, GitLab, IntelliJ and Gradle
+ 
+* Concepts of Object-Oriented Programming
 * Get to know Java, JDK, Algorithms & Data Structures in the Standard Libraries
 
 #### How will Students learn?
@@ -43,11 +41,10 @@ In this block, Students learn how to collaborate in an agile development team wi
 
 In this block, Students learn resolving conflicts in software development and get to know Java, the JDK and Standard Libraries.
 
-### 3. Advanced Concepts: OOP, File Handling, Collections
+### 3. Advanced Java Concepts: OOP, File Handling, Collections
 
 #### What will Students learn?
 
-* Concepts of Object-Oriented Programming
 * Inheritance, Abstract Classes and Interfaces
 * Read and Write files with Java File I/O
 * Abstract Programming with Generics
@@ -103,3 +100,6 @@ In this block, Students learn how to implement huge, modular systems with DI/IoC
 
 
 
+* What is GitHub?
+* How is a user story implemented with Git, GitHub and a workflow?
+* How to deal with conflicts in software development projects?
