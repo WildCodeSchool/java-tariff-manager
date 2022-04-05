@@ -4,7 +4,7 @@ see https://docs.google.com/spreadsheets/d/1z0E0svLaQ_HEVNHPzaotCJkrySs7GZPxCerf
 
 ## Blocks (Weeks)
 
-### 1. Collaboration
+### 1. Collaboration in Agile Software Projects & Development Environment Setup
 
 #### Objective
 
@@ -41,7 +41,7 @@ In this block, Students learn resolving conflicts in software development and ge
 * Livecoding
 * Project Introduction
 
-### 3. Advanced Java Concepts: OOP, File Handling, Collections
+### 3. Advanced Java Concepts: Inheritance & Polymorphism, File Handling, Collections
 
 #### Objective
 
@@ -49,18 +49,17 @@ In this block, Students will learn about concepts of OOP, input/output of data a
 
 #### What will Students learn?
 
-* Inheritance, Abstract Classes and Interfaces
+* Inheritance, Abstract Classes and Interfaces, Polymorphism
 * Read and Write files with Java File I/O
 * Abstract Programming with Generics
 
 #### How will Students learn?
 
-* SEA-Github-Repo
+* NAD-Github-Repo Creation
 * Livecoding (Interfaces / Inheritance)
-* SEA-Java-Exercises
-* Links: Java Collections
+* NAD-Java-Exercises-Repo
 
-### 4. Test-Driven-Development
+### 4. Software Testing in Java & Test-Driven-Development
 
 #### Objective
 
@@ -78,11 +77,11 @@ In this block, Students will get to know (Unit-)Testing, TDD and how use these i
 * Project
 * Dojos
 
-### 5. Spring Framework Introduction
+### 5. DI/IoC with the Spring Framework Introduction
 
 #### Objective
 
-In this block, Students learn how to implement huge, modular systems with DI/IoC Frameworks.
+In this block, Students learn how to implement enterprise-grade, modular software systems with DI/IoC Frameworks.
 
 #### What will Students learn?
 
@@ -96,10 +95,30 @@ In this block, Students learn how to implement huge, modular systems with DI/IoC
 * TDD from scratch
 * Project w/o Spring -> Project with Spring
 
-
-
-
+### ...Later Github...
 
 * What is GitHub?
 * How is a user story implemented with Git, GitHub and a workflow?
 * How to deal with conflicts in software development projects?
+
+Introduction in the tool environment (Eclipse, GIT/GitLab, Build-Prozess mit Maven/Gradle)   
+
+Programming in Java
+
+Advanced programming in Java
+
+"Testdriven development, Refactoring, Clean Code
+Spring-Basics (Part I)"
+
+"Spring-Basics (Part II)
+JPA Basics"
+
+Spring and JPA
+RESTful WebServices with Spring
+
+Modern Development of Web Applications
+React or Angular
+
+Software development in a team with feature branches and merge requests and advanced Maven concepts.
+
+Docker - Launching Docker containers for databases, Docker: building an image for your own service,
