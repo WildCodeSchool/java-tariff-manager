@@ -59,7 +59,7 @@ In this block, Students will learn about concepts of OOP, input/output of data a
 * Livecoding (Interfaces / Inheritance)
 * NAD-Java-Exercises-Repo
 
-### 4. Software Testing in Java & Test-Driven-Development
+### 4. Software Testing in Java & Test-Driven-Development, Refactoring & Clean Code
 
 #### Objective
 
@@ -69,6 +69,7 @@ In this block, Students will get to know (Unit-)Testing, TDD and how use these i
 
 * What is TDD?
 * How to do TDD in Java and Spring (Boot)
+* Refactoring, TDD & Clean Code
 * Testcategories (Unit, Integration, ...) and Mocking
 * Deep Dive: JUnit5, AssertJ, Mockito 
 
@@ -77,7 +78,7 @@ In this block, Students will get to know (Unit-)Testing, TDD and how use these i
 * Project
 * Dojos
 
-### 5. DI/IoC with the Spring Framework Introduction
+### 5. Dependency Injection/Inversion of Control with the Spring Framework
 
 #### Objective
 
@@ -95,11 +96,34 @@ In this block, Students learn how to implement enterprise-grade, modular softwar
 * TDD from scratch
 * Project w/o Spring -> Project with Spring
 
+### 6. Relation Databases and SQL, Persistence in Java with JDBC and JPA
+
+#### Objective
+
+In this block, Students learn and recap concepts of relational databases, SQL and Java persistence with JDBC and JPA.
+
+#### What will Students learn?
+
+
+#### How will Students learn?
+
+* Project
+* TDD from scratch
+* Project w/o Spring -> Project with Spring
+
 ### ...Later Github...
 
 * What is GitHub?
 * How is a user story implemented with Git, GitHub and a workflow?
 * How to deal with conflicts in software development projects?
+
+### 7. RESTful Services with Spring Boot
+
+### 8. Concepts of Modern Web Applications Development
+
+### 9. Deploying Applications with Docker, GitLab and Kubernetes
+
+### 10. Advanced Collaboration in Agile Teams: Branching, Forking and Git Workflows
 
 Introduction in the tool environment (Eclipse, GIT/GitLab, Build-Prozess mit Maven/Gradle)   
 
