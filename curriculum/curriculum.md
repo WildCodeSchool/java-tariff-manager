@@ -78,25 +78,7 @@ In this block, Students will get to know (Unit-)Testing, TDD and how use these i
 * Project
 * Dojos
 
-### 5. Dependency Injection/Inversion of Control with the Spring Framework
-
-#### Objective
-
-In this block, Students learn how to implement enterprise-grade, modular software systems with DI/IoC Frameworks.
-
-#### What will Students learn?
-
-* Why is Dependency Injection and Inversion of Control necessary?
-* Spring's implementation of DI/IoC
-* Differences and Similarities between Spring Framework and Spring Boot
-
-#### How will Students learn?
-
-* Project "Tariff Manager"
-* TDD from scratch
-* Project w/o Spring -> Project with Spring
-
-### 6. Relation Databases and SQL, Persistence in Java with JDBC and JPA
+### 5. Relation Databases and SQL, Persistence in Java with JDBC
 
 #### Objective
 
@@ -108,6 +90,24 @@ In this block, Students learn and recap concepts of relational databases, SQL an
 #### How will Students learn?
 
 * Project
+* TDD from scratch
+
+### 6. Dependency Injection/Inversion of Control with the Spring Framework, Spring Data JPA
+
+#### Objective
+
+In this block, Students learn how to implement enterprise-grade, modular software systems with DI/IoC Frameworks.
+
+#### What will Students learn?
+
+* Why is Dependency Injection and Inversion of Control necessary?
+* Spring's implementation of DI/IoC
+* Differences and Similarities between Spring Framework and Spring Boot
+* Project w/o Spring -> Project with Spring
+
+#### How will Students learn?
+
+* Project "Tariff Manager"
 * TDD from scratch
 * Project w/o Spring -> Project with Spring
 
@@ -121,9 +121,11 @@ In this block, Students learn and recap concepts of relational databases, SQL an
 
 ### 8. Concepts of Modern Web Applications Development
 
-### 9. Deploying Applications with Docker, GitLab and Kubernetes
+### 9. UI Development and REST Service Clients with React
 
-### 10. Advanced Collaboration in Agile Teams: Branching, Forking and Git Workflows
+### 10. Deploying Applications with Docker, GitLab and Kubernetes
+
+### 11. Advanced Collaboration in Agile Teams: Branching, Forking and Git Workflows
 
 Introduction in the tool environment (Eclipse, GIT/GitLab, Build-Prozess mit Maven/Gradle)   
 
