@@ -92,7 +92,7 @@ In this block, Students learn and recap concepts of relational databases, SQL an
 * Project
 * TDD from scratch
 
-### 6. Dependency Injection/Inversion of Control with the Spring Framework, Spring Data JPA
+### 6. Dependency Injection/Inversion of Control with the Spring Framework
 
 #### Objective
 
@@ -111,21 +111,23 @@ In this block, Students learn how to implement enterprise-grade, modular softwar
 * TDD from scratch
 * Project w/o Spring -> Project with Spring
 
-### ...Later Github...
+### 7. Advanced Persistence with JPA and Spring Data JPA
+
+### 8. RESTful Services with Spring Boot
+
+### 9. Concepts of Modern Web Applications Development
+
+### 10. UI Development and REST Service Consumption with React
+
+### 11. Advanced Collaboration in Agile Teams: Branching, Forking, Git Workflows
+
+#### What Students will learn?
 
 * What is GitHub?
 * How is a user story implemented with Git, GitHub and a workflow?
 * How to deal with conflicts in software development projects?
 
-### 7. RESTful Services with Spring Boot
-
-### 8. Concepts of Modern Web Applications Development
-
-### 9. UI Development and REST Service Clients with React
-
-### 10. Deploying Applications with Docker, GitLab and Kubernetes
-
-### 11. Advanced Collaboration in Agile Teams: Branching, Forking and Git Workflows
+### 12. Deploying Applications with Docker, GitLab and Kubernetes
 
 Introduction in the tool environment (Eclipse, GIT/GitLab, Build-Prozess mit Maven/Gradle)   
 
