@@ -2,9 +2,7 @@
 
 In this quest you will learn about querying a storage with Spring Data using JPA. 
 
-### Required Skills
-
-You should know about
+### You should know about
 
 * Java Basics
 * Spring DI/IoC
