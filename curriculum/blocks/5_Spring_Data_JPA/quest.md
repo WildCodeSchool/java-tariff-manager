@@ -22,4 +22,4 @@ You should know about
 
 ## Spring Data 
 
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java)
+[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [Link in GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#200)
