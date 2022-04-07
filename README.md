@@ -34,29 +34,30 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 
 ## Business System Context
 
-<img src="https://user-images.githubusercontent.com/2828581/160578353-e8435cf0-3e6d-4c6f-939f-ba3d48ae8ec9.png" width="80%"/>
+<img src="docs/img/tariff-manager-ctxd.png" width="80%"/>
 
 ## Deployment Diagram (Components & Interactions)
 
-<img src="https://user-images.githubusercontent.com/2828581/160689334-98d8ea9f-555f-41be-ad83-1636bd8e728e.png" width="80%"/>
+<img src="docs/img/tariff-manager-dd.png" width="80%"/>
 
 ## Data Model (Class Diagram)
 
-<img src="https://user-images.githubusercontent.com/2828581/160578346-ac7083b8-121f-4cfc-91ab-b1f131166384.png" width="80%"/>
+<img src="docs/img/tariff-manager-cd.png" width="80%"/>
 
 ## Entity Relationship Diagram
 
-<img src="https://user-images.githubusercontent.com/2828581/160866101-d4b623ec-42e0-4eb9-8c1e-eef597e1a580.png" width="100%"/>
+<img src="docs/img/tariff-manager-erd.png" width="100%" style="border: 1px solid"/>
+
 
 ## Component Interactions (Sequence Diagram) 
 
-<img src="https://user-images.githubusercontent.com/2828581/160578355-7b4351e2-e8df-4db3-b6c8-fdb6984c3304.png" width="80%"/>
+<img src="docs/img/tariff-manager-sd.png" width="80%"/>
 
 ## REST Interface
 
 ### [UC1] Display Customers
 
-<img src="docs/img/ds_uc_display_contracts.png" width="80%"/>
+<img src="docs/img/tariff-manager-dst-uc1.png" width="80%"/>
 
 #### Request
 
@@ -165,3 +166,16 @@ spring.jpa.hibernate.ddl-auto=update
 ### Env-Specific Properties
 
 ### Automatic Schema Generation
+
+### Reference
+
+#### Diagrams
+
+* Context: https://app.diagrams.net/#G1rEl42atanalQigqd9faOygsIDW7XSZM1
+* Class: https://app.diagrams.net/#G1s9y-_f4spHFDbNqI9KunE7OX1JnG0FTw
+* Sequence: https://app.diagrams.net/#G1joAg8E6hUbHD13t9PNJJnR8pClGaBs8I
+* Deployment: https://app.diagrams.net/#G1qJHES7U5cNr5X_KfAkzZ7gasSE7KlGDK
+
+#### Templates
+
+* Quests: https://odyssey.wildcodeschool.com/admin/quests/1535
