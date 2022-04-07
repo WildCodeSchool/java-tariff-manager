@@ -18,6 +18,48 @@ In this quest you will learn about querying a storage with Spring Data using JPA
 
 ...
 
-## Spring Data 
+## Introducing the Java Persistence API (JPA)
 
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [Link in GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#L24)
+In this walk-through you will learn how to model a specific Data Model in JPA. 
+
+### Entities in Domain "Tariff-Manager"
+
+#### Tariff
+
+* Tariff name
+* Price
+* List of possible options
+
+#### Option
+
+* Option name
+* Price
+* Connection cost for option
+
+#### Customer
+
+* Customer name
+* Last Name
+* Date of birth
+* Passport data
+* Address
+
+#### Contract
+
+* Contract number
+* Tariff
+* Selected options for the tariff
+
+### Data Model as Entity Relationship Diagram
+
+<img src="../../../docs/img/tariff-manager-erd.png" width="80%"/>
+
+## Create JPA Classes
+
+[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#L24)
+
+### Class Diagramm of Corresponding JPA Diagram
+
+<img src="../../../docs/img/tariff-manager-cd.png" width="50%"/>
+
+
