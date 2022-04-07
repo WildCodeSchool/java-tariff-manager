@@ -74,7 +74,7 @@ In this block, Students learn how to implement enterprise-grade, modular softwar
 * TDD from scratch
 * Project w/o Spring -> Project with Spring
 
-### 7. Advanced Persistence with JPA and Spring Data JPA
+### [7. Advanced Persistence with JPA and Spring Data JPA](blocks/5_Spring_Data_JPA/content.md)
 
 ### 8. RESTful Services with Spring Boot
 
