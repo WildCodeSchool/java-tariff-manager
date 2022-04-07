@@ -64,8 +64,7 @@ In this walk-through you will learn how to model a specific Data Model in JPA.
 
 [sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java)
 
-### Modelling One-to-Many Relationsships
-
+### Modelling One-to-Many Relations
 ```
 @OneToMany(mappedBy = "customer", orphanRemoval = true)
 private List<Contract> contracts = new ArrayList<>();
