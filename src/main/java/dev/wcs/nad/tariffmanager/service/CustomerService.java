@@ -1,6 +1,6 @@
 package dev.wcs.nad.tariffmanager.service;
 
-import dev.wcs.nad.tariffmanager.adapter.rest.dto.CustomerDto;
+import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
 import dev.wcs.nad.tariffmanager.mapper.EntityToDtoMapper;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 import dev.wcs.nad.tariffmanager.persistence.repository.CustomerRepository;

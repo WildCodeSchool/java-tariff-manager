@@ -1,4 +1,4 @@
-package dev.wcs.nad.tariffmanager.adapter.rest.dto;
+package dev.wcs.nad.tariffmanager.adapter.rest.dto.customer;
 
 import lombok.Getter;
 import lombok.Setter;

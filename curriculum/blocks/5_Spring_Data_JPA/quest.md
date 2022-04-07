@@ -56,10 +56,19 @@ In this walk-through you will learn how to model a specific Data Model in JPA.
 
 ## Create JPA Classes
 
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#L24)
-
 ### Class Diagramm of Corresponding JPA Diagram
 
 <img src="../../../docs/img/tariff-manager-cd.png" width="50%"/>
 
+### Entity Annotations
 
+[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java)
+
+### Modelling One-to-Many Relationsships
+
+```
+@OneToMany(mappedBy = "customer", orphanRemoval = true)
+private List<Contract> contracts = new ArrayList<>();
+```
+
+[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Customer.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Customer.java#L28)

@@ -1,6 +1,6 @@
 package dev.wcs.nad.tariffmanager.adapter.rest;
 
-import dev.wcs.nad.tariffmanager.adapter.rest.dto.CustomerDto;
+import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
 import dev.wcs.nad.tariffmanager.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

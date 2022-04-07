@@ -1,6 +1,6 @@
 package dev.wcs.nad.tariffmanager.mapper;
 
-import dev.wcs.nad.tariffmanager.adapter.rest.dto.CustomerDto;
+import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
 import dev.wcs.nad.tariffmanager.persistence.entity.Address;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 import dev.wcs.nad.tariffmanager.persistence.entity.Option;

@@ -160,21 +160,15 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 ```
 [
   {
-    "firstname": "string",
-    "lastname": "string",
-    "birthdate": "date",
-    "passportNo": "string",
-    "addresses": [
+    "id": "string",
+    "name": "string",
+    "price": "string",
+    "possibleOptions": [
       {
-        "address": "string"
-      }
-    ],
-    "contractInfo": [
-      {
-        "tariff": "string",
-        "options": [
-          "string"
-        ]
+        "id": "string",
+        "name": "string",
+        "price": "string",     
+        "setup": "string"      
       }
     ]
   }
@@ -191,40 +185,28 @@ On a meta level, this document frames the tutorials for Java & Spring Framework 
 ```json
 [
   {
-    "firstname": "Kendrick",
-    "lastname": "Ortiz",
-    "birthdate": "1981-08-21",
-    "passportNo": "036-53-2166",
-    "addresses": [
+    "id": 957,
+    "name": "SLEEK-IRON-COAT",
+    "price": 25.88,
+    "possibleOptions": [
       {
-        "address": "031 Becker Islands 308 31966-4886 Lake Fredland"
-      }
-    ],
-    "contractInfo": [
-      {
-        "tariff": "SYNERGISTIC-CONCRETE-BENCH",
-        "options": [
-          "small wooden pants v 17.48322"
-        ]
+        "id": 956,
+        "name": "gorgeous iron lamp v 12.27718",
+        "price": 59.01,
+        "setup": 33.88
       }
     ]
   },
   {
-    "firstname": "Jc",
-    "lastname": "Towne",
-    "birthdate": "1979-04-29",
-    "passportNo": "736-86-8610",
-    "addresses": [
+    "id": 960,
+    "name": "SYNERGISTIC-PAPER-SHIRT",
+    "price": 99.3,
+    "possibleOptions": [
       {
-        "address": "631 Norman Brooks 92208 37890-8042 Kendallview"
-      }
-    ],
-    "contractInfo": [
-      {
-        "tariff": "DURABLE-PAPER-KNIFE",
-        "options": [
-          "synergistic wool keyboard v 17.19142"
-        ]
+        "id": 959,
+        "name": "durable concrete shoes v 14.62467",
+        "price": 58.35,
+        "setup": 45.38
       }
     ]
   }
