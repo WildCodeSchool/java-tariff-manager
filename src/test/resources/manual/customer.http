@@ -1,0 +1,27 @@
+###
+### Read all Customers
+###
+GET http://localhost:8080/customer
+
+###
+### Create new Customer
+###
+POST http://localhost:8080/customer
+Content-Type: application/json
+
+{
+    "firstname": "customer1stName",
+    "lastname": "customerLastName",
+    "birthdate": "2022-04-19",
+    "passportNo": "CCCVVBBXX-888"
+}
+
+###
+### Assign Address to Customer
+###
+PUT http://localhost:8080/customer/1000
+Content-Type: application/json
+
+{
+    "address": "street name, 88, city, state"
+}

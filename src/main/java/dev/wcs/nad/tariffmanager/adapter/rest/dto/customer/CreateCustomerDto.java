@@ -9,14 +9,11 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CustomerDto {
+public class CreateCustomerDto {
 
-    private Long id;
     private String firstname;
     private String lastname;
     private LocalDate birthdate;
     private String passportNo;
-    private List<AddressDto> addresses = new ArrayList<>();
-    private List<ContractDto> contractInfo = new ArrayList<>();
 
 }

@@ -32,4 +32,9 @@ public class Customer {
     @JoinColumn(name = "contact_id")
     private Contact contact;
 
+    public void addContract(Contract contract) {
+        this.getContracts().add(contract);
+        contract.setCustomer(this);
+    }
+
 }

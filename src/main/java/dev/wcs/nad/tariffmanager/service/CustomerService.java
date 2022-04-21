@@ -1,30 +1,42 @@
 package dev.wcs.nad.tariffmanager.service;
 
-import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
-import dev.wcs.nad.tariffmanager.mapper.EntityToDtoMapper;
-import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
+import dev.wcs.nad.tariffmanager.persistence.entity.*;
+import dev.wcs.nad.tariffmanager.persistence.repository.AddressRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.ContactRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final EntityToDtoMapper entityToDtoMapper;
+    private final AddressRepository addressRepository;
+    private final ContactRepository contactRepository;
 
-    public CustomerService(CustomerRepository customerRepository, EntityToDtoMapper entityToDtoMapper) {
+    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository, ContactRepository contactRepository) {
         this.customerRepository = customerRepository;
-        this.entityToDtoMapper = entityToDtoMapper;
+        this.addressRepository = addressRepository;
+        this.contactRepository = contactRepository;
     }
 
-    public List<CustomerDto> readAllCustomers() {
-        List<CustomerDto> customerDtos = new ArrayList<>();
-        for (Customer customer: customerRepository.findAll()) {
-            customerDtos.add(entityToDtoMapper.customerToCustomerDto(customer));
+    public Iterable<Customer> readAllCustomers() {
+        return customerRepository.findAll();
+    }
+
+    public Customer createCustomer(Customer customerEntity) {
+        return customerRepository.save(customerEntity);
+    }
+
+    public Customer assignAddress(Long customerId, Address mapAddressDto) {
+        Address addressEntity = addressRepository.save(mapAddressDto);
+        Customer customer = customerRepository.findById(customerId).get();
+        Contact contact = customer.getContact();
+        if (contact == null) {
+            contact = new Contact();
         }
-        return customerDtos;
+        contact.getAddresses().add(addressEntity);
+        contact = contactRepository.save(contact);
+        customer.setContact(contact);
+        return customerRepository.save(customer);
     }
 }

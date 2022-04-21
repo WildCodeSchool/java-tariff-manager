@@ -1,0 +1,26 @@
+###
+### Contract Creation
+###
+PUT http://localhost:8080/contract
+
+###
+### Assign Address to Customer
+###
+PUT http://localhost:8080/customer/1000
+Content-Type: application/json
+
+{
+  "address": "street name, 88, city, state"
+}
+
+
+###
+###
+###
+
+
+###
+###
+###
+
+
