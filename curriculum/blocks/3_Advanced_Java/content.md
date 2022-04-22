@@ -6,9 +6,10 @@ In this block, Students will learn about concepts of OOP, input/output of data a
 
 ### What will Students learn?
 
-* Inheritance, Abstract Classes and Interfaces, Polymorphism
-* Read and Write files with Java File I/O
-* Abstract Programming with Generics
+* Advanced Structures in Java: Collections, Data Structures
+* Loops, Conditions for Java <8 and newer versions
+* Streams and Lambdas
+* Little Helpers: Lombok
 
 ### How will Students learn?
 

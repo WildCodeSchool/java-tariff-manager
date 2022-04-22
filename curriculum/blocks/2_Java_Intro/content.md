@@ -6,8 +6,9 @@ In this block, Students learn resolving conflicts in software development and ge
 
 ### What will Students learn?
 
-* Concepts of Object-Oriented Programming
-* Get to know Java, JDK, Algorithms & Data Structures in the Standard Libraries
+* Basics of Programming Paradigms (FP, Iterative, OOP)
+* OOP Programming Concepts: Inheritance, Composition, Interfaces
+* Sample for Object Graph with Inheritance and Polymorphism
 
 ### How will Students learn?
 

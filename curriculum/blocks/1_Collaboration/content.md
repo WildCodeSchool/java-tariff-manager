@@ -6,11 +6,10 @@ In this block, Students learn how to collaborate in an agile development team wi
 
 ### What will Students learn?
 
-* How to collaborate in a modern software project as a team?
-* What kind of Version Control Systems do exist?
-* What advantages do distributes VCS like Git have?
-* How do workflow with Git look like?
-* Setup a modern Java environment with Git, GitLab, IntelliJ and Gradle
+* Differences between Editor and IDE (VSCode / IntelliJ)
+* Collaboration in Software Projects with VCS
+* Git as distributed VCS with CLI, in Editor and in IDE
+* Gradle as Dependency Management and Build Tool
 
 ### How will Students learn?
 

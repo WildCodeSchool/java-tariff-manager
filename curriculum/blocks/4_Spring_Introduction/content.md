@@ -4,9 +4,11 @@ In this quest you will learn about querying a storage with Spring Data using JPA
 
 ### What you will learn
 
-* Spring Boot (Web Dev): Spring MVC, Spring Data, Spring Security
-* Java and Relational Databases: JDBC
-* Persistence with ORM in Java: JPA
+* Testing in Java: Types and Context (Unit, Integration, ...)
+* Unittesting with JUnit 5 & Refactoring
+* Introduction to Mocking, Stubbing and modular component testing
+* Test-Driven-Development with JUnit 5, AssertJ, Spring and Mockito
+* Introduction to modular enterprise development with IoC/DI (Spring)
 
 ### What you should know
 
