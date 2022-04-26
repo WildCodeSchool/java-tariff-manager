@@ -2,7 +2,6 @@ package dev.wcs.nad.tariffmanager.service;
 
 import dev.wcs.nad.tariffmanager.persistence.entity.Option;
 import dev.wcs.nad.tariffmanager.persistence.repository.OptionRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,9 +13,13 @@ public class OptionService {
         this.optionRepository = optionRepository;
     }
 
-    public ResponseEntity<Option> createSelectableOption() {
+    public Option createSelectableOption() {
         Option optionEntity = new Option();
-        return ResponseEntity.ok(optionRepository.save(optionEntity));
+        return optionRepository.save(optionEntity);
+    }
+
+    public Iterable<Option> loadAvailableOptions() {
+        return optionRepository.findAll();
     }
 
 }

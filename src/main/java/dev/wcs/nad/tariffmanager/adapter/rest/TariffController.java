@@ -2,6 +2,7 @@ package dev.wcs.nad.tariffmanager.adapter.rest;
 
 import dev.wcs.nad.tariffmanager.persistence.entity.Tariff;
 import dev.wcs.nad.tariffmanager.service.TariffService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +16,8 @@ public class TariffController {
     }
 
     @GetMapping("/tariff")
-    public Iterable<Tariff> readTariffs() {
-        return tariffService.readAllTariffsWithPossibleOptions();
+    public ResponseEntity<Iterable<Tariff>> readTariffs() {
+        return ResponseEntity.ok(tariffService.readAllTariffsWithPossibleOptions());
     }
 
 }
