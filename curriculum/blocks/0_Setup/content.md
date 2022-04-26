@@ -29,7 +29,7 @@ If you choose to install the pre-requisites manually, we recommend
 
 ### Cloning the GitHub Repository
 
-* Import as **Project from Version Control** in IntelliJ
+* In IntelliJ, Import this Repository with **File / New / Project from Version Control**
 
 ![](../../../docs/img/file-new-vcs.png)
 
@@ -41,6 +41,30 @@ We use Spring Boot as a Rapid Application Development Tool for Web Application i
 
 Usually newer IDEs like IntelliJ, Visual Studio Code, Eclipse or Netbeans analyze the application when its opened and identify the Tariff-Manager as a Spring Boot Web Application.
 
-If the identification process is successful, the main class is identified and support for starting the Web application is provided.
+Once the identification process has been completed, the main class is identified and support for starting the Spring Boot Web application is provided.
 
 ![](../../../docs/img/create-run-config.png)
+
+### Automatic Environment Bootstrapping
+
+_Note: Without any modifications, the application creates a persistent, file-based H2-SQL database in the projects folder **data**._
+
+On application startup, the following steps will be executed automatically:
+
+1. Create a data schema for the application in the H2 SQL database
+2. Start an Apache Tomcat web application server locally on port 8080
+3. Deploy the application to the running web application server
+
+After these steps you are able to directly use the Tariff-Manager with a persistent SQL data store.
+
+_Note: For further development or production usage, other SQL databases like MySQL or PostgreSQL can be configured._
+
+### Using the Web Application
+
+* Open http://localhost:8080/swagger-ui.html, you should see the OpenAPI index page
+
+![](../../../docs/img/openapi-index.png)
+
+#### Executing a Use Case: Create Customer for Tariff-Manager Web Application
+
+...
