@@ -2,6 +2,7 @@ package dev.wcs.nad.tariffmanager.customer.model;
 
 import java.time.LocalDate;
 
+// This class is abstract and cannot be instantiated
 public abstract class Customer {
 
     private String id;
@@ -18,8 +19,12 @@ public abstract class Customer {
         this.lastPurchase = lastPurchase;
     }
 
+    // This method is abstract and MUST NOT be implemented here - therefore the missing body.
+    // This method MUST be implemented by non-abstract subclasses of this super class.
     public abstract double calculateDiscountedPrice(int value);
 
+    // This method is specified for all subclasses of this super class.
+    // If this method is not overridden, it valid on all subclasses as specified here.
     public String whoAmI() {
         return "Hi there, I am a " + this.getClass().getName() + " and my name is '" + getName() + "'";
     }
