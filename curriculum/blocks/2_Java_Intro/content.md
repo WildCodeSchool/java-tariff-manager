@@ -12,12 +12,18 @@ In this block, Students learn basics about Object-Oriented Programming and get t
 ### Use Case: Calculate Discounts for Customers depending on their Relevance
 
 ```
-As a customer, I want to see the discount I get on a Tariff and its Options.
+As a Customer, I want to see the discount I get on a Tariff and its Options.
 ```
 
-### Data Model of Tariff-Manager Customers
+### Discount Calculation Logic
 
-A Tariff-Manager `Customer` can have different attributes, which help classifying this `Customer`.
+The Tariff-Manager application uses different types of customers for the calculation of a discount based on certain attributes of a customer. 
+
+A `SpecialCustomer` will get 5% discount on the Tariff prices, a `VICustomer` will get 10% discount. 
+
+_Note: The classification of the `SpecialCustomer`, `VICustomer`, and `StandardCustomer` is not part of our system. Our system will get a marker for the Customer type on data import. For `StandardCustomers` the type (`StandardCustomerWithPotential`...) is derived from attributes like `lastPurchase` and `birthDate`._
+
+### Data Model of Tariff-Manager Customers
 
 Depending on their rating (which is external to this system), `Customer` are ranked for `VI-Customer`, `SpecialCustomer`, or `StandardCustomer`.  
 
