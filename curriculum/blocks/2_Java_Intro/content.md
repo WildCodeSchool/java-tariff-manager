@@ -2,14 +2,15 @@
 
 ### Objective
 
-In this block, Students learn basics about Object-Oriented Programming and get to know Java, the JDK and Standard Libraries.
+With an example of Customer-specific discount calculation of Tariff prices, concepts of Object-Oriented Programming, Java basics, the JDK, and Java Standard Libraries are introduced.  
 
-### What will Students learn?
+### What you will learn
 
+* Basics of the Java language: Classes, Methods, Conditions, and Loops
 * OOP Programming Concepts: Inheritance, Composition, Interfaces
 * Sample for Object Graph with Inheritance and Polymorphism
 
-### Use Case: Calculate Discounts for Customers depending on their Relevance
+### Use Case: Calculate Discounts for Customers depending on their Type
 
 ```
 As a Customer, I want to see the discount I get on a Tariff and its Options.
