@@ -17,6 +17,24 @@ With a Reporting Tool for the Tariff-Manager, concepts of Object-Oriented Progra
 As a controller, I want to create reports about customers with all relevant data.
 ```
 
+### Sequence for Data Model Creation and Report Generation
+
+For our walk-through, we will implement the following steps:
+
+1. Import `Customers` from CSV file `src/test/resources/customer_reporting.csv`
+   1. Create classes and class dependencies as described in the diagram (link)
+   2. All `Customers` have `ID`, `name`, `email` address, `birthdate` and `lastPurchase` date
+   3. The following types of `Customers` exists: `StandardCustomer`, `SpecialCustomer`, `VICustomer` 
+   4. There are two specializations of `StandardCustomer`: ... 
+   5. All `Customers` implement a `calculateDiscountedPrice(int price)` method, which calculates and returns the discount depending on the type of Customer 
+   6. The type of Kunde is determined by the last column of the CSV file: S,E,V
+   7. This should be implemented in a dedicated class `CustomerImporter`
+
+* For each file: Split each line into a String array, use the correct separator string ","
+* For each line: Convert each line into an object of the correct type of Kunde
+
+_Note: If a line cannot be converted due to errors, log the ID and continue processing_
+
 #### Conversionlogic as Pseudo-Code
 
 ```
