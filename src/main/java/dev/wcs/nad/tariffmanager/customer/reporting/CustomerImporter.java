@@ -51,12 +51,12 @@ public class CustomerImporter {
                         VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
                         customers.add(viCustomer);
                     } else if (type.equals("S")) {
-                        boolean juengerAls25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
-                        boolean letztenKaufInnerhalb90Tage = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
-                        if (juengerAls25) {
+                        boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
+                        boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
+                        if (youngerThan25) {
                             JuniorCustomer juniorKunde = new JuniorCustomer(id, name, email, birthDate, lastBuyDate);
                             customers.add(juniorKunde);
-                        } else if (letztenKaufInnerhalb90Tage) {
+                        } else if (lastPurchaseIn25Days) {
                             StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
                             customers.add(potentialCustomer);
                         } else {
