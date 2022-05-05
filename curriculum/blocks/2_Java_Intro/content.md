@@ -8,7 +8,7 @@ With an example of Customer-specific discount calculation of Tariff prices, conc
 
 * Basics of the Java language: Classes, Methods, Conditions, and Loops
 * OOP Programming Concepts: Inheritance, Composition, Interfaces
-* Sample for Object Graph with Inheritance and Polymorphism
+* Sample for Tariff-Manager Object Graph with Inheritance and Polymorphism
 
 ### Use Case: Calculate Discounts for Customers depending on their Type
 
@@ -32,7 +32,7 @@ A `StandardCustomer` can be further classfied as `StandardCustomerWithPotential`
 
 ### Data Model Implementation in Object-Oriented Languages
 
-![](../../../docs/img/oop1-customer.png)
+<img src="../../../docs/img/oop1-customer.png" width="80%"/>
 
 In OOP Languages, the implementation of the specified data model is realized by Inheritance, Abstract Classes and Interfaces.
 

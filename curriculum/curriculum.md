@@ -4,7 +4,13 @@ see https://docs.google.com/spreadsheets/d/1z0E0svLaQ_HEVNHPzaotCJkrySs7GZPxCerf
 
 ## Blocks (Weeks)
 
-### [1. Collaboration in Agile Software Projects & Development Environment Setup](blocks/1_Collaboration/content.md)
+### [0. Development Environment Setup](blocks/0_Setup/content.md)
+
+#### Objective
+
+In this block, Students will setup the Java Development Environment and the Tariff-Manager-Project running locally as a Spring Boot web application.
+
+### 1. Collaboration in Agile Software Projects
 
 #### Objective
 
