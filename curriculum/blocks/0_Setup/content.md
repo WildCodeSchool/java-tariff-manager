@@ -67,4 +67,24 @@ _Note: For further development or production usage, other SQL databases like MyS
 
 #### Executing a Use Case: Create Customer for Tariff-Manager Web Application
 
-...
+* Choose `POST /customer` and send this payload
+
+```json
+{
+  "firstname": "Herbert",
+  "lastname": "Hase",
+  "birthdate": "1982-05-05",
+  "passportNo": "54333-DXD-987-55"
+}
+```
+
+#### Verify the Customer Creation
+
+##### With REST
+
+* Choose `GET /customer` which returns all stored customers. Herbert should be included.
+
+##### In the Database
+
+* Go to http://localhost:8080/h2-console/login.jsp and use JDBC URL `jdbc:h2:./data/tariff` with user `sa` and no password
+  * `SELECT * FROM CUSTOMER WHERE FIRSTNAME='Herbert'` should return the created customer. 
