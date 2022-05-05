@@ -4,9 +4,12 @@ import dev.wcs.nad.tariffmanager.customer.model.Customer;
 import dev.wcs.nad.tariffmanager.customer.model.SpecialCustomer;
 import dev.wcs.nad.tariffmanager.customer.model.StandardCustomerNoPotential;
 import dev.wcs.nad.tariffmanager.customer.model.VICustomer;
+import dev.wcs.nad.tariffmanager.customer.reporting.CustomerImporter;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -43,6 +46,13 @@ public class CustomerTest {
         Customer egon54 = new StandardCustomerNoPotential("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // filter
+    }
+
+    @Test
+    public void shouldImportCsvToCustomerObjectModel() {
+        File customerCsv = new File("src/test/resources/testdata/customer.csv");
+        List<Customer> importedCustomers = CustomerImporter.importCustomers(customerCsv);
+        assertThat(importedCustomers).hasSize(99);
     }
 
 }

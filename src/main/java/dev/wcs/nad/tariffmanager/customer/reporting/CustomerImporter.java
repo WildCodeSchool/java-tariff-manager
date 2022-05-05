@@ -27,7 +27,7 @@ public class CustomerImporter {
         NEW STANDARDKUNDE_OHNE_POTENTIAL
     XDF57FEO3VQ,Moses Finch,ipsum.ac@quamvel.co.uk,02.01.2000,01.08.2021,S
      */
-    public static List<Customer> importKunden(File customerCsv) {
+    public static List<Customer> importCustomers(File customerCsv) {
         List<String> customerLines;
         List<Customer> customers = new ArrayList<>();
         try {
@@ -44,30 +44,36 @@ public class CustomerImporter {
                 try {
                     LocalDate birthDate = DateUtil.convertStringToLocalDate(birthDay);
                     LocalDate lastBuyDate = DateUtil.convertStringToLocalDate(lastBuy);
-                    if (type.equals("E")) {
-                        SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
-                        customers.add(specialCustomer);
-                    } else if (type.equals("V")) {
-                        VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
-                        customers.add(viCustomer);
-                    } else if (type.equals("S")) {
-                        boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
-                        boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
-                        if (youngerThan25) {
-                            JuniorCustomer juniorKunde = new JuniorCustomer(id, name, email, birthDate, lastBuyDate);
-                            customers.add(juniorKunde);
-                        } else if (lastPurchaseIn25Days) {
-                            StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
-                            customers.add(potentialCustomer);
-                        } else {
-                            StandardCustomerNoPotential noPotentialCustomer = new StandardCustomerNoPotential(id, name, email, birthDate, lastBuyDate);
-                            customers.add(noPotentialCustomer);
+                    switch (type) {
+                        case "E": {
+                            SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
+                            customers.add(specialCustomer);
                         }
+                        break;
+                        case "V": {
+                            VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
+                            customers.add(viCustomer);
+                        }
+                        break;
+                        case "S": {
+                            boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
+                            boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
+                            if (youngerThan25) {
+                                JuniorCustomer juniorKunde = new JuniorCustomer(id, name, email, birthDate, lastBuyDate);
+                                customers.add(juniorKunde);
+                            } else if (lastPurchaseIn25Days) {
+                                StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
+                                customers.add(potentialCustomer);
+                            } else {
+                                StandardCustomerNoPotential noPotentialCustomer = new StandardCustomerNoPotential(id, name, email, birthDate, lastBuyDate);
+                                customers.add(noPotentialCustomer);
+                            }
+                        }
+                        break;
                     }
                 } catch (DateTimeParseException e) {
-                    System.err.println("Konnte das Datum für Kunde " + id + " nicht lesen.");
+                    System.err.println("Cannot parse date for customer " + id + ".");
                 }
-
             }
         } catch (IOException e) {
             System.err.println("Could not read file.");
