@@ -37,7 +37,10 @@ public class CustomerTest {
         Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
         List<Customer> customers = List.of(alfred22, achim24, egon54);
+
+        // Use Streams for Filtering
         List<Customer> customersOlderThan22 = customers.stream().filter(customer -> customer.getBirthDate().plusYears(22).isBefore(LocalDate.now())).collect(Collectors.toList());
+
         assertThat(customersOlderThan22).hasSize(2);
     }
 
