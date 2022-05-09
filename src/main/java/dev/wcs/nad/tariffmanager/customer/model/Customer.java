@@ -1,8 +1,11 @@
 package dev.wcs.nad.tariffmanager.customer.model;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
 // This class is abstract and cannot be instantiated
+@Data
 public abstract class Customer {
 
     private String id;
@@ -10,14 +13,6 @@ public abstract class Customer {
     private String email;
     private LocalDate birthDate;
     private LocalDate lastPurchase;
-
-    public Customer(String id, String name, String email, LocalDate birthDate, LocalDate lastPurchase) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.lastPurchase = lastPurchase;
-    }
 
     // This method is abstract and MUST NOT be implemented here - therefore the missing body.
     // This method MUST be implemented by non-abstract subclasses of this super class.
@@ -30,8 +25,20 @@ public abstract class Customer {
     }
 
     /*
-     * Getters and Setters
-     */
+     * Constructor - Not necessary due to Lombok @Data
+     *
+
+    public Customer(String id, String name, String email, LocalDate birthDate, LocalDate lastPurchase) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.lastPurchase = lastPurchase;
+    }
+
+    /*
+     * Getters and Setters - Not necessary due to Lombok @Data
+     *
 
     public String getId() {
         return id;
@@ -68,5 +75,40 @@ public abstract class Customer {
     public void setLastPurchase(LocalDate lastPurchase) {
         this.lastPurchase = lastPurchase;
     }
+
+    /*
+     * ToString
+     *
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", lastPurchase=" + lastPurchase +
+                '}';
+    }
+
+    /*
+     * equals
+     *
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id.equals(customer.id);
+    }
+
+    /*
+     * hashCode
+     *
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+     */
 
 }

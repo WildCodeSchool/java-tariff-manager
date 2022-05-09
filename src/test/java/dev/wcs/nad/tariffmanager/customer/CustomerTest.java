@@ -41,14 +41,20 @@ public class CustomerTest {
         // Use Streams for Filtering
         List<Customer> customersOlderThan22 = customers.stream().filter(customer -> customer.getBirthDate().plusYears(22).isBefore(LocalDate.now())).collect(Collectors.toList());
 
+        // Use Streams for filtering names starting with letter "A"
+        List<Customer> customerStartingWithA;
+
         assertThat(customersOlderThan22).hasSize(2);
     }
 
     @Test
     public void shouldImplementLogicOnBaseMethods() {
+        // Arrange
         Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
         Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
+
+        // Act
         List<Customer> customers = List.of(alfred22, achim24, egon54);
         // This collection is filtered using a conventional for-loop
         for (Customer customer : customers) {
@@ -56,6 +62,8 @@ public class CustomerTest {
                 System.out.println("Mail of VICustomer: " + customer.getEmail());
             }
         }
+
+
     }
 
     @Test
