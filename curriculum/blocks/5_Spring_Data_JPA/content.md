@@ -26,7 +26,7 @@ In this quest you will learn about querying a storage with Spring Data using JPA
 
 ## Introducing the Java Persistence API (JPA)
 
-In this walk-through you will learn how to model a specific Data Model in JPA. 
+In this walk-through you will learn how to model a specific Data Model in JPA.
 
 ### Entities in Domain "Tariff-Manager"
 
