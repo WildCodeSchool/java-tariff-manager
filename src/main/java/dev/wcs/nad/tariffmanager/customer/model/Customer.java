@@ -1,11 +1,13 @@
 package dev.wcs.nad.tariffmanager.customer.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 // This class is abstract and cannot be instantiated
 @Data
+@AllArgsConstructor
 public abstract class Customer {
 
     private String id;
