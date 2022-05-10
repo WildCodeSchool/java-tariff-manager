@@ -82,7 +82,7 @@ In this block, Students learn how to implement enterprise-grade, modular softwar
 
 ### [7. Advanced Persistence with JPA and Spring Data JPA](blocks/5_Spring_Data_JPA/content.md)
 
-### 8. RESTful Services with Spring Boot
+### [8. RESTful Services with Spring Boot](blocks/9_Spring_Boot_REST/content.md)
 
 ### 9. Concepts of Modern Web Applications Development
 

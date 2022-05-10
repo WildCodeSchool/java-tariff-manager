@@ -4,9 +4,9 @@ In this quest you will learn about querying a storage with Spring Data using JPA
 
 ### What you will learn
 
-* Spring Boot (Web Dev): Spring MVC, Spring Data, Spring Security
-* Java and Relational Databases: JDBC
-* Persistence with ORM in Java: JPA
+* Spring Boot (Web Dev): Spring MVC & Spring Data
+* Spring Boot REST: OpenAPI, Swagger and JSON Data Binding
+* Securing REST Services with Spring Security
 
 ### What you should know
 
@@ -103,9 +103,16 @@ In the database, the **ADDRESS** table, column **CONTACT_ID** has a Foreign Key 
 
 ![](../../../docs/img/db_er_address.png)
 
-It can be specified in the annotations on the classes `Address` and `Contact` how the relationsship should be modelled in the database. Out approach is the most common choosed approach, but other options exist, eg. using a intermediate table.
+It can be specified in the annotations on the classes `Address` and `Contact` how the relationsship should be modelled in the database. Out approach is the most common choosed approach, but other options exist, eg. using a intermediate (or mapping) table.
 
 ### Modelling Many-to-Many Relations
+
+A Many-to-One relation is the same as one-to-many, but from a different viewpoint.
+
+* Many `Options` can be associated to one `Tariff`.
+* One `Option` can be associated to many `Tariffs`.
+
+![](../../../docs/img/db_er_address_join.png)
 
 ```java
 @ManyToMany
@@ -128,10 +135,15 @@ private Tariff tariff;
 
 ### Modelling Many-to-One Relations
 
+A Many-to-One relation is the same as one-to-many, but from a different viewpoint.
+
+* Many `Options` can be associated to one `Tariff`.
+* One `Option` can be associated to many `Tariffs`.
+
 ```java
 @ManyToOne
-@JoinColumn(name = "contact_id")
-private Contact contact;
+@JoinColumn(name = "customer_id")
+private Customer customer;
 ```
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#L24)
+[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java#L29)
 
