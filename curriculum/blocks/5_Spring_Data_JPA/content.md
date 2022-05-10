@@ -107,6 +107,8 @@ It can be specified in the annotations on the classes `Address` and `Contact` ho
 
 ### Modelling Many-to-Many Relations
 
+![](../../../docs/img/db_er_address_join_full.png)
+
 ```java
 @ManyToMany
 @JoinTable(name = "contract_options",
@@ -118,6 +120,8 @@ private Set<Option> options = new LinkedHashSet<>();
 
 
 ### Modelling One-to-One Relations
+
+![](../../../docs/img/db_er_address_no_join_full.png)
 
 ```java
 @OneToOne(orphanRemoval = true)
