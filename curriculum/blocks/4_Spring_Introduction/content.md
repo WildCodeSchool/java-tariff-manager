@@ -83,7 +83,17 @@ public class CustomerRepository {
 ```
 
 ### Challenge: Add Configuration for Services
+
+* Understand how configuration can be added in external files like `application.properties`
+* Add a new configuration property `discount` which can be injected to the class which creates the objects. The classes must accept this discount in a constructor instead of having a static value in the `calculateDiscount` method.
+* Set the `discount` property to 15% in `application.properties` and re-run all tests with the property injection.
+
 ### Challenge: Add Mapping for Entity <-> DTO
 
-(Add 2 solutions: manual/Lombok and MapStruct)
+* We prepared a simple mapping class `CustomerMapper` which maps DTOs to Entities. This class is currently not used.
+* Add the Mapper as a Spring component (@Component), use it in the Service class to map between both types of objects.
+* Write a unit test for the `CustomerMapper`.
+* See ... unit test to understand how test can be written for Spring components. Add a Test for the Service method `mapDtoToEntity` with the injected Mapper object.
+
+(TODO: Add 2 solutions: manual/Lombok and MapStruct)
 
