@@ -139,7 +139,7 @@ private Contact contact;
 ```
 [sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#L24)
 
-### Challenge: Add a new Entity ... 
+### Challenge: Add a new Entity `Department` 
 
 * `Tariff` has a n..0 (many-to-zero_or_one) relation to a new entity `Department`, which specifies which internal department is responsible for the `Tariff`
 * Create a repository for `Department` which allows for reading, creating and updating `Department` entities (interface method: ...)

@@ -63,19 +63,6 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
-} 
-
-@Service
-public class CustomerService {
-    private final CustomerRepository customerRepository;
-
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
-}
-
-@Repository
-public class CustomerRepository {
-    //...
 }
 ```
+
