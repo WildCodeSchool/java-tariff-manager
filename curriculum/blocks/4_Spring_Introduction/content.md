@@ -81,3 +81,9 @@ public class CustomerRepository {
     //...
 }
 ```
+
+### Challenge: Add Configuration for Services
+### Challenge: Add Mapping for Entity <-> DTO
+
+(Add 2 solutions: manual/Lombok and MapStruct)
+

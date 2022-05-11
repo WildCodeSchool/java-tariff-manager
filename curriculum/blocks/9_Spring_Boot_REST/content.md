@@ -20,130 +20,63 @@ In this quest you will learn about querying a storage with Spring Data using JPA
 * IDE (IntelliJ) with Gradle
 * Java SDK 11+
 
-## Introducing the Java Persistence API (JPA)
+## Spring DI/IoC, Spring Boot and REST
 
-In this walk-through you will learn how to model a specific Data Model in JPA.
+To understand why Spring Boot accelerates Web Application Development 
 
-### Entities in Domain "Tariff-Manager"
+<img src="../../../docs/img/diioc_layer.png" width="80%"/>
 
-#### Tariff
+If you run the application, you can access the REST endpoint (`CustomerController.displayCustomer`) at http://localhost:8080/customer
 
-* Tariff name
-* Price
-* List of possible options
+The `CustomerController` is instantiated by the Spring Container and the object graph containing the `ContainerService` and the `ContainerRepository` in injected.
 
-#### Option
-
-* Option name
-* Price
-* Connection cost for option
-
-#### Customer
-
-* Customer name
-* Last Name
-* Date of birth
-* Passport data
-* Address
-
-#### Contract
-
-* Contract number
-* Tariff
-* Selected options for the tariff
-
-### Data Model as Entity Relationship Diagram
-
-<img src="../../../docs/img/tariff-manager-erd.png" width="80%"/>
-
-## Create JPA Classes
-
-### Class Diagramm of Corresponding JPA Diagram
-
-<img src="../../../docs/img/tariff-manager-cd.png" width="50%"/>
-
-### Entity Annotations
-
-To enable Object-Relational Mapping (ORM) between Java objects and database entities, Java classes have to be enriched with meta information about how to map related models, what and how much of the object graph to load in one shot and other properties.
-
-JPA uses specific annotations (or XML configuration) to define the intended behaviour. All JPA Entities in package *entity* have these annotations.  
-
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/)
-
-### Modelling One-to-Many Relations
-
-We will investigate the `Contact` to `Address` relation. This relation models the fact "A contact can have many addresses".
-This relation type is called `One-to-Many` (1..n) in JPA. In Java, we use a collection (in our case a `List`, but `Set` or `Collection` would be possible as well) to model 1..n relationsships.
-
-```
-@OneToMany(mappedBy = "customer", orphanRemoval = true)
-private List<Contract> contracts = new ArrayList<>();
-```
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Customer.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Customer.java#L28)
-
-#### Adding an `Address` to a `Contact`
-
-If we want to add an `Address` to a `Contact` object, we have to use the interface a `List` provides to add an object. Futhermore, we have to persist the change in the database.
+With Spring Dependency Injection all required dependencies are provided during runtime. All layers requirements are met before the application startup is completed. With this guarantee, the components can focus on their requirements and do not have to take care about how these requirements are met (by the Spring Container runtime environment).
 
 ```java
-Address address = createFakeAddress();
-Contact contact = createFakeContact();
-contact.addAddress(address);
-addressRepository.save(address);
-customer = customerRepository.save(customer);
+@GetMapping("/customer")
+public List<CustomerDto> displayCustomers() {
+    List<CustomerDto> customerDtos = new ArrayList<>();
+    for (Customer customer: customerService.readAllCustomers()) {
+        customerDtos.add(entityToDtoMapper.customerToCustomerDto(customer));
+    }
+    return customerDtos;
+}
 ```
 
-[sources](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java) | [GitHub](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java#L32)
+### Challenge: Add a new GET endpoint with filtering
 
-First, we create a new `Address` which we add to the `Contract`. This is done by calling `add(...)` on the `List` of `Address`. Now the object has been added to the List in memory, but it wasn't persisted. To persist the object in the database, we first have to persist the new `Address` with `addressRepository.save(address)`. Now an ID has been added by JPA and we can store the `Contact` object with the `List` of `Address` with `customerRepository.save(customer)`.
+See here
 
-In the database, the **ADDRESS** table, column **CONTACT_ID** has a Foreign Key to the **CONTACT** table, column **ID**.  
-
-![](../../../docs/img/db_er_contact.png)
-
-![](../../../docs/img/db_er_address.png)
-
-It can be specified in the annotations on the classes `Address` and `Contact` how the relationsship should be modelled in the database. Out approach is the most common choosed approach, but other options exist, eg. using a intermediate (or mapping) table.
-
-### Modelling Many-to-Many Relations
-
-A Many-to-One relation is the same as one-to-many, but from a different viewpoint.
-
-* Many `Options` can be associated to one `Tariff`.
-* One `Option` can be associated to many `Tariffs`.
-
-![](../../../docs/img/db_er_address_join.png)
+* After retrieving all customers from the database, create a `Stream` and filter for all customers > 18.
+* Make sure that a parameter `searchFilter` can be passed as a `QueryParam` to further filter the stream for all customers > 18 and name startsWith searchFiler.
+* Pass the parameter searchFilter "down" further the layers to optimize performance (not loading all customers, with only the ones containing the searchFilter and age>18).
 
 ```java
-@ManyToMany
-@JoinTable(name = "contract_options",
-        joinColumns = @JoinColumn(name = "contract_id"),
-        inverseJoinColumns = @JoinColumn(name = "options_id"))
-private Set<Option> options = new LinkedHashSet<>();
+// Give DI/IoC Framework hints by Annotations, Depend on Interfaces only.
+// The Runtime Container (Spring Boot/Spring Framework) will build the object graph on startup.
+// All dependencies are runtime dependencies only, not compile-time dependencies.
+
+@Controller
+public class CustomerController {
+    private final CustomerService customerService;
+    
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+} 
+
+@Service
+public class CustomerService {
+    private final CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+}
+
+@Repository
+public class CustomerRepository {
+    //...
+}
 ```
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java#L25)
-
-
-### Modelling One-to-One Relations
-
-```java
-@OneToOne(orphanRemoval = true)
-@JoinColumn(name = "tariff_id")
-private Tariff tariff;
-```
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java#L21)
-
-### Modelling Many-to-One Relations
-
-A Many-to-One relation is the same as one-to-many, but from a different viewpoint.
-
-* Many `Options` can be associated to one `Tariff`.
-* One `Option` can be associated to many `Tariffs`.
-
-```java
-@ManyToOne
-@JoinColumn(name = "customer_id")
-private Customer customer;
-```
-[sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Contract.java#L29)
 

@@ -139,3 +139,9 @@ private Contact contact;
 ```
 [sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Address.java#L24)
 
+### Challenge: Add a new Entity ... 
+
+* The new entity "..." has a 1..n relation to ....
+* Create a repository for ... which allows for reading ... (interface method: ...)
+* Create a unit test: ...
+
