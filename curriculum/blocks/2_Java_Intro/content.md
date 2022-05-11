@@ -56,4 +56,15 @@ The abstract class [Customer](../../../src/main/java/dev/wcs/nad/tariffmanager/c
 
 In the test class ... these test methods can be used to understand the logic of inheritance for `Customers`:
 
-* ....
+#### Challenge: Add a new Customer Type
+
+In this challenge, we add a new `Customer`: `EmployeeCustomer`
+
+```
+EmployeeCustomer are customers who are also employees of the company and get a discount of 15%. 
+```
+_Rule: If the email address is at domain **acme.org**, the `Customer` should be classified as a `EmployeeCustomer`, so **herbert@acme.org** is a `EmployeeCustomer`._
+
+1. Create a new class `EmployeeCustomer` which directly extends abstract class `Customer`. The `calculateDiscount(int value)` should return 15% of the value as discount.
+2. Create a unit test which creates two `EmployeeCustomer`, adds those to a `List<Customer>` and adds a `JuniorCustomer` to the list.
+3. For the assertion part in the test, make sure the correct discounts are calculated. See the existing tests for reference.
