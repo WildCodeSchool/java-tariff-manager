@@ -141,7 +141,7 @@ private Contact contact;
 
 ### Challenge: Add a new Entity ... 
 
-* The new entity "..." has a 1..n relation to ....
-* Create a repository for ... which allows for reading ... (interface method: ...)
-* Create a unit test: ...
+* `Tariff` has a n..0 (many-to-zero_or_one) relation to a new entity `Department`, which specifies which internal department is responsible for the `Tariff`
+* Create a repository for `Department` which allows for reading, creating and updating `Department` entities (interface method: ...)
+* In the unit test a `Tariff` is created. Modify the test: Create and persist a new `Department`. Make sure that each time a `Tariff` is created, this `Department` is associated and persistet.
 
