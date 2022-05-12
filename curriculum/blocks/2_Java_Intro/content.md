@@ -54,9 +54,7 @@ The abstract class [Customer](../../../src/main/java/dev/wcs/nad/tariffmanager/c
 
 #### OOP in Action: Testing the Discount Calculation for different Customers
 
-In the test class `CustomerTest` these test methods can be used to understand the logic of inheritance for `Customers`:
-
-[sources](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java)
+In the test class `CustomerTest` ([sources](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java) these test methods can be used to understand the logic of inheritance for `Customers`:
 
 #### Challenge: Add a new Customer Type
 
@@ -68,5 +66,5 @@ EmployeeCustomer are customers who are also employees of the company and get a d
 _Rule: If the email address is at domain **acme.org**, the `Customer` should be classified as a `EmployeeCustomer`, so **herbert@acme.org** is a `EmployeeCustomer`._
 
 1. Create a new class `EmployeeCustomer` which directly extends abstract class `Customer`. The `calculateDiscount(int value)` should return 15% of the value as discount.
-2. Create a unit test which creates two `EmployeeCustomer`, adds those to a `List<Customer>` and adds a `JuniorCustomer` to the list (see Method `shouldTestNewEmployeeCustomer`).
+2. Create a unit test which creates two `EmployeeCustomer`, adds those to a `List<Customer>` and adds a `JuniorCustomer` to the list (see Method `shouldTestNewEmployeeCustomer`) [sources](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java)
 3. For the assertion part in the test, make sure the correct discounts are calculated. See the existing tests for reference.

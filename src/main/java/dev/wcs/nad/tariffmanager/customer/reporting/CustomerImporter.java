@@ -2,6 +2,7 @@ package dev.wcs.nad.tariffmanager.customer.reporting;
 
 import dev.wcs.nad.tariffmanager.customer.model.*;
 import dev.wcs.nad.tariffmanager.customer.reporting.util.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,8 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+// We are using the logging abstraction from Lombok here with @Slf4j which byte-code injects a "log" Logger instance (see https://projectlombok.org/features/log)
+@Slf4j
 @Component
 public class CustomerImporter {
 
@@ -23,19 +26,6 @@ public class CustomerImporter {
         this.juniorCustomerDiscountPercentage = juniorCustomerDiscountPercentage;
     }
 
-    /*
-    IF (TYPE='E')
-        NEW EXKLUSIVKUNDE
-    ELSE IF (TYPE='V')
-        NEW VIKUNDE
-    ELSE IF (TYPE='S') AND (AGE < 25)
-        NEW JUNIORKUNDE
-    ELSE IF (TYPE='S') AND (LAST_PURCHASE < 90 DAYS)
-        NEW STANDARDKUNDE_MIT_POTENTIAL
-    ELSE
-        NEW STANDARDKUNDE_OHNE_POTENTIAL
-    XDF57FEO3VQ,Moses Finch,ipsum.ac@quamvel.co.uk,02.01.2000,01.08.2021,S
-     */
     public List<Customer> importCustomers(File customerCsv) {
         List<String> customerLines;
         List<Customer> customers = new ArrayList<>();
@@ -49,44 +39,45 @@ public class CustomerImporter {
                 String birthDay = temp[3];
                 String lastBuy = temp[4];
                 String type = temp[5];
-
-                try {
-                    LocalDate birthDate = DateUtil.convertStringToLocalDate(birthDay);
-                    LocalDate lastBuyDate = DateUtil.convertStringToLocalDate(lastBuy);
-                    switch (type) {
-                        case "E": {
-                            SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
-                            customers.add(specialCustomer);
-                        }
-                        break;
-                        case "V": {
-                            VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
-                            customers.add(viCustomer);
-                        }
-                        break;
-                        case "S": {
-                            boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
-                            boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
-                            if (youngerThan25) {
-                                JuniorCustomer juniorKunde = new JuniorCustomer(juniorCustomerDiscountPercentage, id, name, email, birthDate, lastBuyDate);
-                                customers.add(juniorKunde);
-                            } else if (lastPurchaseIn25Days) {
-                                StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
-                                customers.add(potentialCustomer);
-                            } else {
-                                StandardCustomerNoPotential noPotentialCustomer = new StandardCustomerNoPotential(id, name, email, birthDate, lastBuyDate);
-                                customers.add(noPotentialCustomer);
-                            }
-                        }
-                        break;
-                    }
-                } catch (DateTimeParseException e) {
-                    System.err.println("Cannot parse date for customer " + id + ".");
-                }
+                customers.add(parseCsvLineIntoObject(id, name, email, birthDay, lastBuy, type));
             }
         } catch (IOException e) {
-            System.err.println("Could not read file.");
+            log.error("Could not read file.");
         }
         return customers;
+    }
+
+    private Customer parseCsvLineIntoObject(String id, String name, String email, String birthDay, String lastBuy, String type) {
+        try {
+            LocalDate birthDate = DateUtil.convertStringToLocalDate(birthDay);
+            LocalDate lastBuyDate = DateUtil.convertStringToLocalDate(lastBuy);
+            switch (type.toUpperCase()) {
+                case "E": {
+                    SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
+                    return specialCustomer;
+                }
+                case "V": {
+                    VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
+                    return viCustomer;
+                }
+                case "S": {
+                    boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
+                    boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
+                    if (youngerThan25) {
+                        JuniorCustomer juniorKunde = new JuniorCustomer(juniorCustomerDiscountPercentage, id, name, email, birthDate, lastBuyDate);
+                        return juniorKunde;
+                    } else if (lastPurchaseIn25Days) {
+                        StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
+                        return potentialCustomer;
+                    } else {
+                        StandardCustomerNoPotential noPotentialCustomer = new StandardCustomerNoPotential(id, name, email, birthDate, lastBuyDate);
+                        return noPotentialCustomer;
+                    }
+                }
+            }
+        } catch (DateTimeParseException e) {
+            log.error("Cannot parse date for customer " + id + ".");
+        }
+        return null;
     }
 }
