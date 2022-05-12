@@ -10,7 +10,7 @@ see https://docs.google.com/spreadsheets/d/1z0E0svLaQ_HEVNHPzaotCJkrySs7GZPxCerf
 
 In this block, Students will setup the Java Development Environment and the Tariff-Manager-Project running locally as a Spring Boot web application.
 
-### 1. Collaboration in Agile Software Projects
+### [1. Collaboration in Agile Software Projects](blocks/1_Collaboration/content.md)
 
 #### Objective
 
