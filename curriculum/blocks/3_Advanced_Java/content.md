@@ -74,7 +74,7 @@ Lombok enhances the compiled Java byte code, so no dependency on Lombok is prese
 
 _Note: You can at any time _delombok_ your application and get rid of Lombok completely._
 
-### Data Import Process
+### Challenge: Implement the Data Import Process
 
 We will simulate a bootstrapping of the Web application by importing a CSV file with all customer data.
 After the data is imported and the data model set up, we will run the Report engine for Reporting about imported Customers.
@@ -85,6 +85,6 @@ After the data is imported and the data model set up, we will run the Report eng
 4. Create a method which sorts `List<Customer>` by `lastPurchase`: `List<Customer> sortByLastPurchase(List<Customer> customer)`
 5. This should be implemented in class `CustomerSales`, the class and the method should be implemented using TDD
 
-### Newsletter for Classified Customer  
+### Challenge: Newsletter for Classified Customer  
 
 6. Create a method `sendNewsletter(List<Customer> customers)` which sends a newsletter to `VI-Customers` and `StandardCustomersWithPotential`: **Hello NAME, you are invited to our new product demo.**

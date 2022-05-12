@@ -81,6 +81,8 @@ private List<Contract> contracts = new ArrayList<>();
 ```
 [sources](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Customer.java) | [GitHub](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/entity/Customer.java#L28)
 
+![](../../../docs/img/db_er_address_join.png)
+
 #### Adding an `Address` to a `Contact`
 
 If we want to add an `Address` to a `Contact` object, we have to use the interface a `List` provides to add an object. Futhermore, we have to persist the change in the database.

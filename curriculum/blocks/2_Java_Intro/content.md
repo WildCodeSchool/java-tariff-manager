@@ -46,7 +46,7 @@ In our data model, [VICustomer](../../../src/main/java/dev/wcs/nad/tariffmanager
 
 [StandardCustomer](../../../src/main/java/dev/wcs/nad/tariffmanager/customer/model/StandardCustomer.java) is a subclass of `Customer`, but is itself still abstract and cannot be instantiated. Only subclasses of `StandardCustomer`: [StandardCustomerWithPotential](../../../src/main/java/dev/wcs/nad/tariffmanager/customer/model/StandardCustomerWithPotential.java), [StandardCustomerNoPotential](../../../src/main/java/dev/wcs/nad/tariffmanager/customer/model/StandardCustomerNoPotential.java) and [JuniorCustomer](../../../src/main/java/dev/wcs/nad/tariffmanager/customer/model/JuniorCustomer.java) are instantiable classes.
 
-#### Specifying Behaviour for Concrete Classes
+#### Specifying Behaviour for Implementation Classes
 
 Our logic implies that different customers get different discounts. We will use the inheritance to realize the different discount calculation logic.
 
@@ -54,7 +54,9 @@ The abstract class [Customer](../../../src/main/java/dev/wcs/nad/tariffmanager/c
 
 #### OOP in Action: Testing the Discount Calculation for different Customers
 
-In the test class ... these test methods can be used to understand the logic of inheritance for `Customers`:
+In the test class `CustomerTest` these test methods can be used to understand the logic of inheritance for `Customers`:
+
+[sources](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java)
 
 #### Challenge: Add a new Customer Type
 
@@ -66,5 +68,5 @@ EmployeeCustomer are customers who are also employees of the company and get a d
 _Rule: If the email address is at domain **acme.org**, the `Customer` should be classified as a `EmployeeCustomer`, so **herbert@acme.org** is a `EmployeeCustomer`._
 
 1. Create a new class `EmployeeCustomer` which directly extends abstract class `Customer`. The `calculateDiscount(int value)` should return 15% of the value as discount.
-2. Create a unit test which creates two `EmployeeCustomer`, adds those to a `List<Customer>` and adds a `JuniorCustomer` to the list.
+2. Create a unit test which creates two `EmployeeCustomer`, adds those to a `List<Customer>` and adds a `JuniorCustomer` to the list (see Method `shouldTestNewEmployeeCustomer`).
 3. For the assertion part in the test, make sure the correct discounts are calculated. See the existing tests for reference.

@@ -84,7 +84,12 @@ public class CustomerRepository {
 
 ### Challenge: Add Configuration for Services
 
+The default Spring Boot Configuration is in `application.properties`.
+
+[sources](../../../src/main/resources/application.properties)
+
 * Understand how configuration can be added in external files like `application.properties`
+  * Compare the existing property `junior.customer.discount.percent` and how it is used in `JuniorCustomer`
 * Add a new configuration property `discount` which can be injected to the class which creates the objects. The classes must accept this discount in a constructor instead of having a static value in the `calculateDiscount` method.
 * Set the `discount` property to 15% in `application.properties` and re-run all tests with the property injection.
 
