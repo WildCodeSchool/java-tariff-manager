@@ -3,7 +3,7 @@ package dev.wcs.nad.tariffmanager.adapter.rest;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.AddressDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CreateCustomerDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
-import dev.wcs.nad.tariffmanager.mapper.EntityToDtoMapper;
+import dev.wcs.nad.tariffmanager.mapper.mapstruct.EntityToDtoMapper;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 import dev.wcs.nad.tariffmanager.service.CustomerService;
 import org.springframework.http.ResponseEntity;

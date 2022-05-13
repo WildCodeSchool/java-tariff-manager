@@ -1,4 +1,4 @@
-package dev.wcs.nad.tariffmanager.mapper;
+package dev.wcs.nad.tariffmanager.mapper.mapstruct;
 
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.contract.ContractInfoDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.AddressDto;

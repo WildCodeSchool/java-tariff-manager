@@ -21,7 +21,7 @@ class TariffManagerApplicationTests {
 	void testCustomerImportWithInjectedConfiguredSpringBean() {
 		File customerCsv = new File("src/test/resources/testdata/customer.csv");
 		List<Customer> importedCustomers = customerImporter.importCustomers(customerCsv);
-		assertThat(importedCustomers).hasSize(99);
+		assertThat(importedCustomers).hasSize(100);
 	}
 
 }

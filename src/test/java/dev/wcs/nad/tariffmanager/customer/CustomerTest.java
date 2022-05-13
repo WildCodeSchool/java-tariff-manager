@@ -77,13 +77,4 @@ public class CustomerTest {
         // assertThat(employee2.calculateDiscountedPrice(100)).isEqualTo(85);
     }
 
-    @Test
-    public void shouldImportCsvToCustomerObjectModelNoSpringContext() {
-        File customerCsv = new File("src/test/resources/testdata/customer.csv");
-        // We are manually instantiating the CustomerImporter here as we have no Spring context in plain Unit tests
-        CustomerImporter customerImporter = new CustomerImporter(15);
-        List<Customer> importedCustomers = customerImporter.importCustomers(customerCsv);
-        assertThat(importedCustomers).hasSize(99);
-    }
-
 }

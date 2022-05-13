@@ -1,7 +1,7 @@
 package dev.wcs.nad.tariffmanager.persistence.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import dev.wcs.nad.tariffmanager.customer.model.shared.CustomerType;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,6 +12,10 @@ import java.util.List;
 @Table(name = "customer")
 @Getter
 @Setter
+// With @Builder, we need NoArgs and AllArgs constructor. Do not use @Data with JPA!
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
     @Id
@@ -24,8 +28,10 @@ public class Customer {
     private LocalDate birthdate;
     private String passportNo;
     private boolean blocked;
+    private CustomerType customerType;
 
     @OneToMany(mappedBy = "customer", orphanRemoval = true)
+    @Builder.Default
     private List<Contract> contracts = new ArrayList<>();
 
     @OneToOne(orphanRemoval = true)

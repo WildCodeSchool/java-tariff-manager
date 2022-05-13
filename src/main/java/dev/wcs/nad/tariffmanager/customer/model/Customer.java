@@ -1,6 +1,7 @@
 package dev.wcs.nad.tariffmanager.customer.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;

@@ -2,7 +2,7 @@ package dev.wcs.nad.tariffmanager.adapter.rest;
 
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.contract.ContractInfoDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.contract.TariffAndOptionAssignmentDto;
-import dev.wcs.nad.tariffmanager.mapper.EntityToDtoMapper;
+import dev.wcs.nad.tariffmanager.mapper.mapstruct.EntityToDtoMapper;
 import dev.wcs.nad.tariffmanager.persistence.entity.Contract;
 import dev.wcs.nad.tariffmanager.service.ContractService;
 import org.springframework.http.ResponseEntity;

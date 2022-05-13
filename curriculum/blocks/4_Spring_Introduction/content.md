@@ -84,9 +84,7 @@ public class CustomerRepository {
 
 ### Challenge: Add Configuration for Services
 
-The default Spring Boot Configuration is in `application.properties`.
-
-[sources](../../../src/main/resources/application.properties)
+The default Spring Boot Configuration is in `application.properties` ([sources](../../../src/main/resources/application.properties))
 
 * Understand how configuration can be added in external files like `application.properties`
   * Compare the existing property `junior.customer.discount.percent` and how it is used in `JuniorCustomer`
