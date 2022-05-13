@@ -28,7 +28,7 @@ In this block, Students learn resolving conflicts in software development and ge
 
 In this block, Students will learn about concepts of OOP, input/output of data and generic programming.
 
-### [4. Software Testing in Java & Test-Driven-Development, Refactoring & Clean Code](blocks/4_Spring_Introduction/content.md)
+### 4. Software Testing in Java & Test-Driven-Development, Refactoring & Clean Code
 
 #### Objective
 
@@ -61,7 +61,7 @@ In this block, Students learn and recap concepts of relational databases, SQL an
 * Project
 * TDD from scratch
 
-### 6. Dependency Injection/Inversion of Control with the Spring Framework
+### [6. Dependency Injection/Inversion of Control with the Spring Framework](blocks/4_Spring_Introduction/content.md)
 
 #### Objective
 
