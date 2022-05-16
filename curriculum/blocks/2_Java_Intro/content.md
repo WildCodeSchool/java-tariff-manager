@@ -54,7 +54,16 @@ The abstract class [Customer](../../../src/main/java/dev/wcs/nad/tariffmanager/c
 
 #### OOP in Action: Testing the Discount Calculation for different Customers
 
-In the test class `CustomerTest` ([sources](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java) these test methods can be used to understand the logic of inheritance for `Customers`:
+In the test class [CustomerTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java) these test methods can be used to understand the logic of inheritance for `Customers`:
+
+* Unit test `shouldCreateDifferentCustomersWithDifferentDiscounts`
+  * Examine this test to understand the different `Customer` implementations. 
+  * Understand how the different discount calculation works. 
+  * How can new dicounts be introduced?
+* Unit test `shouldImplementLogicOnBaseMethods`
+  * Understand how the specific subclass type is checked if necessary. 
+  * Make sure you understand the difference between (external) explicit type checking and the (internal) method call (`isRelevantForMailing`). 
+  * Which method is easier to extend? 
 
 #### Challenge: Add a new Customer Type
 

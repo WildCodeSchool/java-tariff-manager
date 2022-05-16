@@ -27,6 +27,11 @@ public abstract class Customer {
         return "Hi there, I am a " + this.getClass().getName() + " and my name is '" + getName() + "'";
     }
 
+    // This method is set to false as default. If specific subclasses want to change the behaviour, they can explicitly override this method (see VICustomer).
+    public boolean isRelevantForMailing() {
+        return false;
+    }
+
     /*
      * Constructor - Not necessary due to Lombok @Data
      *

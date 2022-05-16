@@ -22,9 +22,15 @@ public class CustomerTest {
         Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
+        // getEmail is a method on Customer and can be invoced on any sub class
         assertThat(alfred22.getEmail()).isEqualTo("alfred@web.de");
-        assertThat(alfred22).isInstanceOf(VICustomer.class);
+        assertThat(achim24.getEmail()).isEqualTo("achim@web.de");
+        assertThat(egon54.getEmail()).isEqualTo("egon@web.de");
+
+        // Verify that alfred22 is a Customer (abstract class)
         assertThat(alfred22).isInstanceOf(Customer.class);
+        // Verify that alfred22 is a VICustomer (extending, specific sub class)
+        assertThat(alfred22).isInstanceOf(VICustomer.class);
 
         assertThat(alfred22.calculateDiscountedPrice(100)).isEqualTo(90);
         assertThat(achim24.calculateDiscountedPrice(100)).isEqualTo(95);
@@ -45,6 +51,8 @@ public class CustomerTest {
         List<Customer> customerStartingWithA;
 
         assertThat(customersOlderThan22).hasSize(2);
+        // Uncomment after implementing the customerStartingWithA filter for the Stream of Customers
+        // assertThat(customerStartingWithA).hasSize(2);
     }
 
     @Test
@@ -58,7 +66,12 @@ public class CustomerTest {
         List<Customer> customers = List.of(alfred22, achim24, egon54);
         // This collection is filtered using a conventional for-loop
         for (Customer customer : customers) {
+            // Only if necessary we check for specific sub class
             if (customer instanceof VICustomer) {
+                System.out.println("Mail of VICustomer: " + customer.getEmail());
+            }
+            // Better way is to include the logic into the class itself
+            if (customer.isRelevantForMailing()) {
                 System.out.println("Mail of VICustomer: " + customer.getEmail());
             }
         }

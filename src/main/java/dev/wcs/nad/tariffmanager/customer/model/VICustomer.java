@@ -13,4 +13,8 @@ public class VICustomer extends Customer {
         return value - (value / 10);
     }
 
+    @Override
+    public boolean isRelevantForMailing() {
+        return true;
+    }
 }
