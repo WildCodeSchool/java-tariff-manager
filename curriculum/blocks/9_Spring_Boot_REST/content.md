@@ -43,7 +43,7 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
-### Challenge: Add a new GET endpoint with filtering
+### Challenge: Add a new GET Endpoint with Result Set Filtering
 
 ```
 A new Endpoint should be added for unrestricted access to products. 
@@ -56,7 +56,7 @@ See here
 * Make sure that a parameter `searchFilter` can be passed as a `QueryParam` to further filter the stream for all customers aged >= 18 and name startsWith searchFiler.
 * Pass the parameter searchFilter "down" further the layers to optimize performance (not loading all customers, with only the ones containing the searchFilter and age > 18).
 
-### Challenge: Make maturity age configurable
+### Challenge: Make maturity age Configurable
 
 * Currently, the age (18) is hard wired into the Service. Use `application.properties` to make it configurable. You can choose the property name, you can also use `maturity.age`.
 
