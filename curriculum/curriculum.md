@@ -35,9 +35,9 @@ In this block, Students will get to know (Unit-)Testing, TDD and how use these i
 
 </details>
 
-### 5. Relation Databases and SQL, Persistence in Java with JDBC
+### [5. Relation Databases and SQL, Persistence in Java with JDBC](blocks/4a_Java_SQL_JDBC/content.md)
 
-In this block, Students learn and recap concepts of relational databases, SQL and Java persistence with JDBC and JPA.
+In this block, Students learn how to access relational databases from Java with SQL and JDBC.
 
 ### [6. Dependency Injection/Inversion of Control with the Spring Framework](blocks/4_Spring_Introduction/content.md)
 
