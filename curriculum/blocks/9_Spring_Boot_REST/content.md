@@ -1,6 +1,6 @@
-# Spring Data JPA
+# REST APIs with Spring Boot
 
-In this quest you will learn about querying a storage with Spring Data using JPA. 
+In this quest you will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot. 
 
 ### What you will learn
 
