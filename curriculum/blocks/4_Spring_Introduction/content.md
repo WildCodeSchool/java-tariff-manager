@@ -95,8 +95,8 @@ The default Spring Boot Configuration is in [application.properties](../../../sr
 
 * We prepared a simple mapping class [CustomerMapper](../../../src/main/java/dev/wcs/nad/tariffmanager/mapper/simple/CustomerMapper.java) which maps DTOs to Entities. This class is currently not used.
 * Add the Mapper as a Spring component (with the `@Component` annotation), use it in the Service class to map between both types of objects.
-* See [CustomerMapperTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerMapperTest.java) unit test to understand how test can be written for Spring components. Add a Test for the Service method `mapDtoToEntity` with the injected Mapper object.
-  * Extend the unit test for the new `CustomerMapper`.
+* See [CustomerMapperTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerMapperTest.java) unit test to understand how test can be written for Spring components. 
+* Extend the `CustomerMapperTest.shouldMapObjects` unit test for the Service methods `convertEntityToDto` and `mapDtoToEntity` with the injected Mapper object.
 
 _TODO: Add 2 solutions: manual/Lombok and MapStruct_
 
