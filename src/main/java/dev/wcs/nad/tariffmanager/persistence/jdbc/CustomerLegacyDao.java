@@ -22,11 +22,13 @@ public class CustomerLegacyDao {
         try (Connection connection = dataSource.getConnection();
              // NOTE
              // For security reasons: Always use PreparedStatements, not Statement
-             PreparedStatement stmt = connection.prepareStatement("my_call");
-             ResultSet resultSet = stmt.executeQuery()) {
-            while (resultSet.next()) {
-                String value = resultSet.getString(1);
-                System.out.println(value);
+             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE ID=?")) {
+            stmt.setLong(1, id);
+            try (ResultSet resultSet = stmt.executeQuery()) {
+                while (resultSet.next()) {
+                    String value = resultSet.getString(1);
+                    System.out.println(value);
+                }
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -39,11 +41,11 @@ public class CustomerLegacyDao {
      * This method was included for educational purposes only, please do not use this exception handling any more.
      * Use the syntax introduced in Java 7 (see above).
      */
-    public Optional<Customer> getByIdBeforeJava7() {
+    public Optional<Customer> getByIdBeforeJava7(long id) {
         try {
             Connection connection = dataSource.getConnection();
             try {
-                CallableStatement callableStatement = connection.prepareCall("my_call");
+                CallableStatement callableStatement = connection.prepareCall("SELECT * FROM CUSTOMER WHERE ID=?");
                 try {
                     ResultSet resultSet = callableStatement.executeQuery();
                     try {
