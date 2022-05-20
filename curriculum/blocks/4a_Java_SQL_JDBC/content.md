@@ -26,7 +26,7 @@ _Call Delegation for Accessing different Relational Databases in Java_
 
 ### Interfaces for Database Interaction
 
-[CustomerLegacyDao](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/jdbc/CustomerLegacyDao.java)
+Follow all steps with documentation in [CustomerLegacyDao](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/jdbc/CustomerLegacyDao.java)
 
 #### Steps for plain JDBC Access with Spring Configured DataSource
 
@@ -68,7 +68,7 @@ public Optional<Customer> getByIdJava7Syntax(int id) {
 * Execute and follow the call sequence of unit test ``. 
 * Understand how the data travels from the database to the Java object model. 
 * Understand how the manual mapping to a Object graph works.
-* Implement the unit test ``
+* Implement the unit test `...`
   * Create `AddressDao`
   * Create mapping from `ResultSet` to `Address`
 
