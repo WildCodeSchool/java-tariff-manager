@@ -18,7 +18,13 @@ In this quest you will learn about accessing relational databases with SQL and f
 * IDE (IntelliJ) with Gradle
 * Java SDK 11+
 
-### Java and JDBC
+### Accessing Relational Databases from Java
+
+<img src="../../../docs/img/jdbc_delegation.png" width="60%"/>
+
+<img src="../../../docs/img/java_jdbc_sq.png" width="80%"/>
+
+### Manual JDBC Connection/Statement/ResultSet Handling  
 
 <details>
     <summary>Manual JDBC Connection/Statement/ResultSet Handling in Java</summary>
@@ -45,4 +51,13 @@ public Optional<Customer> getByIdJava7Syntax(int id) {
 
 ### Challenge: Query Customers with plain JDBC
 
-* 
+* Execute and follow the call sequence of unit test ``. 
+* Understand how the data travels from the database to the Java object model. 
+* Understand how the manual mapping to a Object graph works.
+* Implement the unit test ``
+  * Create `AddressDao`
+  * Create mapping from `ResultSet` to `Address`
+
+_ADDRESS Table Data in local H2 Database Storage after Testdata creation._
+
+![img_2.png](img_2.png)
