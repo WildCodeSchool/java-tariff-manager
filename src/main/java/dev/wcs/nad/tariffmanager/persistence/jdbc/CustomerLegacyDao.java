@@ -3,6 +3,9 @@ package dev.wcs.nad.tariffmanager.persistence.jdbc;
 import dev.wcs.nad.tariffmanager.customer.model.Customer;
 import org.springframework.stereotype.Component;
 
+/*
+ Import the packages with JDBC classes: java.sql.* and javax.sql.*
+*/
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Optional;
@@ -18,14 +21,31 @@ public class CustomerLegacyDao {
     }
 
     public Optional<Customer> getByIdJava7Syntax(int id) {
+        /*
+        Create the connection object
+        The getConnection() method of DataSource, which is configured by Spring with the configuration of application.properties, is used to establish connection with the database.
+        */
+
         // We use try-catch-finally introduced in Java 7
         try (Connection connection = dataSource.getConnection();
+            /*
+             Create the Statement object
+             The preparedStatement() method of Connection interface is used to create statement. The object of statement is responsible to execute queries with the database.
+
              // NOTE
              // For security reasons: Always use PreparedStatements, not Statement
-             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE ID=?")) {
+             */
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE ID=?")) {
             stmt.setLong(1, id);
+            /*
+             Execute the query
+             The executeQuery() method of Statement interface is used to execute queries to the database. This method returns the object of ResultSet that can be used to get all the records of a table.
+             */
             try (ResultSet resultSet = stmt.executeQuery()) {
                 while (resultSet.next()) {
+                    /*
+                     Read results from ResultSet
+                     */
                     String value = resultSet.getString(1);
                     System.out.println(value);
                 }

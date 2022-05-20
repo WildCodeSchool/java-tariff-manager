@@ -20,7 +20,21 @@ In this quest you will learn about accessing relational databases with SQL and f
 
 ### Accessing Relational Databases from Java
 
-<img src="../../../docs/img/jdbc_delegation.png" width="60%"/>
+<img src="../../../docs/img/jdbc_delegation.png" width="50%"/>
+
+_Call Delegation for Accessing different Relational Databases in Java_
+
+### Interfaces for Database Interaction
+
+[CustomerLegacyDao](../../../src/main/java/dev/wcs/nad/tariffmanager/persistence/jdbc/CustomerLegacyDao.java)
+
+#### Steps for plain JDBC Access with Spring Configured DataSource
+
+1. Import JDBC packages [Line 9]
+2. Create Connection in method `getByIdJava7Syntax` from `DataSource` [Line 30]
+3. Call `preparedStatement` on `Connection` [Line 38]
+4. Get `ResultSet` from `Statement` with `executeQuery` [Line 44] 
+5. Read results from `ResultSet` and map values [Line 49]
 
 <img src="../../../docs/img/java_jdbc_sq.png" width="80%"/>
 
@@ -59,5 +73,4 @@ public Optional<Customer> getByIdJava7Syntax(int id) {
   * Create mapping from `ResultSet` to `Address`
 
 _ADDRESS Table Data in local H2 Database Storage after Testdata creation._
-
-![img_2.png](img_2.png)
+![](../../../docs/img/ADDRESS_ER.png)
