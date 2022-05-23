@@ -6,6 +6,8 @@ import dev.wcs.nad.tariffmanager.persistence.repository.ContactRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService {
 
@@ -37,6 +39,14 @@ public class CustomerService {
         contact.getAddresses().add(addressEntity);
         contact = contactRepository.save(contact);
         customer.setContact(contact);
+        return customerRepository.save(customer);
+    }
+
+    public Optional<Customer> findCustomerById(Long id) {
+        return customerRepository.findById(id);
+    }
+
+    public Customer storeCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 }

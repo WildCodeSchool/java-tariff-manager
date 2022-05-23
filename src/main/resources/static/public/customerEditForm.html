@@ -1,0 +1,18 @@
+<form th:attr="hx-post=@{/public/customer/update/{id}(id=${customer.id})}" hx-target="this" hx-swap="outerHTML">
+    <div>
+        <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input id="firstname" type="text" class="form-control" name="firstname" th:value="${customer.firstname}">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input id="lastname" type="text" class="form-control" name="lastname" th:value="${customer.lastname}">
+        </div>
+        <div class="form-group">
+            <label for="birthdate">Birthdate</label>
+            <input id="birthdate" type="date" class="form-control" name="birthdate" th:value="${customer.birthdate}">
+        </div>
+
+        <button class="btn btn-primary">Update</button>
+    </div>
+</form>
