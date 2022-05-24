@@ -21,8 +21,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecurityUserService userService;
 
     private final PasswordEncoder passwordEncoder;
-    @Value("spring.profiles.active")
-    private String activeProfile;
 
     public WebSecurityConfig(SecurityUserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
@@ -37,8 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // TODO: Only allow frames if using h2 as the database
                 http.headers().frameOptions().disable();
                 http.authorizeRequests()
-                    .antMatchers("/*.html").denyAll()
-                    .antMatchers("/public/**", "/webjars/**", "/", "/logout", "/api/**", "/v3/**", "/login", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
+                        .antMatchers("/public/private.html").authenticated()
+                        .antMatchers("/public/**", "/webjars/**", "/", "/logout", "/api/**", "/v3/**", "/login", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated()
