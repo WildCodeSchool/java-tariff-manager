@@ -21,12 +21,12 @@ public class ContractController {
         this.entityToDtoMapper = entityToDtoMapper;
     }
 
-    @GetMapping("/contract/{customerId}")
+    @GetMapping("/api/contract/{customerId}")
     public List<ContractInfoDto> displayCustomers(@PathVariable("customerId") Long customerId) {
         return entityToDtoMapper.contractsToContractInfosDto(contractService.readContractsForUser(customerId));
     }
 
-    @PostMapping("/contract/{userId}")
+    @PostMapping("/api/contract/{userId}")
     public ResponseEntity<Void> assignTariffAndOption(@RequestBody TariffAndOptionAssignmentDto tariffAndOptionAssignmentDto) {
         Contract contract = contractService.assignContractToCustomer(tariffAndOptionAssignmentDto.getCustomerId(), tariffAndOptionAssignmentDto.getTariffId(), tariffAndOptionAssignmentDto.getOptionId());
         return ResponseEntity.ok().build();

@@ -15,7 +15,7 @@ public class OptionController {
         this.optionService = optionService;
     }
 
-    @GetMapping("/options")
+    @GetMapping("/api/options")
     public ResponseEntity<Iterable<Option>> readOptions() {
         return ResponseEntity.ok(optionService.loadAvailableOptions());
     }

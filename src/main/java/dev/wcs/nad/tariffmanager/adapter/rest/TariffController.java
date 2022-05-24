@@ -15,7 +15,7 @@ public class TariffController {
         this.tariffService = tariffService;
     }
 
-    @GetMapping("/tariff")
+    @GetMapping("/api/tariff")
     public ResponseEntity<Iterable<Tariff>> readTariffs() {
         return ResponseEntity.ok(tariffService.readAllTariffsWithPossibleOptions());
     }
