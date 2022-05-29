@@ -23,7 +23,7 @@ public class CustomerController {
         this.entityToDtoMapper = entityToDtoMapper;
     }
 
-    @GetMapping("/api/customer")
+    @GetMapping("/api/customers")
     public List<CustomerDto> displayCustomers() {
         List<CustomerDto> customerDtos = new ArrayList<>();
         for (Customer customer: customerService.readAllCustomers()) {
@@ -32,13 +32,13 @@ public class CustomerController {
         return customerDtos;
     }
 
-    @PostMapping("/api/customer")
+    @PostMapping("/api/customers")
     public ResponseEntity<CustomerDto> createCustomer(@RequestBody CreateCustomerDto createCustomerDto) {
         CustomerDto customerDto = entityToDtoMapper.customerToCustomerDto(customerService.createCustomer(entityToDtoMapper.createCustomerDtoToCustomer(createCustomerDto)));
         return ResponseEntity.ok(customerDto);
     }
 
-    @PutMapping("/api/customer/{id}")
+    @PutMapping("/api/customers/{id}")
     public ResponseEntity<CustomerDto> assignAddress(@PathVariable("id") Long customerId, @RequestBody AddressDto addressDto) {
         Customer customerEntity = customerService.assignAddress(customerId, entityToDtoMapper.mapAddressDto(addressDto));
         return ResponseEntity.ok(entityToDtoMapper.customerToCustomerDto(customerEntity));

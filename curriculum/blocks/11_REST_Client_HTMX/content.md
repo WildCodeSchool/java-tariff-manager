@@ -5,7 +5,7 @@ In this quest you will learn about REST Clients like Single Page Applications an
 ### What you will learn
 
 * Differences between Spring MVC and Spring REST
-* Using htmx for Client-side content rendering
+* Using htmx with Thymeleaf for Server-side processing with Client-side content rendering
 
 ### What you should know
 
@@ -24,12 +24,9 @@ To understand why Spring Boot accelerates Web Application Development.
 
 ### Htmx for Client-side HTML Rendering
 
-Htmx is a quite new technology for Client-based HTML Rendering which focuses on the use of HTML more than JavaScript.
-Htmx is a library that allows you to access modern browser features directly from HTML, rather than using javascript.
-
-Htmx is a JavaScript library for performing AJAX requests, triggering CSS transitions, and invoking WebSocket and server-sent events directly from HTML elements.
-
-Htmx is a JavaScript library for performing AJAX requests, triggering CSS transitions, and invoking WebSocket and server-sent events directly from HTML elements. Htmx lets you build modern and powerful user interfaces with simple markups.
+Htmx is a quite new technology for Client-based HTML Rendering which focuses on the use of HTML more than JavaScript. We use it in combination with Thymeleaf to focus on Server-side processing in Java, rather than mixing in JavaScript.
+Htmx is a JavaScript library for performing AJAX requests, triggering CSS transitions, and invoking WebSocket and server-sent events directly from HTML elements which would typically require adding JavaScript like jQuery or more modular frameworks like React or Angular.
+In Block 12 we will dive into React as a modular JavaScript framework, in this Block we will focus on the difference between MVC and REST.
 
 ### Understand REST Service "GetCustomers"
 
