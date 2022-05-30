@@ -60,5 +60,12 @@ public List<CustomerDto> displayCustomers() {
 We use Thymeleaf for Server-side Rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
 _Note: We use htmx for augmenting the HTML with server-side data, you can ignore this technique here and focus on the server processing with Spring Boot_
 
+![](../../../docs/img/thymeleaf_htmx_mvc.png)
 
+* The model is responsible for managing the data of the application. It receives user input from the controller.
+* The view renders presentation of the model in a particular format.
+* The controller responds to the user input and performs interactions on the data model objects. The controller receives the input, optionally validates it and then passes the input to the model.
 
+![](../../../docs/img/thymeleaf_htmx.png)
+
+The server-side rendering uses Thymeleaf as a Template Engine. The Template Engine is responsible for augmenting the View (in our case HTML) with the current state of the Model (in our case Java Beans). Responsible for associating the View and the Model is the Controller (in our case Spring MVC).
