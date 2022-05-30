@@ -1,6 +1,6 @@
-# Consuming REST APIs with htmx
+# REST APIs and Spring MVC Server-Side Content Rendering
 
-In this quest you will learn about REST Clients like Single Page Applications and the difference to Server-Side Rendering with Spring MVC. 
+In this quest you will learn about REST Clients like Single Page Applications (SPA) and the difference to Server-Side Rendering with Spring MVC. 
 
 ### What you will learn
 
@@ -22,7 +22,7 @@ In this quest you will learn about REST Clients like Single Page Applications an
 
 To understand why Spring Boot accelerates Web Application Development.
 
-### Htmx for Client-side HTML Rendering
+### Htmx for Client-Side HTML Rendering
 
 Htmx is a quite new technology for Client-based HTML Rendering which focuses on the use of HTML more than JavaScript. We use it in combination with Thymeleaf to focus on Server-side processing in Java, rather than mixing in JavaScript.
 Htmx is a JavaScript library for performing AJAX requests, triggering CSS transitions, and invoking WebSocket and server-sent events directly from HTML elements which would typically require adding JavaScript like jQuery or more modular frameworks like React or Angular.
@@ -55,9 +55,9 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
-#### Calling the Service with Server-side processing MVC and Client-side HTML Rendering
+#### Calling the Service with Server-Side processing MVC and Client-side HTML Rendering
 
-We use Thymeleaf for Server-side Rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
+We use Thymeleaf for server-side rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
 _Note: We use htmx for augmenting the HTML with server-side data, you can ignore this technique here and focus on the server processing with Spring Boot_
 
 ![](../../../docs/img/thymeleaf_htmx_mvc.png)
