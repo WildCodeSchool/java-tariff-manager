@@ -55,5 +55,10 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
-#### Calling the Service with Client-side HTML Rendering
+#### Calling the Service with Server-side processing MVC and Client-side HTML Rendering
+
+We use Thymeleaf for Server-side Rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
+_Note: We use htmx for augmenting the HTML with server-side data, you can ignore this technique here and focus on the server processing with Spring Boot_
+
+
 
