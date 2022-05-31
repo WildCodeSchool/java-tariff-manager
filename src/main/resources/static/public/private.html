@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <!--*/-->
     <!--Bootstrap JS-->
-    <script type="text/javascript" th:src="@{../..webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{../../webjars/bootstrap/js/bootstrap.min.js}"></script>
     <!--HTMX-->
-    <script type="text/javascript" th:src="@{../..webjars/htmx.org/dist/htmx.min.js}"></script>
+    <script type="text/javascript" th:src="@{../../webjars/htmx.org/dist/htmx.min.js}"></script>
     <!-- Hyperscript for fancier stuff -->
     <script type="text/javascript" th:src="@{../../webjars/hyperscript.org/dist/_hyperscript_web.min.js}"></script>
     <link th:rel="stylesheet" th:href="@{../../webjars/bootstrap-icons/font/bootstrap-icons.css}">
@@ -34,9 +34,11 @@
     </div>
 </nav>
 <section>
-    <p>Heyho!</p>
-    Logged user: <span sec:authentication="name"></span>
-    Roles: <span sec:authentication="principal.authorities"></span>
+    <p>Welcome to your private page</p>
+    <div>
+    Logged user: <b><span sec:authentication="name"></span></b>
+    Assigned Roles: <b><span sec:authentication="principal.authorities"></span></b>
+    </div>
 </section>
 </body>
 </html>

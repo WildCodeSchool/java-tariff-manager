@@ -24,5 +24,13 @@ In this quest you will learn about REST Services and how to rapidly build and do
 
 To understand why Spring Boot accelerates Web Application Development 
 
-<img src="../../../docs/img/diioc_layer.png" width="80%"/>
+<img src="../../../docs/img/diioc_layer.png" width="60%"/>
+
+### Resource Protection with Spring Security
+
+![](../../../docs/img/security_filter_flow.png)
+
+### Authentication & Authorization Flow
+
+![](../../../docs/img/spring_security_flow.png)
 
