@@ -28,38 +28,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
-                http.csrf().disable();
-
-                // TODO: Only allow frames if using h2 as the database
-                http.headers().frameOptions().disable();
-                http.authorizeRequests()
-                        .antMatchers("/public/private.html").denyAll()
-                        .antMatchers("/public/private/**").authenticated()
-                        .antMatchers("/public/**", "/webjars/**", "/", "/logout", "/api/**", "/v3/**", "/login", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated()
-
-                    .and()
-                .formLogin()
-                    .loginPage("/public/sign-in").permitAll()
-                    .loginProcessingUrl("/public/do-sign-in")
-//                    .defaultSuccessUrl("/")
-                    .failureUrl("/public/sign-in?error=true")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    //.failureHandler(userService)
-                    //.successHandler(userService)
-                    .and()
-                .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/public/logout"))
-                    .clearAuthentication(true)
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID");
-//                .and()
-//                    .anonymous();
-        // @formatter:on
+        http.csrf().disable();
+        // Only allow frames if using h2 as the database for console
+        http.headers().frameOptions().disable();
+        http.authorizeRequests()
+            .antMatchers("/public/*.html").denyAll()
+            .antMatchers("/public/restricted/**").authenticated()
+            .antMatchers("/public/**", "/", "/webjars/**", "/api/**", "/v3/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+        .and()
+            .formLogin()
+                .loginPage("/public/sign-in").permitAll()
+                .loginProcessingUrl("/public/do-sign-in")
+                .defaultSuccessUrl("/public/restricted/view")
+                .failureUrl("/public/sign-in?error=true")
+                .usernameParameter("username")
+                .passwordParameter("password")
+        .and()
+            .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/public/logout"))
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/public/index")
+                .deleteCookies("JSESSIONID");
     }
 
     @Autowired

@@ -49,7 +49,7 @@ public class UserController {
         if (error.length() > 0)
             modelMap.addAttribute(ERROR, error);
 
-        return "index";
+        return "indexview";
     }
 
     @GetMapping("/sign-in")

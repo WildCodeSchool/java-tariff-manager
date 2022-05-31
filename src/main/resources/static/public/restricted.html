@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <title>Restricted Area</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <p>Welcome to your private page</p>
+    <div>
+        Logged user: <b><span sec:authentication="name"></span></b><br/>
+        Assigned Roles: <b><span sec:authentication="principal.authorities"></span></b>
+    </div>
+    <br/>
+    <a th:href="@{/public/logout}">Logout</a>
+</section>
+</body>
+</html>
