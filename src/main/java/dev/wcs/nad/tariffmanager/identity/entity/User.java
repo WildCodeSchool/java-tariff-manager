@@ -50,7 +50,11 @@ public class User {
     public org.springframework.security.core.userdetails.User securityUser() {
         List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(id.toString()));
-        grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
+        if (this.getUsername().equals("admin@acme.org")) {
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else {
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }
         return new org.springframework.security.core.userdetails.User(this.getUsername(), this.getPassword(), grantedAuthorities);
     }
 
