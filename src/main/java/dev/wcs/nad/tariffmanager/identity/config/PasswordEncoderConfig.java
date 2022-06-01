@@ -14,10 +14,10 @@ public class PasswordEncoderConfig {
     @Bean
     @Qualifier("passwordEncoder")
     public PasswordEncoder passwordEncoder() {
-        DelegatingPasswordEncoder x =
+        DelegatingPasswordEncoder delegatingPasswordEncoder =
                 (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        x.setDefaultPasswordEncoderForMatches(new BCryptPasswordEncoder());
-        return x;
+        delegatingPasswordEncoder.setDefaultPasswordEncoderForMatches(new BCryptPasswordEncoder());
+        return delegatingPasswordEncoder;
     }
 
 }
