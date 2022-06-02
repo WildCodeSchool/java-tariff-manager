@@ -22,16 +22,17 @@ public class CustomerTest {
         Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
-        // getEmail is a method on Customer and can be invoced on any sub class
+        // getEmail is a method on Customer and can be invoked on any subclass
         assertThat(alfred22.getEmail()).isEqualTo("alfred@web.de");
         assertThat(achim24.getEmail()).isEqualTo("achim@web.de");
         assertThat(egon54.getEmail()).isEqualTo("egon@web.de");
 
         // Verify that alfred22 is a Customer (abstract class)
         assertThat(alfred22).isInstanceOf(Customer.class);
-        // Verify that alfred22 is a VICustomer (extending, specific sub class)
+        // Verify that alfred22 is a VICustomer (extending, specific subclass)
         assertThat(alfred22).isInstanceOf(VICustomer.class);
 
+        // Polymorphic call of calculateDiscountedPrice calls the method on the subclass instance
         assertThat(alfred22.calculateDiscountedPrice(100)).isEqualTo(90);
         assertThat(achim24.calculateDiscountedPrice(100)).isEqualTo(95);
         assertThat(egon54.calculateDiscountedPrice(100)).isEqualTo(100);
@@ -76,18 +77,19 @@ public class CustomerTest {
             }
         }
 
-
     }
 
     @Test
     public void shouldTestNewEmployeeCustomer() {
         // Arrange
-        Customer employee1; // = new EmployeeCustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer employee2; // = new EmployeeCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        Customer employee1 = null; // = new EmployeeCustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
+        Customer employee2 = null; // = new EmployeeCustomer("2", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        Customer employee3 = new StandardCustomerNoPotential("3", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // Act & Assert
-        // assertThat(employee1.calculateDiscountedPrice(100)).isEqualTo(85);
-        // assertThat(employee2.calculateDiscountedPrice(100)).isEqualTo(85);
+        //assertThat(employee1.calculateDiscountedPrice(100)).isEqualTo(85);
+        //assertThat(employee2.calculateDiscountedPrice(100)).isEqualTo(85);
+        assertThat(employee3.calculateDiscountedPrice(100)).isEqualTo(100);
     }
 
 }
