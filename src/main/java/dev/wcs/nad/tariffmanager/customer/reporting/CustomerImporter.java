@@ -29,6 +29,7 @@ public class CustomerImporter {
         try {
             customerLines = Files.readAllLines(customerCsv.toPath());
             for (String customer : customerLines) {
+                // Split line at "," and read information for object creation
                 String[] temp = customer.split(",");
                 String id = temp[0];
                 String name = temp[1];
@@ -36,7 +37,8 @@ public class CustomerImporter {
                 String birthDay = temp[3];
                 String lastBuy = temp[4];
                 String type = temp[5];
-                customers.add(parseCsvLineIntoObject(id, name, email, birthDay, lastBuy, type));
+                Customer marshalledCustomer = parseCsvLineIntoObject(id, name, email, birthDay, lastBuy, type);
+                customers.add(marshalledCustomer);
             }
         } catch (IOException e) {
             log.error("Could not read file.");
@@ -50,26 +52,24 @@ public class CustomerImporter {
             LocalDate lastBuyDate = DateUtil.convertStringToLocalDate(lastBuy);
             switch (type.toUpperCase()) {
                 case "E": {
-                    SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
-                    return specialCustomer;
+                    // Create and return SpecialCustomer with values
                 }
                 case "V": {
-                    VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
-                    return viCustomer;
+                    // Create and return VICustomer with values
                 }
                 case "S": {
                     boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
                     boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
                     if (youngerThan25) {
-                        JuniorCustomer juniorKunde = new JuniorCustomer(juniorCustomerDiscountPercentage, id, name, email, birthDate, lastBuyDate);
-                        return juniorKunde;
+                        // Create JuniorCustomer with juniorCustomerDiscountPercentage discount and return it
                     } else if (lastPurchaseIn25Days) {
-                        StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
-                        return potentialCustomer;
+                        // Create StandardCustomerWithPotential and return it
                     } else {
-                        StandardCustomerNoPotential noPotentialCustomer = new StandardCustomerNoPotential(id, name, email, birthDate, lastBuyDate);
-                        return noPotentialCustomer;
+                        // Create StandardCustomerNoPotential and return it
                     }
+                }
+                default: {
+                    throw new IllegalStateException("Cannot create object with type " + type.toUpperCase());
                 }
             }
         } catch (DateTimeParseException e) {
