@@ -75,8 +75,8 @@ _Note: You must have executed [InitialDatabaseSetupManualTest](../../../src/test
 * Understand how the data travels from the database to the Java object model. 
 * Understand how the manual mapping to a Object graph works.
 * Implement the unit test [AddressJdbcTest](../../../src/test/java/dev/wcs/nad/tariffmanager/address/AddressJdbcTest.java)
-  * Create `AddressDao`
-  * Create mapping from `ResultSet` to `Address`
+  * Implement `AddressLegacyDao` in the same way as `CustomerLegacyDao`
+  * Implement the mapping from `ResultSet` to `Address`
 
 _ADDRESS Table Data in local H2 Database Storage after Testdata creation._
 
