@@ -35,27 +35,33 @@ In this block, Students will get to know (Unit-)Testing, TDD and how use these i
 
 </details>
 
-### [5. Relation Databases and SQL, Persistence in Java with JDBC](blocks/4a_Java_SQL_JDBC/content.md)
+### [5. Relation Databases and SQL, Persistence in Java with JDBC](blocks/5_Java_SQL_JDBC/content.md)
 
 In this block, Students learn how to access relational databases from Java with SQL and JDBC.
 
-### [6. Dependency Injection/Inversion of Control with the Spring Framework](blocks/4_Spring_Introduction/content.md)
+### [6. Dependency Injection/Inversion of Control with the Spring Framework](blocks/6_Spring_Introduction/content.md)
 
 In this block, Students learn how to implement enterprise-grade, modular software systems with DI/IoC Frameworks.
 
-### [7. Advanced Persistence with JPA and Spring Data JPA](blocks/5_Spring_Data_JPA/content.md)
+### [7. Advanced Persistence with JPA and Spring Data JPA](blocks/7_Spring_Data_JPA/content.md)
 
 In this block, Students will learn about Object-Relational Mapping (ORM) with the Java Persistence API (JPA) and using JPA with Spring Data.
 
-### [8. RESTful Services with Spring Boot](blocks/9_Spring_Boot_REST/content.md)
+### [9. RESTful Services with Spring Boot](blocks/9_Spring_Boot_REST/content.md)
 
 In this block, Students will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot.
 
-### 9. Concepts of Modern Web Applications Development
+### [10. Spring MVC & Server-side Rendering with Thymeleaf](blocks/10_REST_Client_HTMX/content.md)
 
-### 10. UI Development and REST Service Consumption with React
+In this block, Students will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot.
 
-### 11. Advanced Collaboration in Agile Teams: Branching, Forking, Git Workflows
+### [11. Securing REST Services with Spring Security](blocks/11_Securing_Spring_Security/content.md)
+
+In this block, Students will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot.
+
+### 12. UI Development and REST Service Consumption with React
+
+### 13. Advanced Collaboration in Agile Teams: Branching, Forking, Git Workflows
 
 <details>
     <summary>What Students will learn?</summary>
@@ -64,7 +70,7 @@ In this block, Students will learn about REST Services and how to rapidly build 
 * How to deal with conflicts in software development projects?
 </details>
 
-### 12. Deploying Applications with Docker, GitLab and Kubernetes
+### 14. Deploying Applications with Docker, GitLab and Kubernetes
 
 <details>
     <summary>Macrocurriculum Topics</summary>
