@@ -1,5 +1,7 @@
 package dev.wcs.nad.tariffmanager.customer.model;
 
+import dev.wcs.nad.tariffmanager.customer.model.shared.CustomerType;
+
 import java.time.LocalDate;
 
 public class JuniorCustomer extends StandardCustomer {
@@ -14,6 +16,11 @@ public class JuniorCustomer extends StandardCustomer {
     @Override
     public double calculateDiscountedPrice(int value) {
         return value - (value * (discountPercentage / 100));
+    }
+
+    @Override
+    public CustomerType getCustomerType() {
+        return CustomerType.JUNIOR;
     }
 
 }

@@ -1,4 +1,4 @@
-package dev.wcs.nad.tariffmanager.customer.reporting;
+package dev.wcs.nad.tariffmanager.customer.importing;
 
 import dev.wcs.nad.tariffmanager.customer.model.*;
 import dev.wcs.nad.tariffmanager.customer.reporting.util.DateUtil;
