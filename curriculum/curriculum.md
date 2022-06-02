@@ -53,11 +53,11 @@ In this block, Students will learn about REST Services and how to rapidly build 
 
 ### [10. Spring MVC & Server-side Rendering with Thymeleaf](blocks/10_REST_Client_HTMX/content.md)
 
-In this block, Students will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot.
+In this block, Students will learn about the Model-View-Controller with Spring MVC and Server-side Rendering with Thymeleaf.
 
 ### [11. Securing REST Services with Spring Security](blocks/11_Securing_Spring_Security/content.md)
 
-In this block, Students will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot.
+In this block, Students will learn how to enable authentication and authorization to Web applications with Spring Security. 
 
 ### 12. UI Development and REST Service Consumption with React
 
