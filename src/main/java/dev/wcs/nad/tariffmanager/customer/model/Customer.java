@@ -1,5 +1,6 @@
 package dev.wcs.nad.tariffmanager.customer.model;
 
+import dev.wcs.nad.tariffmanager.customer.model.shared.CustomerType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +32,8 @@ public abstract class Customer {
     public boolean isRelevantForMailing() {
         return false;
     }
+
+    public abstract CustomerType getCustomerType();
 
     /*
      * Constructor - Not necessary due to Lombok @Data

@@ -1,5 +1,7 @@
 package dev.wcs.nad.tariffmanager.customer.model;
 
+import dev.wcs.nad.tariffmanager.customer.model.shared.CustomerType;
+
 import java.time.LocalDate;
 
 public class VICustomer extends Customer {
@@ -16,5 +18,10 @@ public class VICustomer extends Customer {
     @Override
     public boolean isRelevantForMailing() {
         return true;
+    }
+
+    @Override
+    public CustomerType getCustomerType() {
+        return CustomerType.VI;
     }
 }

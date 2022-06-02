@@ -1,7 +1,7 @@
 package dev.wcs.nad.tariffmanager.customer;
 
 import dev.wcs.nad.tariffmanager.customer.model.Customer;
-import dev.wcs.nad.tariffmanager.customer.reporting.CustomerImporter;
+import dev.wcs.nad.tariffmanager.customer.importing.CustomerImporter;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

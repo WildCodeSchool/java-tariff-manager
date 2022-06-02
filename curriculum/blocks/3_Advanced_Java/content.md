@@ -55,7 +55,8 @@ ELSE
    NEW STANDARDCUSTOMER_NO_POTENTIAL
 ```
 
-* The import is implemented in a dedicated class `CustomerImporter`
+* The import is implemented in a dedicated class [CustomerImporter](../../../src/main/java/dev/wcs/nad/tariffmanager/customer/importing/CustomerImporter.java)
+* Go over the object creation logic in `CustomerImporter.importCustomers` and `parseCsvLineIntoObject`. You will see comments and no object creation statements. You will create those in the challenge. 
 
 ### Less Boilerplate with Lombok
 
@@ -76,16 +77,21 @@ Lombok enhances the compiled Java byte code, so no dependency on Lombok is prese
 
 _Note: You can at any time _delombok_ your application and get rid of Lombok completely._
 
-### Challenge: Implement the Data Import Process
+### Challenge: Implement the Data Import Process and Simple Analytics
 
 We will simulate a bootstrapping of the Web application by importing a CSV file with all customer data.
 After the data is imported and the data model set up, we will run the Report engine for Reporting about imported Customers.
 
-1. Add all `Customer` objects to a new `List<Customer>`
-2. Create a method which prints only `Customers` of type `type` with this signature: `List<Kunde> filterKunden(List<Kunde> allKunden, String type)`
-3. Create a method which sorts `List<Customer>` by `name`: `List<Customer> sortByName(List<Customer> customer)`
-4. Create a method which sorts `List<Customer>` by `lastPurchase`: `List<Customer> sortByLastPurchase(List<Customer> customer)`
-5. This should be implemented in class `CustomerSales`, the class and the method should be implemented using TDD
+#### Finishing the Customer Import
+
+1. Add all `Customer` objects to a new `List<Customer>`, this requires adding the object creation parts in `CustomerImporter.parseCsvLineIntoObject`
+
+#### Adding Data Analytics
+
+1. Create a method which prints only `Customers` of type `type` with this signature: `List<Kunde> filterKunden(List<Kunde> allKunden, String type)`
+2. Create a method which sorts `List<Customer>` by `name`: `List<Customer> sortByName(List<Customer> customer)`
+3. Create a method which sorts `List<Customer>` by `lastPurchase`: `List<Customer> sortByLastPurchase(List<Customer> customer)`
+4. This should be implemented in a new class `CustomerSales` in package `dev.wcs.nad.tariffmanager.customer.reporting`, the class and the method should be implemented using TDD
 
 ### Challenge: Newsletter for Classified Customer  
 

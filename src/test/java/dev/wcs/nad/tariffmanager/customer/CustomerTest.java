@@ -1,10 +1,10 @@
 package dev.wcs.nad.tariffmanager.customer;
 
 import dev.wcs.nad.tariffmanager.customer.model.*;
-import dev.wcs.nad.tariffmanager.customer.reporting.CustomerImporter;
+import dev.wcs.nad.tariffmanager.customer.model.shared.CustomerType;
+//import dev.wcs.nad.tariffmanager.customer.reporting.CustomerSales;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,6 +51,24 @@ public class CustomerTest {
         assertThat(customersOlderThan22).hasSize(2);
         // Uncomment after implementing the customerStartingWithA filter for the Stream of Customers
         // assertThat(customerStartingWithA).hasSize(2);
+    }
+
+    @Test
+    public void shouldUseCustomerSalesReporting() {
+        Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
+        Customer achim24 = new SpecialCustomer("2", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(101));
+        Customer egon54 = new StandardCustomerNoPotential("3", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(102));
+        List<Customer> customers = List.of(alfred22, achim24, egon54);
+
+        // Challenge: Uncomment the comments and make sure the test passes.
+        List<Customer> filteredCustomers = null; // CustomerSales.filterCustomersForType(customers, CustomerType.VI);
+        assertThat(filteredCustomers.get(0)).isEqualTo(alfred22);
+
+        List<Customer> dateSortedCustomers = null; // CustomerSales.sortByLastPurchase(customers);
+        assertThat(dateSortedCustomers.get(0)).isEqualTo(egon54);
+
+        List<Customer> nameSortedCustomers = null; // CustomerSales.sortByName(customers);
+        assertThat(nameSortedCustomers.get(0)).isEqualTo(achim24);
     }
 
     @Test
