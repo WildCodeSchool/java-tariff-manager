@@ -10,7 +10,7 @@ public class StandardCustomerWithPotential extends StandardCustomer {
 
     @Override
     public double calculateDiscountedPrice(int value) {
-        return value;
+        return value - (value * (10 / 100));
     }
 
 }

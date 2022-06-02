@@ -13,7 +13,7 @@ public class JuniorCustomer extends StandardCustomer {
 
     @Override
     public double calculateDiscountedPrice(int value) {
-        return value - (value / discountPercentage);
+        return value - (value * (discountPercentage / 100));
     }
 
 }

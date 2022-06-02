@@ -1,9 +1,6 @@
 package dev.wcs.nad.tariffmanager.customer;
 
-import dev.wcs.nad.tariffmanager.customer.model.Customer;
-import dev.wcs.nad.tariffmanager.customer.model.SpecialCustomer;
-import dev.wcs.nad.tariffmanager.customer.model.StandardCustomerNoPotential;
-import dev.wcs.nad.tariffmanager.customer.model.VICustomer;
+import dev.wcs.nad.tariffmanager.customer.model.*;
 import dev.wcs.nad.tariffmanager.customer.reporting.CustomerImporter;
 import org.junit.jupiter.api.Test;
 
@@ -82,13 +79,13 @@ public class CustomerTest {
     @Test
     public void shouldTestNewEmployeeCustomer() {
         // Arrange
-        Customer employee1 = null; // = new EmployeeCustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer employee2 = null; // = new EmployeeCustomer("2", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        Customer employee1 = new EmployeeCustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
+        Customer employee2 = new EmployeeCustomer("2", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer employee3 = new StandardCustomerNoPotential("3", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // Act & Assert
-        //assertThat(employee1.calculateDiscountedPrice(100)).isEqualTo(85);
-        //assertThat(employee2.calculateDiscountedPrice(100)).isEqualTo(85);
+        assertThat(employee1.calculateDiscountedPrice(100)).isEqualTo(85);
+        assertThat(employee2.calculateDiscountedPrice(100)).isEqualTo(85);
         assertThat(employee3.calculateDiscountedPrice(100)).isEqualTo(100);
     }
 
