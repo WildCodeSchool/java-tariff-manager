@@ -1,18 +1,16 @@
-# REST APIs with Spring Boot
+# Securing REST Services with Spring Security
 
-In this quest you will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot. 
+In this quest you will learn about Securing your REST services with Authentication & Authorization using Spring Security.
 
 ### What you will learn
 
-* Spring Boot (Web Dev): Spring MVC & Spring Data
-* Spring Boot REST: OpenAPI, Swagger and JSON Data Binding
-* Securing REST Services with Spring Security
+* Understandig Authentication & Authorization implementation of Spring Security
+* Securing REST services with Spring Security
 
 ### What you should know
 
-* Java Basics
-* Spring DI/IoC
-* Java Persistence with JDBC
+* DI/IoC with the Spring Framework
+* Spring MVC and Spring REST
 
 ### Prerequisites
 
@@ -22,9 +20,13 @@ In this quest you will learn about REST Services and how to rapidly build and do
 
 ## Spring DI/IoC, Spring Boot and REST
 
-To understand why Spring Boot accelerates Web Application Development 
+You saw this diagram in the Spring Boot REST session. With this setup, we can call `CustomerController` Endpoints (Methods) via HTTP and the call will ripple to the other layers of our application, like `CustomerService` and `CustomerRepository`.
+
+Even though this `CustomerController` is a REST service, we can as well have a Spring MVC Controller registered at some URL, eg http://localhost:8080/public/customer/view
 
 <img src="../../../docs/img/diioc_layer.png" width="60%"/>
+
+The problem with this setup is that it is open and publicly accessible without any restrictions. Everyone with access to our server can access all Spring MVC Views and all REST Service Endpoints.
 
 ### Resource Protection with Spring Security
 
@@ -61,6 +63,8 @@ To enable URL-based access restrictions, we have to
 2. Enable Roles for Users
 3. Build a Security Filter Chain to validate authentication and authorization
 4. Configure the `UserRepository`, the `UserService` and password handling
+
+For reference: all necessary steps are explained in the Spring Guides: https://spring.io/guides/gs/securing-web/
 
 #### User Handling (Sign-Up/Sign-In)
 
