@@ -1,6 +1,6 @@
 # Java and Relational Databases: JDBC
 
-In this quest you will learn about accessing relational databases with SQL and from Java with JDBC. 
+In this quest you will learn about accessing relational databases with SQL and from Java with JDBC.
 
 ### What you will learn
 
@@ -33,12 +33,12 @@ Follow all steps with documentation in [CustomerLegacyDao](../../../src/main/jav
 1. Import JDBC packages _[Line 9]_
 2. Create Connection in method `getByIdJava7Syntax` from `DataSource` (ie. a Connection Pool maintained by the Spring runtime environment) _[Line 30]_
 3. Call `preparedStatement` on `Connection` _[Line 38]_
-4. Get `ResultSet` from `Statement` with `executeQuery` _[Line 44]_ 
+4. Get `ResultSet` from `Statement` with `executeQuery` _[Line 44]_
 5. Read results from `ResultSet` and map values _[Line 49]_
 
 <img src="../../../docs/img/java_jdbc_sq.png" width="80%"/>
 
-### Manual JDBC Connection/Statement/ResultSet Handling  
+### Manual JDBC Connection/Statement/ResultSet Handling
 
 See the following code extract for a _trx-with-finally_ version of manual JDBC handling. Since Java 7 this is the best practice for manual JDBC handling.
 
@@ -49,19 +49,19 @@ See the following code extract for a _trx-with-finally_ version of manual JDBC h
 public Optional<Customer> getByIdJava7Syntax(int id) {
         // We use try-catch-finally introduced in Java 7
         try (Connection connection = dataSource.getConnection();
-             // NOTE
-             // For security reasons: Always use PreparedStatements, not Statement
-             PreparedStatement stmt = connection.prepareStatement("my_call");
-             ResultSet resultSet = stmt.executeQuery()) {
-            while (resultSet.next()) {
-                String value = resultSet.getString(1);
-                System.out.println(value);
-            }
+        // NOTE
+        // For security reasons: Always use PreparedStatements, not Statement
+        PreparedStatement stmt = connection.prepareStatement("my_call");
+        ResultSet resultSet = stmt.executeQuery()) {
+        while (resultSet.next()) {
+        String value = resultSet.getString(1);
+        System.out.println(value);
+        }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+        sqlException.printStackTrace();
         }
         return Optional.empty();
-    }
+        }
 ```
 </details>
 
@@ -69,14 +69,14 @@ In [CustomerLegacyDao](../../../src/main/java/dev/wcs/nad/tariffmanager/persiste
 
 ### Challenge: Query Customers with plain JDBC
 
-_Note: You must have executed [InitialDatabaseSetupManualTest](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java) at least once to have test data generated in the database before running the steps below._ 
+_Note: You must have executed [InitialDatabaseSetupManualTest](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java) at least once to have test data generated in the database before running the steps below._
 
-* Execute and follow the call sequence of unit test [CustomerJdbcTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerJdbcTest.java). 
-* Understand how the data travels from the database to the Java object model. 
+* Execute and follow the call sequence of unit test [CustomerJdbcTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerJdbcTest.java).
+* Understand how the data travels from the database to the Java object model.
 * Understand how the manual mapping to a Object graph works.
 * Implement the unit test [AddressJdbcTest](../../../src/test/java/dev/wcs/nad/tariffmanager/address/AddressJdbcTest.java)
-  * Create `AddressDao`
-  * Create mapping from `ResultSet` to `Address`
+  * Implement `AddressLegacyDao` in the same way as `CustomerLegacyDao`
+  * Implement the mapping from `ResultSet` to `Address`
 
 _ADDRESS Table Data in local H2 Database Storage after Testdata creation._
 
