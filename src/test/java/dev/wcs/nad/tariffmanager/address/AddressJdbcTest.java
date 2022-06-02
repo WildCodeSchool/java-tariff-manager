@@ -19,7 +19,7 @@ public class AddressJdbcTest {
     private AddressLegacyDao addressLegacyDao;
 
     @Test
-    public void shouldLoadAllCustomers() {
+    public void shouldLoadAddressWithId2() {
         Optional<Address> firstAddress = addressLegacyDao.getByIdJava7Syntax(1);
         assertThat(firstAddress.isEmpty()).isFalse();
         assertThat(firstAddress.get().getId().equals("1"));
