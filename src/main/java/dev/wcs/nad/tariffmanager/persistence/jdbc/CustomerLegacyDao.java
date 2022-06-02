@@ -1,6 +1,7 @@
 package dev.wcs.nad.tariffmanager.persistence.jdbc;
 
 import dev.wcs.nad.tariffmanager.customer.model.Customer;
+import dev.wcs.nad.tariffmanager.customer.model.VICustomer;
 import org.springframework.stereotype.Component;
 
 /*
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 */
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Component
@@ -20,7 +22,7 @@ public class CustomerLegacyDao {
         this.dataSource = dataSource;
     }
 
-    public Optional<Customer> getByIdJava7Syntax(int id) {
+    public Optional<Customer> getByIdJava7Syntax(long id) {
         /*
         Create the connection object
         The getConnection() method of DataSource, which is configured by Spring with the configuration of application.properties, is used to establish connection with the database.
@@ -46,8 +48,8 @@ public class CustomerLegacyDao {
                     /*
                      Read results from ResultSet
                      */
-                    String value = resultSet.getString(1);
-                    System.out.println(value);
+                    String name = resultSet.getString(1);
+                    return Optional.of(new VICustomer(String.valueOf(id), name, "", LocalDate.now(), LocalDate.now()));
                 }
             }
         } catch (SQLException sqlException) {
