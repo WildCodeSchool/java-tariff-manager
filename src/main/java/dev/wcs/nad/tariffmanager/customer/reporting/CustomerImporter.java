@@ -29,7 +29,6 @@ public class CustomerImporter {
         try {
             customerLines = Files.readAllLines(customerCsv.toPath());
             for (String customer : customerLines) {
-                // Split line at "," and read information for object creation
                 String[] temp = customer.split(",");
                 String id = temp[0];
                 String name = temp[1];
@@ -52,24 +51,29 @@ public class CustomerImporter {
             LocalDate lastBuyDate = DateUtil.convertStringToLocalDate(lastBuy);
             switch (type.toUpperCase()) {
                 case "E": {
-                    // Create and return SpecialCustomer with values
+                    SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
+                    return specialCustomer;
                 }
                 case "V": {
-                    // Create and return VICustomer with values
+                    VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
+                    return viCustomer;
                 }
                 case "S": {
                     boolean youngerThan25 = Period.between(birthDate, LocalDate.now()).getYears() < 25;
                     boolean lastPurchaseIn25Days = Period.between(lastBuyDate, LocalDate.now()).getDays() < 90;
                     if (youngerThan25) {
-                        // Create JuniorCustomer with juniorCustomerDiscountPercentage discount and return it
+                        JuniorCustomer juniorKunde = new JuniorCustomer(juniorCustomerDiscountPercentage, id, name, email, birthDate, lastBuyDate);
+                        return juniorKunde;
                     } else if (lastPurchaseIn25Days) {
-                        // Create StandardCustomerWithPotential and return it
+                        StandardCustomerWithPotential potentialCustomer = new StandardCustomerWithPotential(id, name, email, birthDate, lastBuyDate);
+                        return potentialCustomer;
                     } else {
-                        // Create StandardCustomerNoPotential and return it
+                        StandardCustomerNoPotential noPotentialCustomer = new StandardCustomerNoPotential(id, name, email, birthDate, lastBuyDate);
+                        return noPotentialCustomer;
                     }
                 }
-                default: {
-                    throw new IllegalStateException("Cannot create object with type " + type.toUpperCase());
+                default : {
+                    throw new IllegalStateException("Cannot create object for type '" + type.toUpperCase() + "'");
                 }
             }
         } catch (DateTimeParseException e) {
