@@ -11,7 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomerImporterTest {
 
-
     @Test
     public void shouldImportCsvToCustomerObjectModelNoSpringContext() {
         File customerCsv = new File("src/test/resources/testdata/customer.csv");

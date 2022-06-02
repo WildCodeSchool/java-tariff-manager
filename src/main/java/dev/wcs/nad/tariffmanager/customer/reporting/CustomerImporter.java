@@ -3,8 +3,6 @@ package dev.wcs.nad.tariffmanager.customer.reporting;
 import dev.wcs.nad.tariffmanager.customer.model.*;
 import dev.wcs.nad.tariffmanager.customer.reporting.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,12 +15,11 @@ import java.util.List;
 
 // We are using the logging abstraction from Lombok here with @Slf4j which byte-code injects a "log" Logger instance (see https://projectlombok.org/features/log)
 @Slf4j
-@Component
 public class CustomerImporter {
 
     private final int juniorCustomerDiscountPercentage;
 
-    public CustomerImporter(@Value("${junior.customer.discount.percent}") int juniorCustomerDiscountPercentage) {
+    public CustomerImporter(int juniorCustomerDiscountPercentage) {
         this.juniorCustomerDiscountPercentage = juniorCustomerDiscountPercentage;
     }
 
