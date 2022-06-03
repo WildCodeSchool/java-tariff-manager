@@ -4,6 +4,7 @@ import dev.wcs.nad.tariffmanager.persistence.entity.*;
 import dev.wcs.nad.tariffmanager.persistence.repository.AddressRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.ContactRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,11 +15,13 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final AddressRepository addressRepository;
     private final ContactRepository contactRepository;
+    private final int maturityAge;
 
-    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository, ContactRepository contactRepository) {
+    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository, ContactRepository contactRepository, @Value("${maturity.age}") int maturityAge) {
         this.customerRepository = customerRepository;
         this.addressRepository = addressRepository;
         this.contactRepository = contactRepository;
+        this.maturityAge = maturityAge;
     }
 
     public Iterable<Customer> readAllCustomers() {
