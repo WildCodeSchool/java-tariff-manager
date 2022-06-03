@@ -1,4 +1,4 @@
-package dev.wcs.nad.tariffmanager.customer.reporting;
+package dev.wcs.nad.tariffmanager.customer.importing;
 
 import dev.wcs.nad.tariffmanager.customer.model.*;
 import dev.wcs.nad.tariffmanager.customer.reporting.util.DateUtil;
@@ -21,10 +21,11 @@ import java.util.List;
 public class CustomerImporter {
 
     private final int juniorCustomerDiscountPercentage;
-    // Challenge: Add other discount percentage here and as constructor-injected parameter
+    private final int specialCustomerDiscountPercentage;
 
-    public CustomerImporter(@Value("${junior.customer.discount.percent}") int juniorCustomerDiscountPercentage) {
+    public CustomerImporter(@Value("${junior.customer.discount.percent}") int juniorCustomerDiscountPercentage, @Value("${special.customer.discount.percent}") int specialCustomerDiscountPercentage) {
         this.juniorCustomerDiscountPercentage = juniorCustomerDiscountPercentage;
+        this.specialCustomerDiscountPercentage = specialCustomerDiscountPercentage;
     }
 
     public List<Customer> importCustomers(File customerCsv) {
@@ -55,11 +56,10 @@ public class CustomerImporter {
             switch (type.toUpperCase()) {
                 case "E": {
                     // Challenge: If you added a discount for this customer type, add the discount to the constructor here
-                    SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
+                    SpecialCustomer specialCustomer = new SpecialCustomer(specialCustomerDiscountPercentage, id, name, email, birthDate, lastBuyDate);
                     return specialCustomer;
                 }
                 case "V": {
-                    // Challenge: If you added a discount for this customer type, add the discount to the constructor here
                     VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
                     return viCustomer;
                 }
