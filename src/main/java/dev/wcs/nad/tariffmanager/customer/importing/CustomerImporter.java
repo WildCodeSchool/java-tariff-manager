@@ -1,4 +1,4 @@
-package dev.wcs.nad.tariffmanager.customer.reporting;
+package dev.wcs.nad.tariffmanager.customer.importing;
 
 import dev.wcs.nad.tariffmanager.customer.model.*;
 import dev.wcs.nad.tariffmanager.customer.reporting.util.DateUtil;
@@ -59,7 +59,6 @@ public class CustomerImporter {
                     return specialCustomer;
                 }
                 case "V": {
-                    // Challenge: If you added a discount for this customer type, add the discount to the constructor here
                     VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
                     return viCustomer;
                 }

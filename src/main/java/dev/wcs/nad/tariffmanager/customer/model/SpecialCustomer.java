@@ -10,7 +10,7 @@ public class SpecialCustomer extends Customer {
 
     @Override
     public double calculateDiscountedPrice(int value) {
-        return value - (value / 20);
+        return value;
     }
 
 }
