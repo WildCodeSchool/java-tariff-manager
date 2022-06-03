@@ -28,4 +28,8 @@ public class Tariff {
             inverseJoinColumns = @JoinColumn(name = "options_id"))
     private Set<Option> possibleOptions = new LinkedHashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
 }
