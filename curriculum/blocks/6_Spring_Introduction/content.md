@@ -1,20 +1,17 @@
-# Spring Data JPA
+# Dependency Injection & Inversion of Control with the Spring Framework 
 
-In this quest you will learn about querying a storage with Spring Data using JPA. 
+In this block, Students learn how to implement enterprise-grade, modular software systems with DI/IoC Frameworks.
 
 ### What you will learn
 
-* Testing in Java: Types and Context (Unit, Integration, ...)
-* Unittesting with JUnit 5 & Refactoring
-* Introduction to Mocking, Stubbing and modular component testing
-* Test-Driven-Development with JUnit 5, AssertJ, Spring and Mockito
 * Introduction to modular enterprise development with IoC/DI (Spring)
+* Differences between injection and creation of objects
+* Use cases for Dependency Injection and Inversion of Control
 
 ### What you should know
 
 * Java Basics
-* Spring DI/IoC
-* Java Persistence with JDBC
+* Advanced Principles of Object-Orientated Programming
 
 ### Prerequisites
 
@@ -52,6 +49,13 @@ CustomerController customerController = new CustomerController(customerService);
 With a Dependency Injection and Inversion of Control Framework like Spring, the dependencies can be controlled at Runtime.
 
 <img src="../../../docs/img/diioc_layer.png" width="80%"/>
+
+You will find the components mentioned here in the code base of this repo.  
+To understand the use cases and advantages of using Spring, scan through the code to answer these questions:
+
+* Where are they located?
+* How does the wiring work with Spring?
+* Who does wire what components when?
 
 ```java
 // Give DI/IoC Framework hints by Annotations, Depend on Interfaces only.
