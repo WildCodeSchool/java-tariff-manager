@@ -21,6 +21,7 @@ import java.util.List;
 public class CustomerImporter {
 
     private final int juniorCustomerDiscountPercentage;
+    // Challenge: Add other discount percentage here and as constructor-injected parameter
 
     public CustomerImporter(@Value("${junior.customer.discount.percent}") int juniorCustomerDiscountPercentage) {
         this.juniorCustomerDiscountPercentage = juniorCustomerDiscountPercentage;
@@ -53,10 +54,12 @@ public class CustomerImporter {
             LocalDate lastBuyDate = DateUtil.convertStringToLocalDate(lastBuy);
             switch (type.toUpperCase()) {
                 case "E": {
+                    // Challenge: If you added a discount for this customer type, add the discount to the constructor here
                     SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
                     return specialCustomer;
                 }
                 case "V": {
+                    // Challenge: If you added a discount for this customer type, add the discount to the constructor here
                     VICustomer viCustomer = new VICustomer(id, name, email, birthDate, lastBuyDate);
                     return viCustomer;
                 }
