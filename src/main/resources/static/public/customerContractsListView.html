@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>List of Contracts</title>
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <div class="container">
+                <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Tariff</th>
+                    <th>Price</th>
+                </tr>
+                <tr th:each="contract: ${contracts}">
+                    <td th:text="${contract.id}" />
+                    <td th:text="${contract.tariff.name}" />
+                    <td th:text="${contract.tariff.price}" />
+                </tr>
+                </table>
+            </div>
+        </section>
+    </body>
+</html>
