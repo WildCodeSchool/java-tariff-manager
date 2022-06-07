@@ -13,6 +13,7 @@ import java.util.Set;
 @Setter
 public class ContractInfoDto {
 
+    private Long id;
     private TariffDto tariff;
     private CustomerDto customer;
     private Set<OptionDto> options = new LinkedHashSet<>();
