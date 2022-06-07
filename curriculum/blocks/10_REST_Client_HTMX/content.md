@@ -69,3 +69,6 @@ _Note: We use htmx for augmenting the HTML with server-side data, you can ignore
 ![](../../../docs/img/thymeleaf_htmx.png)
 
 The server-side rendering uses Thymeleaf as a Template Engine. The Template Engine is responsible for augmenting the View (in our case HTML) with the current state of the Model (in our case Java Beans). Responsible for associating the View and the Model is the Controller (in our case Spring MVC).
+
+## Challenge: Add a Contracts View Page
+
