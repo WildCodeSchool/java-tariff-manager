@@ -1,10 +1,8 @@
 package dev.wcs.nad.tariffmanager.customer;
 
 import dev.wcs.nad.tariffmanager.customer.model.*;
-import dev.wcs.nad.tariffmanager.customer.reporting.CustomerImporter;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,8 +14,8 @@ public class CustomerTest {
     @Test
     public void shouldCreateDifferentCustomersWithDifferentDiscounts() {
         Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
-        Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // getEmail is a method on Customer and can be invoked on any subclass
         assertThat(alfred22.getEmail()).isEqualTo("alfred@web.de");
@@ -25,7 +23,7 @@ public class CustomerTest {
         assertThat(egon54.getEmail()).isEqualTo("egon@web.de");
 
         // Verify that alfred22 is a Customer (abstract class)
-        assertThat(alfred22).isInstanceOf(Customer.class);
+        assertThat(alfred22).isInstanceOf(dev.wcs.nad.tariffmanager.customer.collectiontesting.Customer.class);
         // Verify that alfred22 is a VICustomer (extending, specific subclass)
         assertThat(alfred22).isInstanceOf(VICustomer.class);
 
@@ -37,16 +35,16 @@ public class CustomerTest {
 
     @Test
     public void shouldImplementFilterOnGenericPropertiesLikeName() {
-        Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
-        Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
-        List<Customer> customers = List.of(alfred22, achim24, egon54);
+        dev.wcs.nad.tariffmanager.customer.model.Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
+        List<dev.wcs.nad.tariffmanager.customer.model.Customer> customers = List.of(alfred22, achim24, egon54);
 
         // Use Streams for Filtering
-        List<Customer> customersOlderThan22 = customers.stream().filter(customer -> customer.getBirthDate().plusYears(22).isBefore(LocalDate.now())).collect(Collectors.toList());
+        List<dev.wcs.nad.tariffmanager.customer.model.Customer> customersOlderThan22 = customers.stream().filter(customer -> customer.getBirthDate().plusYears(22).isBefore(LocalDate.now())).collect(Collectors.toList());
 
         // Use Streams for filtering names starting with letter "A"
-        List<Customer> customerStartingWithA;
+        List<dev.wcs.nad.tariffmanager.customer.model.Customer> customerStartingWithA;
 
         assertThat(customersOlderThan22).hasSize(2);
         // Uncomment after implementing the customerStartingWithA filter for the Stream of Customers
@@ -56,14 +54,14 @@ public class CustomerTest {
     @Test
     public void shouldImplementLogicOnBaseMethods() {
         // Arrange
-        Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
-        Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // Act
-        List<Customer> customers = List.of(alfred22, achim24, egon54);
+        List<dev.wcs.nad.tariffmanager.customer.model.Customer> customers = List.of(alfred22, achim24, egon54);
         // This collection is filtered using a conventional for-loop
-        for (Customer customer : customers) {
+        for (dev.wcs.nad.tariffmanager.customer.model.Customer customer : customers) {
             // Only if necessary we check for specific sub class
             if (customer instanceof VICustomer) {
                 System.out.println("Mail of VICustomer: " + customer.getEmail());
@@ -79,8 +77,8 @@ public class CustomerTest {
     @Test
     public void shouldTestNewEmployeeCustomer() {
         // Arrange
-        Customer employee1 = new EmployeeCustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer employee2 = new EmployeeCustomer("2", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer employee1 = new EmployeeCustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
+        dev.wcs.nad.tariffmanager.customer.model.Customer employee2 = new EmployeeCustomer("2", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer employee3 = new StandardCustomerNoPotential("3", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // Act & Assert
