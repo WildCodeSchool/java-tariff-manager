@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CustomerCollectionTest {
 
     @Test
-    public void shouldDemostrateJavaCollectionsWithLists() {
+    public void shouldDemonstrateJavaCollectionsWithLists() {
         // Arrange
 
         // Instantiate a List implementation: ArrayList
