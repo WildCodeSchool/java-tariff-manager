@@ -133,9 +133,37 @@ public class CustomerComparisonTest {
         customers.add(cat);
         customers.add(sim);
 
-        Comparator<SortableCustomer> firstNamesThenBirthdateThenReverse = Comparator.comparing(SortableCustomer::getName).thenComparing(SortableCustomer::getBirthdate).reversed();
-        Collections.sort(customers, firstNamesThenBirthdateThenReverse);
-        assertThat(customers).containsSequence(sim, cat, joe2, joe3, joe1);
+// Option 1: With Anonymous Classes
+Comparator<SortableCustomer> nameComparator = new Comparator<SortableCustomer>() {
+    @Override
+    public int compare(SortableCustomer o1, SortableCustomer o2) {
+        return o1.getName().compareTo(o2.getName());
+    }
+};
+
+Comparator<SortableCustomer> birthdateComparator = new Comparator<SortableCustomer>() {
+    @Override
+    public int compare(SortableCustomer o1, SortableCustomer o2) {
+        return o1.getBirthdate().compareTo(o2.getBirthdate());
+    }
+};
+
+// combine the Comparators
+Comparator<SortableCustomer> firstNamesThenBirthdateThenReverseAnon = nameComparator.thenComparing(birthdateComparator).reversed();
+Collections.sort(customers, firstNamesThenBirthdateThenReverseAnon);
+assertThat(customers).containsSequence(sim, cat, joe2, joe3, joe1);
+
+// Option 2: with lambdas
+Comparator<SortableCustomer> namesLambda = (c1, c2) -> (c1.getName().compareTo(c2.getName()));
+Comparator<SortableCustomer> birthdateLambda = (c1, c2) -> (c1.getName().compareTo(c2.getName()));
+Comparator<SortableCustomer> firstNamesThenBirthdateThenReverseLambda = namesLambda.thenComparing(birthdateLambda).reversed();
+Collections.sort(customers, firstNamesThenBirthdateThenReverseLambda);
+assertThat(customers).containsSequence(sim, cat, joe2, joe3, joe1);
+
+// Option 3: with Method References
+Comparator<SortableCustomer> firstNamesThenBirthdateThenReverseRef = Comparator.comparing(SortableCustomer::getName).thenComparing(SortableCustomer::getBirthdate).reversed();
+Collections.sort(customers, firstNamesThenBirthdateThenReverseRef);
+assertThat(customers).containsSequence(sim, cat, joe2, joe3, joe1);
 
     }
 
