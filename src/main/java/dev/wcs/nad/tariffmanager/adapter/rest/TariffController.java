@@ -28,9 +28,9 @@ public class TariffController {
         return ResponseEntity.ok(tariffService.readTariff(id));
     }
 
-    @PutMapping(value = "/api/tariffs", consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Optional<Tariff>> updateTariff(@RequestBody Tariff tariff) {
-        Optional<Tariff> existingTariff = tariffService.readTariff(tariff.getId());
+    @PutMapping(value = "/api/tariffs/{id}", consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Optional<Tariff>> updateTariff(@PathVariable("id") Long id, @RequestBody Tariff tariff) {
+        Optional<Tariff> existingTariff = tariffService.readTariff(id);
         existingTariff.ifPresent(
             it -> {
                 it.setPrice(tariff.getPrice());
