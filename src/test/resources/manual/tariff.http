@@ -1,0 +1,9 @@
+###
+### Tariff Creation
+###
+POST http://localhost:8080/api/tariffs
+Content-Type: application/json
+
+{
+  "name": "myfunnynewtariff"
+}

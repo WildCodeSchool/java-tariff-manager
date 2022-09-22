@@ -6,6 +6,8 @@ import dev.wcs.nad.tariffmanager.persistence.repository.OptionRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.TariffRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TariffService {
 
@@ -26,5 +28,17 @@ public class TariffService {
         Option option = optionRepository.findById(optionId).get();
         tariff.getPossibleOptions().add(option);
         return tariffRepository.save(tariff);
+    }
+
+    public Optional<Tariff> readTariff(long id) {
+        return tariffRepository.findById(id);
+    }
+
+    public Tariff createNewTariff(Tariff tariff) {
+        return tariffRepository.save(tariff);
+    }
+
+    public void updateTariff(Tariff existingTariff) {
+        tariffRepository.save(existingTariff);
     }
 }
