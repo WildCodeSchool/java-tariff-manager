@@ -1,4 +1,19 @@
 ###
+### Tariff Read
+###
+GET http://localhost:8080/api/tariffs
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiY3JlYXRlZCI6MTY2MzkzMTE0OTE4MSwiZXhwIjoxNjY0NTM1OTQ5fQ.Up6wi_y_ZL5L1WTvQ3PySMDZm3epb8THs5efqhnDAI7aFnURNq9gsdWLxFbd7IXAjytpNtf146y6y7_IC7oZkw
+
+### Login
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "userName": "user",
+  "password": "password"
+}
+
+###
 ### Tariff Creation
 ###
 POST http://localhost:8080/api/tariffs
@@ -6,4 +21,13 @@ Content-Type: application/json
 
 {
   "name": "myfunnynewtariff"
+}
+
+### Auth
+POST http://localhost:8080/auth
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "password"
 }
