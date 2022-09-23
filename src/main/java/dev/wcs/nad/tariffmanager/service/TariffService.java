@@ -41,4 +41,8 @@ public class TariffService {
     public void updateTariff(Tariff existingTariff) {
         tariffRepository.save(existingTariff);
     }
+
+    public void deleteTariff(Long id) {
+        tariffRepository.deleteById(id);
+    }
 }

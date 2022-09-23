@@ -46,4 +46,9 @@ public class TariffController {
         return ResponseEntity.ok(tariffService.createNewTariff(tariff));
     }
 
+    @DeleteMapping(value = "/api/tariffs/{id}")
+    public ResponseEntity<Void> deleteTariff(@PathVariable("id") Long id) {
+        tariffService.deleteTariff(id);
+        return ResponseEntity.ok().build();
+    }
 }
