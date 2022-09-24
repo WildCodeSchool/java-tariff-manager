@@ -6,6 +6,7 @@ import dev.wcs.nad.tariffmanager.persistence.repository.OptionRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.TariffRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,5 +45,10 @@ public class TariffService {
 
     public void deleteTariff(Long id) {
         tariffRepository.deleteById(id);
+    }
+
+    public List<Tariff> readAllTariffsWithName(String name) {
+        List<Tariff> tariffs = tariffRepository.findTariffsByNameLikeIgnoreCase("%" + name + "%");
+        return tariffs;
     }
 }
