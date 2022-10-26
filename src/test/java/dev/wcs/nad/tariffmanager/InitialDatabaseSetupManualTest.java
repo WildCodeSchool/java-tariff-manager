@@ -6,6 +6,7 @@ import dev.wcs.nad.tariffmanager.persistence.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.math.BigDecimal;
 import java.time.ZoneId;
@@ -22,6 +23,7 @@ public class InitialDatabaseSetupManualTest {
     @Autowired private ContractRepository contractRepository;
     @Autowired private OptionRepository optionRepository;
     @Autowired private TariffRepository tariffRepository;
+    @Autowired private JdbcTemplate jdbcTemplate;
 
     @Test
     public void setupDatabase() {
@@ -49,6 +51,22 @@ public class InitialDatabaseSetupManualTest {
             contract.getOptions().add(option);
             contractRepository.save(contract);
         }
+        createUsers();
+    }
+
+    private void createUsers() {
+        String sql = """
+            INSERT INTO SUSER (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, LASTPASSWORDRESETDATE) VALUES (1, 'admin', '$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi', 'admin', 'admin', 'admin@admin.com', 1, PARSEDATETIME('01-01-2016', 'dd-MM-yyyy'));
+            INSERT INTO SUSER (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, LASTPASSWORDRESETDATE) VALUES (2, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'user', 'user', 'enabled@user.com', 1, PARSEDATETIME('01-01-2016','dd-MM-yyyy'));
+            INSERT INTO SUSER (ID, USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ENABLED, LASTPASSWORDRESETDATE) VALUES (3, 'disabled', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'user', 'user', 'disabled@user.com', 0, PARSEDATETIME('01-01-2016','dd-MM-yyyy'));
+            INSERT INTO AUTHORITY (ID, NAME) VALUES (1, 'ROLE_USER');
+            INSERT INTO AUTHORITY (ID, NAME) VALUES (2, 'ROLE_ADMIN');
+            INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (1, 1);
+            INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (1, 2);
+            INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (2, 1);
+            INSERT INTO USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (3, 1);
+            """;
+        jdbcTemplate.execute(sql);
     }
 
     //@Test

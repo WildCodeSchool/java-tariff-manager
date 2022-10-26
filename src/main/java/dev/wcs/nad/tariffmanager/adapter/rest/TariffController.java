@@ -23,6 +23,15 @@ public class TariffController {
         return ResponseEntity.ok(tariffService.readAllTariffsWithPossibleOptions());
     }
 
+    @GetMapping("/api/tariffs/search")
+    public ResponseEntity<Iterable<Tariff>> readTariffsWithName(@RequestParam("name") Optional<String> name) {
+        if (name.isPresent()) {
+            return ResponseEntity.ok(tariffService.readAllTariffsWithName(name.get()));
+        } else {
+            return ResponseEntity.ok(tariffService.readAllTariffsWithPossibleOptions());
+        }
+    }
+
     @GetMapping("/api/tariffs/{id}")
     public ResponseEntity<Optional<Tariff>> readTariff(@PathVariable("id") Long id) {
         return ResponseEntity.ok(tariffService.readTariff(id));
@@ -44,6 +53,12 @@ public class TariffController {
     @PostMapping(value = "/api/tariffs", consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity<Tariff> createNewTariff(@RequestBody Tariff tariff) {
         return ResponseEntity.ok(tariffService.createNewTariff(tariff));
+    }
+
+    @DeleteMapping(value = "/api/tariffs/{id}")
+    public ResponseEntity<Void> deleteTariff(@PathVariable("id") Long id) {
+        tariffService.deleteTariff(id);
+        return ResponseEntity.ok().build();
     }
 
 }
