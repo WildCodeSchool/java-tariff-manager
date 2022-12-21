@@ -8,6 +8,16 @@ _Note: This document uses [arc42](https://github.com/arc42) for specifications &
 This document specifies an application that simulates the operation of the information system of a cellular operator. The subject area and technical requirements are described in more detail below.  
 On a meta level, this document frames the tutorials for Java & Spring Framework usage in Enterprise environments.
 
+## Docker Setup
+
+* `gradle bootBuildImage`
+* `cd docker`
+* `docker-compose up -d`
+
+### Database View in IntelliJ for (Docker) Postgres
+
+![](https://i.imgur.com/lTdRznd.png)
+
 ## Constraints
 
 ### Technical requirements
