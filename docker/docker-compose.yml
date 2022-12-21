@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=tariff
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - tariffnw
+  tariff-manager:
+    image: tariff-manager:0.0.1
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tariff
+    ports:
+      - '8080:8080'
+    networks:
+      - tariffnw
+volumes:
+  db:
+    driver: local
+networks:
+  tariffnw:
