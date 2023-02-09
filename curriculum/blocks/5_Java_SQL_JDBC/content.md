@@ -30,11 +30,11 @@ Follow all steps with documentation in [CustomerLegacyDao](../../../src/main/jav
 
 #### Steps for plain JDBC Access with Spring Configured DataSource
 
-1. Import JDBC packages _[Line 9]_
-2. Create Connection in method `getByIdJava7Syntax` from `DataSource` (ie. a Connection Pool maintained by the Spring runtime environment) _[Line 30]_
-3. Call `preparedStatement` on `Connection` _[Line 38]_
-4. Get `ResultSet` from `Statement` with `executeQuery` _[Line 44]_
-5. Read results from `ResultSet` and map values _[Line 49]_
+1. Import JDBC packages _[Line 10]_
+2. Create Connection in method `getByIdJava7Syntax` from `DataSource` (ie. a Connection Pool maintained by the Spring runtime environment) _[Line 32]_
+3. Call `preparedStatement` on `Connection` _[Line 40]_
+4. Get `ResultSet` from `Statement` with `executeQuery` _[Line 46]_ 
+5. Read results from `ResultSet` and map values _[Line 51]_
 
 <img src="../../../docs/img/java_jdbc_sq.png" width="80%"/>
 
