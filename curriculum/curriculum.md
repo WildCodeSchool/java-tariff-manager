@@ -66,6 +66,6 @@ In this block, Students will learn how to connect a Angular SPA with the Tariff-
 
 Note: There are branches **initial** and **secured** for connecting the Angular Client to the Spring Boot Application. 
 
-### [13. Deploying Spring Boot Applications with Docker Compose] [GitHub Actions](https://github.com/WildCodeSchool/skill2hire-docker-ghactions) [GitLab CI](https://gitlab.com/ice09/skill2hire-docker-gitlabci)
+### 13. Deploying Spring Boot Applications with Docker Compose [GitHub Actions Version](https://github.com/WildCodeSchool/skill2hire-docker-ghactions) | [GitLab CI Version](https://gitlab.com/ice09/skill2hire-docker-gitlabci)
 
 In this block, Students will learn how to package and deploy a Spring Boot Application with Docker Compose and GitHub Actions or GitLab CI.
