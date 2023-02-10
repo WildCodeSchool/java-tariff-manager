@@ -1,6 +1,5 @@
 # Curriculum New Agile Developer Academy
 
-see [LINK TO JAVANGULAR CURRICULUM]()
 
 ## Blocks (Weeks)
 
