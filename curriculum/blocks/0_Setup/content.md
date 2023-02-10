@@ -34,6 +34,9 @@ If you choose to install the pre-requisites manually, we recommend
 ![](../../../docs/img/file-new-vcs.png)
 
 * Use `https://github.com/WildCodeSchool/java-tariff-manager.git` as Repository URL
+* Checkout branch **block-9-complete**
+
+![](https://i.imgur.com/0C2q4fy.png)
 
 ### Starting the Web Application
 
