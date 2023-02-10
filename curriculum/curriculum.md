@@ -1,6 +1,6 @@
 # Curriculum New Agile Developer Academy
 
-see https://docs.google.com/spreadsheets/d/1z0E0svLaQ_HEVNHPzaotCJkrySs7GZPxCerfoHiw3U0/edit#gid=316227324
+see [LINK TO JAVANGULAR CURRICULUM]()
 
 ## Blocks (Weeks)
 
@@ -20,9 +20,10 @@ In this block, Students learn resolving conflicts in software development and ge
 
 In this block, Students will learn about concepts of OOP, input/output of data and generic programming.
 
-### 4. Software Testing in Java & Test-Driven-Development, Refactoring & Clean Code
+### [4. Software Testing in Java & Test-Driven-Development, Refactoring & Clean Code](https://github.com/WildCodeSchool/st-clever-testing-mocking-asserting)
 
 In this block, Students will get to know (Unit-)Testing, TDD and how use these in Java.
+TODO: This links to an unrelated Student Tutoring Repository, the block itself is missing.
 
 <details>
     <summary>What will Students learn?</summary>
@@ -59,10 +60,12 @@ In this block, Students will learn about the Model-View-Controller with Spring M
 
 In this block, Students will learn how to enable authentication and authorization to Web applications with Spring Security. 
 
-### 12. Angular Client-Side Project
+### [12. Angular Client-Side Project](https://github.com/WildCodeSchool/angular-tariff-manager-client)
 
 In this block, Students will learn how to connect a Angular SPA with the Tariff-Manager REST services.
 
-### 13. Deploying Spring Boot Applications with Docker Compose
+Note: There are branches **initial** and **secured** for connecting the Angular Client to the Spring Boot Application. 
 
-In this block, Students will learn how to package and deploy a Spring Boot Application with Docker Compose.
+### [13. Deploying Spring Boot Applications with Docker Compose] [GitHub Actions](https://github.com/WildCodeSchool/skill2hire-docker-ghactions) [GitLab CI](https://gitlab.com/ice09/skill2hire-docker-gitlabci)
+
+In this block, Students will learn how to package and deploy a Spring Boot Application with Docker Compose and GitHub Actions or GitLab CI.
