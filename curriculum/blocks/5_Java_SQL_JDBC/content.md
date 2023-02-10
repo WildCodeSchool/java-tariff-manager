@@ -81,3 +81,8 @@ _Note: You must have executed [InitialDatabaseSetupManualTest](../../../src/test
 _ADDRESS Table Data in local H2 Database Storage after Testdata creation._
 
 ![](../../../docs/img/ADDRESS_ER.png)
+
+### Access the database
+
+* Start `TariffManagerApplication` 
+* Open http://localhost:8080/h2-console/login.jsp
