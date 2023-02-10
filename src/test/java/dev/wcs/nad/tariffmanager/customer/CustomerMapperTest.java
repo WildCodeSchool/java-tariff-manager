@@ -4,21 +4,25 @@ import com.github.javafaker.Faker;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
 import dev.wcs.nad.tariffmanager.mapper.simple.CustomerMapper;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
-import org.apache.commons.lang3.NotImplementedException;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.ZoneId;
 import java.util.Locale;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SpringBootTest
 public class CustomerMapperTest {
 
     private Faker faker = new Faker(Locale.US);
 
+    @Autowired
+    private CustomerMapper customerMapper;
+
     @Test
     public void shouldMapDtoToEntity() {
-        CustomerMapper customerMapper = new CustomerMapper();
         CustomerDto customerDto = createFakeCustomerDto();
         Customer entity = customerMapper.convertDtoToEntity(customerDto);
         assertThat(entity.getBirthdate()).isEqualTo(customerDto.getBirthdate());
@@ -27,7 +31,6 @@ public class CustomerMapperTest {
     @Test
     public void shouldMapEntityToDto() {
         // Challenge: Add the Entity to Dto mapping here.
-        CustomerMapper customerMapper = new CustomerMapper();
         Customer entity = createFakeCustomerEntity();
         CustomerDto customerDto = customerMapper.convertEntityToDto(entity);
         assertThat(entity.getBirthdate()).isEqualTo(customerDto.getBirthdate());
