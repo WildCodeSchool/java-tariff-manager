@@ -91,8 +91,4 @@ After the data is imported and the data model set up, we will run the Report eng
 1. Create a method which prints only `Customers` of type `type` with this signature: `List<Kunde> filterCustomersForType(List<Kunde> allKunden, String type)`
 2. Create a method which sorts `List<Customer>` by `name`: `List<Customer> sortByName(List<Customer> customer)`
 3. Create a method which sorts `List<Customer>` by `lastPurchase`: `List<Customer> sortByLastPurchase(List<Customer> customer)`
-4. This should be implemented in a new class `CustomerSales` in package `dev.wcs.nad.tariffmanager.customer.reporting`, the class and the method should be implemented using TDD
-
-### Challenge: Newsletter for Classified Customer  
-
-6. Create a method `sendNewsletter(List<Customer> customers)` which sends a newsletter to `VI-Customers` and `StandardCustomersWithPotential`: **Hello NAME, you are invited to our new product demo.**
+4. This should be implemented in a new class `CustomerSales` in package `dev.wcs.nad.tariffmanager.customer.reporting`, the class and the methods should be implemented using TDD
