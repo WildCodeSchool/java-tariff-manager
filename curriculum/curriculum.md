@@ -23,7 +23,8 @@ In this block, Students will learn about concepts of OOP, input/output of data a
 ### [4. Software Testing in Java & Test-Driven-Development, Refactoring & Clean Code](https://github.com/WildCodeSchool/st-clever-testing-mocking-asserting)
 
 In this block, Students will get to know (Unit-)Testing, TDD and how use these in Java.
-TODO: This links to an unrelated Student Tutoring Repository, the block itself is missing.
+
+_TODO: This links to an unrelated Student Tutoring Repository, the block itself is missing._
 
 <details>
     <summary>What will Students learn?</summary>
@@ -64,7 +65,7 @@ In this block, Students will learn how to enable authentication and authorizatio
 
 In this block, Students will learn how to connect a Angular SPA with the Tariff-Manager REST services.
 
-Note: There are branches **initial** and **secured** for connecting the Angular Client to the Spring Boot Application. 
+_Note: There are branches **initial** and **secured** for connecting the Angular Client to the Spring Boot Application._
 
 ### 13. Deploying Spring Boot Applications with Docker Compose [GitHub Actions Version](https://github.com/WildCodeSchool/skill2hire-docker-ghactions) | [GitLab CI Version](https://gitlab.com/ice09/skill2hire-docker-gitlabci)
 
