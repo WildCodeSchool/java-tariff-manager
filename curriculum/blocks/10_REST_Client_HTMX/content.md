@@ -72,3 +72,14 @@ The server-side rendering uses Thymeleaf as a Template Engine. The Template Engi
 
 ## Challenge: Add a Contracts View Page
 
+We want to add an overview of all `Contracts` which are associated to a `Customer`.
+
+1. Add a new column *Show Contracts* to the Customer table with each link pointing to the `Controller` GET method.
+
+![](../../../docs/img/contractsListView.png)
+
+2. Add a new View page similar to the Customer page
+
+![](../../../docs/img/contractsDetailsView.png)
+
+3. Implement the `ContractService` method for retrieving the `Contracts` for a `Customer`.
