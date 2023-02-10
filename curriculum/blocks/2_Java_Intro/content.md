@@ -72,7 +72,8 @@ In this challenge, we add a new `Customer`: `EmployeeCustomer`
 ```
 EmployeeCustomer are customers who are also employees of the company and get a discount of 15%. 
 ```
-_Rule: If the email address is at domain **acme.org**, the `Customer` should be classified as a `EmployeeCustomer`, so **herbert@acme.org** is a `EmployeeCustomer`._
+
+_A possible rule could be: If the email address is at domain **acme.org**, the `Customer` should be classified as a `EmployeeCustomer`, so **herbert@acme.org** is a `EmployeeCustomer`. This rule is not part of our challenge._
 
 1. Create a new class `EmployeeCustomer` which directly extends abstract class `Customer`. The `calculateDiscount(int value)` should return 15% of the value as discount.
 2. Create a unit test which creates two `EmployeeCustomer`, adds those to a `List<Customer>` and adds a `JuniorCustomer` to the list (see Method `shouldTestNewEmployeeCustomer`) [sources](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerTest.java)
