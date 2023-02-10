@@ -59,33 +59,10 @@ In this block, Students will learn about the Model-View-Controller with Spring M
 
 In this block, Students will learn how to enable authentication and authorization to Web applications with Spring Security. 
 
-### 12. UI Development and REST Service Consumption with React
+### 12. Angular Client-Side Project
 
-### 13. Advanced Collaboration in Agile Teams: Branching, Forking, Git Workflows
+In this block, Students will learn how to connect a Angular SPA with the Tariff-Manager REST services.
 
-<details>
-    <summary>What Students will learn?</summary>
-* What is GitHub?
-* How is a user story implemented with Git, GitHub and a workflow?
-* How to deal with conflicts in software development projects?
-</details>
+### 13. Deploying Spring Boot Applications with Docker Compose
 
-### 14. Deploying Applications with Docker, GitLab and Kubernetes
-
-<details>
-    <summary>Macrocurriculum Topics</summary>
-
-* Introduction in the tool environment (Eclipse, GIT/GitLab, Build-Prozess mit Maven/Gradle)   
-* Programming in Java
-* Advanced programming in Java
-* "Testdriven development, Refactoring, Clean Code
-* Spring-Basics (Part I)"
-* "Spring-Basics (Part II)
-* JPA Basics"
-* Spring and JPA
-* RESTful WebServices with Spring
-* Modern Development of Web Applications
-* React or Angular
-* Software development in a team with feature branches and merge requests and advanced Maven concepts.
-* Docker - Launching Docker containers for databases, Docker: building an image for your own service,
-</details>
+In this block, Students will learn how to package and deploy a Spring Boot Application with Docker Compose.
