@@ -22,7 +22,7 @@ In this quest you will learn about Securing your REST services with Authenticati
 
 You saw this diagram in the Spring Boot REST session. With this setup, we can call `CustomerController` Endpoints (Methods) via HTTP and the call will ripple to the other layers of our application, like `CustomerService` and `CustomerRepository`.
 
-Even though this `CustomerController` is a REST service, we can as well have a Spring MVC Controller registered at some URL, eg http://localhost:8080/public/customer/view
+Even though this `CustomerController` is a REST service, we can as well have a Spring MVC Controller registered at some URL, eg http://localhost:8080/public/customer/list
 
 <img src="../../../docs/img/diioc_layer.png" width="60%"/>
 
@@ -78,6 +78,17 @@ _This pattern is very important to understand and use: never store a password in
 #### Configure Spring Security
 
 All security-related configuration is done in `WebSecurityConfig.configure`. Follow the fluent config and check that you understand how this configuration works. You can always add or remove parts to verify your assumptions.
+
+### Run the application with security enabled
+
+* You have to sign up first as there are no users stored initially.
+* Access a restricted resource like "User Settings"
+* You will be redirected to the login screen. Signup here.
+
+<img src="../../../docs/img/diioc_layer.png" width="60%"/>
+
+* In the log file you will see an exception and a link. Click on this link.
+* Your user was created, login now with your credentials. 
 
 ### Challenge: Change the Configuration
 
