@@ -22,11 +22,11 @@ The Tariff-Manager application uses different types of customers for the calcula
 
 A `SpecialCustomer` will get 5% discount on the Tariff prices, a `VICustomer` will get 10% discount. 
 
-_Note: The classification of the `SpecialCustomer`, `VICustomer`, and `StandardCustomer` is not part of our system. Our system will get a marker for the Customer type on data import. For `StandardCustomers` the type (`StandardCustomerWithPotential`...) is derived from attributes like `lastPurchase` and `birthDate`._
-
 ### Data Model of Tariff-Manager Customers
 
 Depending on their rating (which is external to this system), `Customer` are ranked for `VI-Customer`, `SpecialCustomer`, or `StandardCustomer`.  
+
+_Note: The classification of the `SpecialCustomer`, `VICustomer`, and `StandardCustomer` is not part of our system. Our system will get a marker for the Customer type on data import. For `StandardCustomers` the type (`StandardCustomerWithPotential`...) is derived from attributes like `lastPurchase` and `birthDate`._
 
 A `StandardCustomer` can be further classfied as `StandardCustomerWithPotential`, `StandardCustomerNoPotential`, or `JuniorCustomer`. The criteria for any customer type are stated in the diagram.
 
