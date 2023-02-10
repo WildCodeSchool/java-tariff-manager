@@ -85,7 +85,7 @@ All security-related configuration is done in `WebSecurityConfig.configure`. Fol
 * Access a restricted resource like "User Settings"
 * You will be redirected to the login screen. Signup here.
 
-<img src="../../../docs/img/diioc_layer.png" width="60%"/>
+![](../../../docs/img/signup.png)
 
 * In the log file you will see an exception and a link. Click on this link.
 * Your user was created, login now with your credentials. 
