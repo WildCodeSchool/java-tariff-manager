@@ -55,6 +55,8 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
+_Note: Before testing, be sure to have data populated in the database. You can always recreate test data by executing unit test `InitialDatabaseSetupManualTest`._
+
 #### Calling the Service with Server-Side processing MVC and Client-side HTML Rendering
 
 We use Thymeleaf for server-side rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
