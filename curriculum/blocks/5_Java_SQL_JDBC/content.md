@@ -69,7 +69,7 @@ In [CustomerLegacyDao](../../../src/main/java/dev/wcs/nad/tariffmanager/persiste
 
 ### Challenge: Query Customers with plain JDBC
 
-_Note: You must have executed [InitialDatabaseSetupManualTest](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java) at least once to have test data generated in the database before running the steps below._ 
+_Note: You must have executed [InitialDatabaseSetupManualTest](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java) at least once to have test data generated in the database before running the steps below. You might have to delete the `data` folder before!_ 
 
 * Execute and follow the call sequence of unit test [CustomerJdbcTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerJdbcTest.java). 
 * Understand how the data travels from the database to the Java object model. 
