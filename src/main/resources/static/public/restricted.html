@@ -8,7 +8,9 @@
     <p>Welcome to your private page</p>
     <div>
         Logged user: <b><span sec:authentication="name"></span></b><br/>
-        Assigned Roles: <b><span sec:authentication="principal.authorities"></span></b>
+        <div sec:authorize="isAuthenticated()">
+            Assigned Roles: <b><span sec:authentication="principal.authorities"></span></b>
+        </div>
     </div>
     <br/>
     <a th:href="@{/public/logout}">Logout</a>
