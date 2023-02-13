@@ -20,6 +20,8 @@ In this quest you will learn about Securing your REST services with Authenticati
 
 ## Spring DI/IoC, Spring Boot and REST
 
+**_Note: To run this application, run the main class `TariffManagerApplication` and open http://localhost:8080/_**
+
 You saw this diagram in the Spring Boot REST session. With this setup, we can call `CustomerController` Endpoints (Methods) via HTTP and the call will ripple to the other layers of our application, like `CustomerService` and `CustomerRepository`.
 
 Even though this `CustomerController` is a REST service, we can as well have a Spring MVC Controller registered at some URL, eg http://localhost:8080/public/customer/list
