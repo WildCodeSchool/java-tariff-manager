@@ -90,17 +90,38 @@ All security-related configuration is done in `WebSecurityConfig.configure`. Fol
 * In the log file you will see an exception and a link. Click on this link.
 * Your user was created, login now with your credentials. 
 
-### Challenge: Change the Configuration
+### Change the Configuration Challenges
 
-Change the configuration to only allow authenticated Users to access the Customer list view site. Currently, all Users, even if not logged in, can access the Customer list view page.
+#### 🔬 Authentication & Authorization: Role-based Access Management
 
-#### Authentication & Authorization: Role-based Access Management 
+* To understand the difference between Authentication & Authorization look into [auth0 comparison](https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization).
+* Read more about Spring Security and the configuration [here](https://www.marcobehler.com/guides/spring-security).
 
-To understand the difference between Authentication & Authorization look into ... 
+### Challenge: Only Authenticated Users should see User Settings
 
-### Challenge: Add Roles to Check Customer Edit page
+Change the configuration to only allow **authenticated Users** to access the **restricted User Settings** site. Currently, all Users, even if not logged in, can access the **restricted User Setting** page.
 
-Change the configuration to only allow authenticated Users with the Role "BACKOFFICE" to access the Customer list view site. Currently, all Users, even if not logged in, can access the Customer list view page.
+To implement this requirement, add an URL-based Access Restriction on **/public/restricted/**.
 
-### Challenge: Add a Secured Admin Page with URL-based Access Restriction for Role ADMIN
+### Challenge: Add Roles to Check Customer List page
 
+Change the configuration to only allow authenticated Users with the Role **BACKOFFICE** (ie. only Users with Role **BACKOFFICE** are _authorized_) to access the **Customer list view** site. Currently, all Users, even if not logged in, can access the **Customer list view** page.
+To implement this requirement, add an URL-based Access Restriction on **/public/customer/**.
+
+For simplicity, the logic currently derives the Role from the mail address.
+
+```java
+if (this.getUsername().contains("admin@")) {
+    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+} else if (this.getUsername().contains("backoffice@")){
+    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_BACKOFFICE"));
+} else {
+    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+}
+```
+
+You will have to create a new User with eg. **backoffice@company.com** to have one user with the Role **BACKOFFICE**.
+
+### Challenge: Add a Secured Admin Page for Role ADMIN only
+
+The admin page is currently accessible for all Users! It should only be accessible for Users with Role **ADMIN**, add an URL-based Access Restriction on **/public/admin/**. 

@@ -12,13 +12,25 @@
                 </div>
             </div>
             <div class="container">
+                Welcome <b><span sec:authentication="name"></span></b>
+            </div>
+            <div class="container">
                 <a th:href="@{/public/customer/list}">Customer Section</a>
             </div>
             <div class="container">
                 <a th:href="@{/public/restricted/view}">User Settings</a>
             </div>
             <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
-                <a th:href="@{/public/admin/view}">Site Administration</a>
+                <a th:href="@{/public/admin/}">Site Administration</a>
+            </div>
+            <div class="container">
+                &nbsp;
+            </div>
+            <div class="container">
+                <a th:href="@{/public/sign-in}">Login</a>
+            </div>
+            <div class="container">
+                <a th:href="@{/public/logout}">Logout</a>
             </div>
     </body>
 </html>

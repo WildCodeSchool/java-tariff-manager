@@ -52,6 +52,8 @@ public class User {
         grantedAuthorities.add(new SimpleGrantedAuthority(id.toString()));
         if (this.getUsername().contains("admin@")) {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else if (this.getUsername().contains("backoffice@")){
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_BACKOFFICE"));
         } else {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         }

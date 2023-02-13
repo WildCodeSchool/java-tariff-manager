@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminView {
 
 
-    @GetMapping("/view")
+    @GetMapping("/")
     public String editview(Model model) {
         return "admin";
     }

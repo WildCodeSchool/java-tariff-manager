@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/public/*.html").denyAll()
             .antMatchers("/public/restricted/**").authenticated()
             .antMatchers("/public/admin/**").hasRole("ADMIN")
+            .antMatchers("/public/customer/**").hasRole("BACKOFFICE")
             .antMatchers("/public/**", "/", "/webjars/**", "/api/**", "/v3/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
             .permitAll()
             .anyRequest()
