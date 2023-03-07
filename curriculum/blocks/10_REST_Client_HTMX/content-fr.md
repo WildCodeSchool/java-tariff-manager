@@ -1,48 +1,44 @@
 # REST APIs and Spring MVC Server-Side Content Rendering
 
-In this quest you will learn about REST Clients like Single Page Applications (SPA) and the difference to Server-Side Rendering with Spring MVC. 
+Dans cette quête vous allez apprendre à créer un client REST dynamique et la différence avec le rendu côté serveur (Server-Side Rendering) de Spring MVC. 
 
-### What you will learn
+### Ce que vous allez apprendre
 
-* Differences between Spring MVC and Spring REST
-* Using htmx with Thymeleaf for Server-side processing with Client-side content rendering
+* Différences entre Spring MVC et Spring REST
+* Utiliser htmx with Thymeleaf for Server-side processing with Client-side content rendering
 
-### What you should know
+### Ce que vous devez savoir au préalable
 
-* Spring DI/IoC / Spring Boot
-* Creating REST APIs with Spring Boot
+* REST APIs avec Spring Boot
+* Spring DI/IoC
+* Spring Data / JPA
 
-### Prerequisites
+### Pré-requis
 
-* Locally cloned Repository
-* IDE (IntelliJ) with Gradle
+* Le repository cloné en local
+* IDE supportant Gradle
 * Java SDK 11+
 
-## Spring MVC vs Spring REST
+### Htmx pour du rendu dynamique HTML côté client (Client-Side)
 
-To understand why Spring Boot accelerates Web Application Development.
+Htmx est une librairie JavaScript assez récente permettant de faire du rendu HTML côté client (client dynamique) qui met l'accent sur l'utilisation de HTML plutôt que JavaScript. Une approche très différente de celle d'Angular. Dans cet exercice on l'utilise en combinaison avec Thymeleaf pour obtenir une app dynamique, mais en se concentrant sur le rendu serveur, et sans avoir besoin de mélanger avec du JS.
+Htmx permet de réaliser des requêtes AJAX très simplement, de déclencher des transitions CSS, et d'invoquer des WebSockets et des événements directement **depuis** des éléments HTML. Cela nécessiterait traditionnellement une quantité non négligeable de JavaScript même avec jQuery ou des frameworks plus modernes comme React ou Angular.
 
-### Htmx for Client-Side HTML Rendering
+### Comprendre le service REST "GetCustomers"
 
-Htmx is a quite new technology for Client-based HTML Rendering which focuses on the use of HTML more than JavaScript. We use it in combination with Thymeleaf to focus on Server-side processing in Java, rather than mixing in JavaScript.
-Htmx is a JavaScript library for performing AJAX requests, triggering CSS transitions, and invoking WebSocket and server-sent events directly from HTML elements which would typically require adding JavaScript like jQuery or more modular frameworks like React or Angular.
-In Block 12 we will dive into React as a modular JavaScript framework, in this Block we will focus on the difference between MVC and REST.
+Pour comprendre les différences entre les services REST JSON orientés données et les controllers Spring MVC à base de HTML, nous démarrons avec  *GetCustomer*.
 
-### Understand REST Service "GetCustomers"
+#### Appeler le service avec l'API Swagger-UI
 
-To understand the differences between data-oriented REST JSON Services and HTML-based Spring MVC, we start with the *GetCustomer* Service.
+Spring Boot active le plugin OpenAPI, qui va générer automatiquement la documentation de nos APIs au format standard OpenAPI, à l'emplacement suivant : http://localhost:8080/v3/api-docs
+Avec les informations fournies par OpenAPI, un client peut être généré. Avec la dépendance Swagger dans le `build.gradle` du projet, une UI de découverte de l'API est également générée à l'URL http://localhost:8080/swagger-ui.html
 
-#### Calling the Service with the generated Swagger-UI
-
-Spring Boot activates the OpenAPI plugin, which generates the OpenAPI-format for our services here: http://localhost:8080/v3/api-docs
-With the information provided in this OpenAPI-JSON, a client can be generated. With the Swagger dependency in the project's `gradle.build`, a generic Swagger client is generated from the JSON at http://localhost:8080/swagger-ui.html
-
-We can now use the generated Swagger-UI to call the *GetCustomer* REST Endpoint with *GET /customer* directly in the browser. The request and the response are both HTTP/JSON-based, so no markup is used to render the data human-readable.
+Nous pouvons maintenant utiliser cette UI pour appeler le endpoint REST *GetCustomer* avec *GET /customer* directement dans le browser. La requête et la réponse sont toutes deux en HTTP en JSON, donc aucune balise HTML n'est requise pour rendre les échanges lisibles.
 
 ![img.png](../../../docs/img/get_cust_rest.png)
 
-The `GetMapping` annotation defines the method which is called by the HTTP GET request to */customer* 
-Note that `application/json` is used as the default format, so the `CustomerDto` is automatically unmarshalled into JSON and returned with a HTTP Response.
+L'annotation `GetMapping` définit la méthode qui sera appelée par la requête */customer* 
+Noter que le type MIME `application/json` est utilisé comme un format par défaut, donc le `CustomerDto` est automatiquement converti en JSON et retourné dans la réponse HTTP.
 
 ```java
 @GetMapping("/customer")
@@ -55,17 +51,18 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
-#### Calling the Service with Server-Side processing MVC and Client-side HTML Rendering
+#### Appeler un service avec du Server-Side rendering MVC et du Client-side HTML Rendering avec Htmx
 
-We use Thymeleaf for server-side rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
-_Note: We use htmx for augmenting the HTML with server-side data, you can ignore this technique here and focus on the server processing with Spring Boot_
+Nous allons utiliser Thymeleaf pour le rendu serveur; C'est un langage de balises simple qui s'insère dans HTML pour effectuer un traitement sur le contenu de la vue **côté serveur** puis, une fois le HTML final généré, l'envoyer au client en tant que réponse HTTP (de type MIME `text/html` donc)
+
+_Note: Nous utilisons htmx pour améliorer l'aspect dynamique du HTML à partir des données fournies par le serveur. Bien qu'intéressante, la librairie Htmx n'est pas le propos de la formation et vous pouvez donc vous concentrez sur le rendu serveur Thymeleaf_
 
 ![](../../../docs/img/thymeleaf_htmx_mvc.png)
 
-* The model is responsible for managing the data of the application. It receives user input from the controller.
-* The view renders presentation of the model in a particular format.
-* The controller responds to the user input and performs interactions on the data model objects. The controller receives the input, optionally validates it and then passes the input to the model.
+* Le modèle véhicule les données de l'application. Il reçoit grâce au controller les valeurs saisies par l'utilisateur.
+* La vue présente un rendu du modèle correspondant au besoin de l'utilisateur
+* Le controller réagit aux saisies et aux actions de l'utilisateur et interagit avec le modèle conceptuel de l'application. Le controller reçoit les valeurs saisies, peut éventuellement les valider (présence / absence, format, ....), et les transmet au modèle.
 
 ![](../../../docs/img/thymeleaf_htmx.png)
 
-The server-side rendering uses Thymeleaf as a Template Engine. The Template Engine is responsible for augmenting the View (in our case HTML) with the current state of the Model (in our case Java Beans). Responsible for associating the View and the Model is the Controller (in our case Spring MVC).
+Le rendu côté serveur utilise Thymeleaf comme un moteur de template. Le moteur de template est chargé de garnir la vue (dans notre cas HTML) des données issues de l'état de l'application (données venant in fine de la base de données). Le controller, lui, est en charge de faire le lien entre la vue et le modèle (dans notre cas géré par Spring MVC).

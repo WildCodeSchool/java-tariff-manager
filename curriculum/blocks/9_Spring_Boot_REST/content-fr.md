@@ -1,36 +1,36 @@
 # REST APIs with Spring Boot
 
-In this quest you will learn about REST Services and how to rapidly build and document REST Service Interfaces with Spring Data JPA and Spring Boot. 
+Dans cette quête vous allez apprendre à créer une API REST rapide avec Spring Data, JPA et Spring Boot. 
 
-### What you will learn
+### Ce que vous allez apprendre
 
-* Spring Boot (Web Dev): Spring MVC & Spring Data
-* Spring Boot REST: OpenAPI, Swagger and JSON Data Binding
-* Securing REST Services with Spring Security
+* Spring REST
+* Services Spring
 
-### What you should know
+### Ce que vous devez savoir au préalable
 
 * Java Basics
 * Spring DI/IoC
-* Java Persistence with JDBC
+* Java et les bases de données relationnelles : JDBC
+* Persistence avec un ORM en Java / Spring : Spring Data / JPA
 
-### Prerequisites
+### Pré-requis
 
-* Locally cloned Repository
-* IDE (IntelliJ) with Gradle
+* Le repository cloné en local
+* IDE supportant Gradle
 * Java SDK 11+
 
 ## Spring DI/IoC, Spring Boot and REST
 
-To understand why Spring Boot accelerates Web Application Development 
+Pour comprendre comment Spring Boot accélère le développement d'applications Web 
 
 <img src="../../../docs/img/diioc_layer.png" width="80%"/>
 
-If you run the application, you can access the REST endpoint (`CustomerController.displayCustomer`) at http://localhost:8080/customer
+Si vous lancez cette application, vous pouvez accéder au endpoint REST (`CustomerController.displayCustomer`) à l'URL http://localhost:8080/customer
 
-The `CustomerController` is instantiated by the Spring Container and the object graph containing the `ContainerService` and the `ContainerRepository` in injected.
+Le `CustomerController` est instancié par le container Spring (IoC) et le graphe de dépendances est chargé et injecté (notamment `CustomerService` et `CustomerRepository`).
 
-With Spring Dependency Injection all required dependencies are provided during runtime. All layers requirements are met before the application startup is completed. With this guarantee, the components can focus on their requirements and do not have to take care about how these requirements are met (by the Spring Container runtime environment).
+Avec l'injection de dépendance Spring, toutes les dépendances requises sont évaluées et fournies à l'exécution (runtime). Toutes les contraintes liées aux dépendances entres les composants sont testées avant la fin du démarrage de l'appplication. Les composants ont donc la garantie de pouvoir utiliser leur dépendances, et se concentrer sur leur responsabilité, leur apport pour l'appication.
 
 ```java
 @GetMapping("/customer")
@@ -43,22 +43,22 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
-### Challenge: Add a new GET Endpoint with Result Set Filtering
+### Challenge: Ajouter un nouveau endpoint GET avec un filtrage de résultat
 
 ```
-A new Endpoint should be added for unrestricted access to products. 
-The Enpoint should verify the age of all customers who are 18 or older.
+Un nouveau endpoint du `CustomerController` doit être ajouté dans le contexte d'un ajout de fonctionnalité visant à fournir un accès sans restrictions. 
+Ce endpoint doit filtrer les customers pour ne garder que ceux qui ont 18 ans ou plus et les retourner.
 ```
 
-See here
+Étapes : 
 
-* After retrieving all customers from the database, create a `Stream` and filter for all customers aged 18 or older.
-* Make sure that a parameter `searchFilter` can be passed as a `QueryParam` to further filter the stream for all customers aged >= 18 and name startsWith searchFiler.
-* Pass the parameter searchFilter "down" further the layers to optimize performance (not loading all customers, with only the ones containing the searchFilter and age > 18).
+* Après avoir récupéré tous les customers de la base depuis le service, récupérez un `Stream` et filtrez les customers pour garder ceux de 18 ans ou plus.
+* Ajoutez un paramètre `QueryParam` pour filtrer encore davantage les customers : ce nouveau paramètre `searchFilter` doit permettre de ne garer que les customers dont le `name` commence par `searchFilter` 
+* Déplacer la prise en compte des filtres (age et `searchFilter`) dans une couche inférieure afin qu'ils soient pris en compte directement dans la requête SQL, dans le but d'optimiser les performances (cela évitera de charger **tous** les customers, mais seulement ceux dont le nom débute par `searchFilter` dont l'age est supérieur ou égal à `minAge`).
 
-### Challenge: Make maturity age Configurable
+### Challenge: Rendre l'âge de maturité configurable
 
-* Currently, the age (18) is hard wired into the Service. Use `application.properties` to make it configurable. You can choose the property name, you can also use `maturity.age`.
+* Actuellement, l'âge (18) est hard codé. Utiliser `application.properties` pour le rendre configurable. Vous pouvez choisir le nom de propriété qui vous convient, instinctivement on penserait à quelque chose comme `maturity.age`.
 
 ```java
 // Give DI/IoC Framework hints by Annotations, Depend on Interfaces only.

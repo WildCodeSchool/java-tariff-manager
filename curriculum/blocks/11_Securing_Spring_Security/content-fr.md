@@ -1,18 +1,18 @@
 # Securing REST Services with Spring Security
 
-In this quest you will learn about Securing your REST services with Authentication & Authorization using Spring Security.
+Dans cette quête vous allez apprendre Securing your REST services with Authentication & Authorization using Spring Security.
 
-### What you will learn
+### Ce que vous allez apprendre
 
 * Understandig Authentication & Authorization implementation of Spring Security
 * Securing REST services with Spring Security
 
-### What you should know
+### Ce que vous devez savoir au préalable
 
 * DI/IoC with the Spring Framework
 * Spring MVC and Spring REST
 
-### Prerequisites
+### Pré-requis
 
 * Locally cloned Repository
 * IDE (IntelliJ) with Gradle
