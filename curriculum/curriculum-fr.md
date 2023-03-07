@@ -34,11 +34,11 @@ Dans ce bloc, les étudiants se familiariseront avec les tests (unitaires notamm
 
 </details>
 
-### 5. Base de données relationnelle / SQL, persistance avec Java / JDBC
+### [5. Base de données relationnelle / SQL, persistance avec Java / JDBC](blocks/5_Java_SQL_JDBC/content-fr.md)
 
 Dans ce bloc, les étudiants accèderont à une BDD relationnelle par le biais de JDBC.
 
-### 6. Dependency Injection/Inversion of Control avec Spring](blocks/6_Spring_Introduction/content-fr.md)
+### [6. Dependency Injection/Inversion of Control avec Spring](blocks/6_Spring_Introduction/content-fr.md)
 
 Dans ce bloc, les étudiants apprendront comment implémenter un système modulaire, de niveau professionnel à l'aide d'un framework permettant l'injection de dépendance et l'inversion de contrôle.
 
