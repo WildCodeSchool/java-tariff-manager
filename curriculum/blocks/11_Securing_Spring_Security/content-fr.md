@@ -1,48 +1,50 @@
 # Securing REST Services with Spring Security
 
-Dans cette quête vous allez apprendre Securing your REST services with Authentication & Authorization using Spring Security.
+Dans cette quête vous allez apprendre à sécuriser vos services REST avec une Authentification & des Authorizations en utilisant Spring Security.
 
 ### Ce que vous allez apprendre
 
-* Understandig Authentication & Authorization implementation of Spring Security
-* Securing REST services with Spring Security
+* Comprendre l'Authentification & les Authorizations de Spring Security
+* Sécuriser des services REST avec Spring Security
 
 ### Ce que vous devez savoir au préalable
 
-* DI/IoC with the Spring Framework
-* Spring MVC and Spring REST
+* Spring MVC
+* REST APIs avec Spring Boot
+* Spring DI/IoC
+* Spring Data / JPA
 
 ### Pré-requis
 
-* Locally cloned Repository
-* IDE (IntelliJ) with Gradle
+* Le repository cloné en local
+* IDE supportant Gradle
 * Java SDK 11+
 
 ## Spring DI/IoC, Spring Boot and REST
 
-You saw this diagram in the Spring Boot REST session. With this setup, we can call `CustomerController` Endpoints (Methods) via HTTP and the call will ripple to the other layers of our application, like `CustomerService` and `CustomerRepository`.
+Dans la précédente session, vous avez vu ce diagramme. Avec cette configuration, vous pouvez appeler les endpoints de `CustomerController` (méthodes) via HTTP et ces appels vont mettre à contribution les différentes couches de votre application, comme `CustomerService` et `CustomerRepository`.
 
-Even though this `CustomerController` is a REST service, we can as well have a Spring MVC Controller registered at some URL, eg http://localhost:8080/public/customer/view
+Le `CustomerController` est un service REST, et nous pouvons avoir à côté un controller Spring MVC accessible pour compléter avec des vues, comme http://localhost:8080/public/customer/view
 
 <img src="../../../docs/img/diioc_layer.png" width="60%"/>
 
-The problem with this setup is that it is open and publicly accessible without any restrictions. Everyone with access to our server can access all Spring MVC Views and all REST Service Endpoints.
+Le problème avec cette app Spring est que les chemins sont visibles et accessible publiquement sans restrictions. Tout le monde peut accéder à notre serveur, à toutes les vues servies par Spring MVC et tous les endpoints des services REST.
 
-### Resource Protection with Spring Security
+### Protection des ressources avec Spring Security
 
 ![](../../../docs/img/security_filter_flow.png)
 
-### Authentication & Authorization Flow
+### Flow d'authentification & d'autorisation
 
 ![](../../../docs/img/spring_security_flow.png)
 
-### Walk-Through Spring Security Setup
+### Configuration Spring Security pas à pas 
 
-_Note: We will use Thymeleaf to render all HTML pages, therefore the access to *.html files is restricted. HTML is only served via Spring MVC and Thymeleaf._
+_Note: Nous allons utiliser Thymeleaf pour faire le rendu des pages HTML, donc l'accès aux fichiers *.html est restreint de base. Le HTML est seulement fourni aux clients par Spring MVC et Thymeleaf._
 
-So the `index.html` redirects to the Controller at */public/index/view*, which delegated to `indexview.html`
+Donc `index.html` redirige (côté client avec une balise `<meta ...>`) vers le controller correspondant au chemin */public/index/view*, qui délègue à `indexview.html`
 
-For the `RestrictedView` Controller we only want _authenticated_ Users to be able to access the page. 
+Dans le controller `RestrictedView`, nous voulons que seuls les utilisateurs _authentifiés_ aient accès à cette page. 
 
 ```java
 @Controller
@@ -56,40 +58,37 @@ public class RestrictedView {
 }
 ```
 
-To restrict the access to this Controller, we choose _URL-based access restriction_, not _Resourse-based access restriction_. This other option will be used in a later step.
-To enable URL-based access restrictions, we have to
+Pour restreindre l'accès à ce controller, nous choisissons de mettre en place une _restriction basée sur les URL_, et non une _restriction basée sur les ressources_. Cette autre option va arriver dans une étape ultérieure.
+Afin d'activer le filtrage basé sur l'URL, il nous faut :
 
-1. Enable User Sign-Up and Sign-In
-2. Enable Roles for Users
-3. Build a Security Filter Chain to validate authentication and authorization
-4. Configure the `UserRepository`, the `UserService` and password handling
+1. Activer la capacité d'un utilisateur à s'inscrire et à se connecter au système
+2. Ajouter des rôles (permettant d'allouer des autorisations) aux utilisateurs
+3. Construire une `Security Filter Chain` pour valider l'authentification et les autorisations
+4. Configurer le `UserRepository`, le `UserService` and password handling
 
-For reference: all necessary steps are explained in the Spring Guides: https://spring.io/guides/gs/securing-web/
+Référence complète: toutes les étapes nécessaires sont expliquées dans le guide Spring: https://spring.io/guides/gs/securing-web/
 
-#### User Handling (Sign-Up/Sign-In)
+#### Inscription / connexion des utilisateurs
 
-We start with the main configuration at [WebSecurityConfig](../../../src/main/java/dev/wcs/nad/tariffmanager/identity/config/WebSecurityConfig.java).
-You will see two classes which are injected per Constructor-injection with the Spring-Framework: `SecurityUserService` and `PasswordEncoder`.
+Nous démarrons avec la configuration principale, située dans la classe WebSecurityConfig (src/main/java/dev/wcs/nad/tariffmanager/identity/config/WebSecurityConfig.java).
 
-Follow the `SecurityUserService` to understand how the persistence of the Users is implemented. You will see many patterns from Spring Data JPA, but it's straightforward. The `PasswordEncoder` is used to strongly hash the User's password in a standardized way and only store the hashed password. Note that the password can never be derived from the stored hash, it only works the other way around, so the User's password is hashed and then compared to the stored hash.
+Vous trouverez deux classes injectées dans le constructeur: `SecurityUserService` and `PasswordEncoder`.
 
-_This pattern is very important to understand and use: never store a password in the database, not even an encrypted one._  
+Ouvrir le `SecurityUserService` pour comprendre comment la persistance des Users est implémentée. Vous allez reconnaitre plusieurs éléments, comme le JpaRepository, venant de Spring Data / JPA. Le `PasswordEncoder` est utilisé pour [hasher](https://fr.wikipedia.org/wiki/Fonction_de_hachage) le mot de passe de l'utilisateur d'une façon sécurisée. Spring Security nous garantit que cet encoder fournira une manière standard, et à jour de hasher nos mots de passe pour qu'ils soient stockés en base de données. *Rappel* : le hash permet de ne pas stocker directement le mot de passe en clair, et il n'est pas possible de retrouver le mot de passe à partir du hash. 
 
-#### Configure Spring Security
+_Cet aspect est très important on ne stocke jamais un mot de passe directement en base de données._  
 
-All security-related configuration is done in `WebSecurityConfig.configure`. Follow the fluent config and check that you understand how this configuration works. You can always add or remove parts to verify your assumptions.
+#### Configurer Spring Security
 
-### Challenge: Change the Configuration
+Toute la configuration relative à la sécurité est effectuée dans la méthode `WebSecurityConfig.configure`. Découvrez cette configuration à base d'[interface fluide](https://en.wikipedia.org/wiki/Fluent_interface) et vérifiez que vous comprenez les étapes de configuration. Si vous avez un doute, n'hésitez pas à ajouter retirer ou modifier une partie pour voir l'effet.
 
-Change the configuration to only allow authenticated Users to access the Customer list view site. Currently, all Users, even if not logged in, can access the Customer list view page.
+### Challenge : changer la Configuration
 
-#### Authentication & Authorization: Role-based Access Management 
+Changer la configuration pour autoriser uniquement les utilisateurs authentifiés à accéder à la vue liste des customers sur le site. Actuellement, tous les utilisateurs, même non connectés y ont accès.
 
-To understand the difference between Authentication & Authorization look into ... 
+### Challenge : Authentication & Authorization : Gestion des accès par rôle 
 
-### Challenge: Add Roles to Check Customer Edit page
+Puis restreindre encore davantage l'accès à cette section customers pour qu'elle ne soit plus accessible que par le rôle BACKOFFICE
 
-Change the configuration to only allow authenticated Users with the Role "BACKOFFICE" to access the Customer list view site. Currently, all Users, even if not logged in, can access the Customer list view page.
-
-### Challenge: Add a Secured Admin Page with URL-based Access Restriction for Role ADMIN
+### Challenge: Ajouter une page d'administration sécurisée par une restriction d'accès basée sur l'URL pour le rôle ADMIN
 
