@@ -1,6 +1,6 @@
 # Java et les bases de données relationnelles : JDBC
 
-In this quest you will learn about accessing relational databases with SQL and from Java with JDBC. 
+Dans cette quête vous allez apprendre comment accéder à des bases de données relationnelles SQL en Java avec JDBC. 
 
 ### Ce que vous allez apprendre
 
