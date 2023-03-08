@@ -22,11 +22,7 @@ public class AddressJdbcTest {
     public void shouldLoadAddressWithId2() {
         Optional<Address> firstAddress = addressLegacyDao.getByIdJava7Syntax(2);
         assertThat(firstAddress.isEmpty()).isFalse();
-<<<<<<< HEAD
-        assertThat(firstAddress.get().getId().equals("2"));
-=======
         assertThat(firstAddress.get().getId().toString().equals("2")).isTrue();
->>>>>>> block_5_initial
     }
 
 
