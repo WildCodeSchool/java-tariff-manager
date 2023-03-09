@@ -17,7 +17,7 @@ Dans cette quête vous allez apprendre à créer un client REST dynamique et la 
 
 * Le repository cloné en local
 * IDE supportant Gradle
-* Java SDK 11+
+* Java SDK 17+
 
 ### Htmx pour du rendu dynamique HTML côté client (Client-Side)
 

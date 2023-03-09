@@ -18,7 +18,7 @@ Dans cette quête vous allez apprendre à créer une API REST rapide avec Spring
 
 * Le repository cloné en local
 * IDE supportant Gradle
-* Java SDK 11+
+* Java SDK 17+
 
 ## Spring DI/IoC, Spring Boot and REST
 

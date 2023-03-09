@@ -18,7 +18,7 @@ Dans cette quête vous allez apprendre à sécuriser vos services REST avec une 
 
 * Le repository cloné en local
 * IDE supportant Gradle
-* Java SDK 11+
+* Java SDK 17+
 
 ## Spring DI/IoC, Spring Boot and REST
 

@@ -16,7 +16,7 @@ Dans cette quête vous allez apprendre à effectuer des requêtes vers une base 
 
 * Le repository cloné en local
 * IDE supportant Gradle
-* Java SDK 11+
+* Java SDK 17+
 
 ## Introduction à Java Persistence API (JPA)
 

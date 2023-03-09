@@ -17,7 +17,7 @@ Dans cette quête vous allez apprendre comment inverser le contrôle sur les ins
 
 * Le repository cloné en local
 * IDE supportant Gradle
-* Java SDK 11+
+* Java SDK 17+
 
 ### Inversion of Control and Dependency Injection
 

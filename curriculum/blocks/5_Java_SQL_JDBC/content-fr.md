@@ -16,7 +16,7 @@ Dans cette quête vous allez apprendre comment accéder à des bases de données
 
 * Le repository cloné en local
 * IDE supportant Gradle
-* Java SDK 11+
+* Java SDK 17+
 
 ### Accéder à une base de données relationnelle en Java
 
