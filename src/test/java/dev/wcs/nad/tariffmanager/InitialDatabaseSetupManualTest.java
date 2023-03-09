@@ -22,6 +22,7 @@ public class InitialDatabaseSetupManualTest {
     @Autowired private ContractRepository contractRepository;
     @Autowired private OptionRepository optionRepository;
     @Autowired private TariffRepository tariffRepository;
+    @Autowired private DepartmentRepository departmentRepository;
 
     @Test
     public void setupDatabase() {
@@ -40,7 +41,9 @@ public class InitialDatabaseSetupManualTest {
         // Create Tariffs & Contracts & Options
         for (int i=0; i<10; i++) {
             Option option = createFakeOption();
+            Department department = createFakeDepartment();
             Tariff tariff = createFakeTariff();
+            department.addTariff(tariff);
             tariff.getPossibleOptions().add(option);
             tariff = tariffRepository.save(tariff);
             Contract contract = createFakeContract();
@@ -105,6 +108,12 @@ public class InitialDatabaseSetupManualTest {
     private Contract createFakeContract() {
         Contract contract = new Contract();
         return contractRepository.save(contract);
+    }
+
+    private Department createFakeDepartment() {
+        Department department = new Department();
+        department.setName(faker.company().buzzword());
+        return departmentRepository.save(department);
     }
 
 }
