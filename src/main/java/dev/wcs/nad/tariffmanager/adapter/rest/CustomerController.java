@@ -7,6 +7,7 @@ import dev.wcs.nad.tariffmanager.mapper.mapstruct.EntityToDtoMapper;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 import dev.wcs.nad.tariffmanager.service.CustomerService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -24,13 +25,25 @@ public class CustomerController {
     }
 
     @GetMapping("/api/customers")
-    public List<CustomerDto> displayCustomers() {
+    public List<CustomerDto> displayCustomersWithLastnameFilter(@RequestParam(value = "lastname", required = false) String lastname) {
         List<CustomerDto> customerDtos = new ArrayList<>();
-        for (Customer customer: customerService.readAllCustomers()) {
+        Iterable<Customer> relevantCustomers = StringUtils.hasText(lastname) ? customerService.filterOfLegalAgeAndLastname(lastname) : customerService.readAllCustomers();
+        for (Customer customer: relevantCustomers) {
             customerDtos.add(entityToDtoMapper.customerToCustomerDto(customer));
         }
         return customerDtos;
     }
+
+    @GetMapping("/api/customersOfLegalAge")
+    public List<CustomerDto> displayCustomersOfLegalAge(@RequestParam(name = "lastname", required = false) String lastname) {
+        List<CustomerDto> customerDtos = new ArrayList<>();
+        Iterable<Customer> relevantCustomers = StringUtils.hasText(lastname) ? customerService.filterOfLegalAgeAndLastname(lastname) : customerService.filterOfLegalAgeCustomersInRepository();
+        for (Customer customer: relevantCustomers) {
+            customerDtos.add(entityToDtoMapper.customerToCustomerDto(customer));
+        }
+        return customerDtos;
+    }
+
 
     @PostMapping("/api/customers")
     public ResponseEntity<CustomerDto> createCustomer(@RequestBody CreateCustomerDto createCustomerDto) {
