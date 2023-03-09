@@ -4,7 +4,6 @@ import dev.wcs.nad.tariffmanager.customer.model.Customer;
 import dev.wcs.nad.tariffmanager.customer.model.SpecialCustomer;
 import dev.wcs.nad.tariffmanager.customer.model.StandardCustomerNoPotential;
 import dev.wcs.nad.tariffmanager.customer.model.VICustomer;
-import dev.wcs.nad.tariffmanager.customer.reporting.CustomerImporter;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -19,7 +18,7 @@ public class CustomerTest {
     @Test
     public void shouldCreateDifferentCustomersWithDifferentDiscounts() {
         Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        Customer achim24 = new SpecialCustomer(5, "1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // getEmail is a method on Customer and can be invoced on any sub class
@@ -40,7 +39,7 @@ public class CustomerTest {
     @Test
     public void shouldImplementFilterOnGenericPropertiesLikeName() {
         Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        Customer achim24 = new SpecialCustomer(0, "1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
         List<Customer> customers = List.of(alfred22, achim24, egon54);
 
@@ -59,7 +58,7 @@ public class CustomerTest {
     public void shouldImplementLogicOnBaseMethods() {
         // Arrange
         Customer alfred22 = new VICustomer("1", "Alfred", "alfred@web.de", LocalDate.now().minusYears(22), LocalDate.now().minusDays(100));
-        Customer achim24 = new SpecialCustomer("1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
+        Customer achim24 = new SpecialCustomer(0, "1", "Achim", "achim@web.de", LocalDate.now().minusYears(24), LocalDate.now().minusDays(100));
         Customer egon54 = new StandardCustomerNoPotential("1", "Egon", "egon@web.de", LocalDate.now().minusYears(54), LocalDate.now().minusDays(100));
 
         // Act
