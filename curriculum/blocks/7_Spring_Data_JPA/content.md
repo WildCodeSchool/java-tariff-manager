@@ -143,7 +143,25 @@ private Contact contact;
 
 ### Challenge: Add a new Entity `Department` 
 
-* `Tariff` has a n..0 (many-to-zero_or_one) relation to a new entity `Department`, which specifies which internal department is responsible for the `Tariff`
-* Create a repository for `Department` which allows for reading, creating and updating `Department` entities (interface method: ...)
-* In the unit test a `Tariff` is created. Modify the test: Create and persist a new `Department`. Make sure that each time a `Tariff` is created, this `Department` is associated and persistet.
+_Note: If you get errors during test or application startup, delete the generated folder `data` with the database._
 
+* `Tariff` has a n..0 (many-to-zero_or_one) relation to a new entity `Department`, which specifies which internal department is responsible for the `Tariff`
+* Create a repository for `Department` which allows for reading, creating and updating `Department` entities
+* In the unit test [InitialDatabaseSetupManualTest](../../../src/test/java/dev/wcs/nad/tariffmanager/InitialDatabaseSetupManualTest.java)  a `Tariff` is created. Modify the test: Create and persist a new `Department`. Make sure that each time a `Tariff` is created, this `Department` is associated and persistet (bidirectionally!).
+* Add an (integration) unit test like the one below which should print all 10 `Department` after you run the `InitialDatabaseSetupManualTest` once.
+
+```java
+@SpringBootTest
+public class DepartmentTest {
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
+
+    @Test
+    public void shouldReturnAllDepartments() {
+        departmentRepository.findAll().forEach(it -> {
+            System.out.println(it.getName());
+        });
+    }
+}
+```

@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class JuniorCustomer extends StandardCustomer {
 
-    private int discountPercentage;
+    private final double discount;
 
-    public JuniorCustomer(int discountPercentage, String id, String name, String email, LocalDate birthDate, LocalDate lastPurchase) {
+    public JuniorCustomer(double discount, String id, String name, String email, LocalDate birthDate, LocalDate lastPurchase) {
         super(id, name, email, birthDate, lastPurchase);
-        this.discountPercentage = discountPercentage;
+        this.discount = discount;
     }
 
     @Override
     public double calculateDiscountedPrice(int value) {
-        return value - (value / discountPercentage);
+        return value - (value * (discount / 100));
     }
 
 }
