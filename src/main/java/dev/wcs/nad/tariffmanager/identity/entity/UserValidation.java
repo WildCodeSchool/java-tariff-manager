@@ -4,7 +4,7 @@ package dev.wcs.nad.tariffmanager.identity.entity;
 import dev.wcs.nad.tariffmanager.identity.user.TimeUtil;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Calendar;

@@ -5,7 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
