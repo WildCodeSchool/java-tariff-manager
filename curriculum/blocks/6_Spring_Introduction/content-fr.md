@@ -1,6 +1,6 @@
 # Spring IoC / DI
 
-Dans cette quête vous allez apprendre comment créer un service, le confi using JPA. 
+Dans cette quête vous allez apprendre comment inverser le contrôle sur les instanciations grâce à l'injection de dépendances Spring. 
 
 ### Ce que vous allez apprendre
 
