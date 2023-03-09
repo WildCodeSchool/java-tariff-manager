@@ -24,7 +24,19 @@ L'enjeu est de fournir une immersion dans un projet thématique similaire à ce 
 * RESTful Web Services
 * Build Tool Maven 
 * Spring Framework (Spring Boot, Spring Data JPA)
-* MySQL
+* Base de données : H2
+
+##### Base de données H2
+
+⚠️ Vous allez découvrir un nouveau type de base de données minimaliste dont le moteur est H2. 
+
+Ce système est assez pratique car la base est stockée dans un seul fichier. Ce SGBD minimaliste est écrit en pur Java.
+
+Un autre énorme avantage, c'est que Spring Boot + H2 génèrent une web UI pour parcourir la base de données. Pour y accéder : 
+
+* Rendez vous sur http://localhost:8080/h2-console/login.jsp & utiliser JDBC URL `jdbc:h2:./data/tariff` , le username : `sa` et **aucun** mot de passe
+* Tester cette requête sur l'UI : `SELECT * FROM CUSTOMER WHERE FIRSTNAME='Herbert'` qui doit retourner le customer en question. 
+
 
 #### Client
 
