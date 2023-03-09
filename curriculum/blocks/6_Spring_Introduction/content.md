@@ -101,6 +101,3 @@ The default Spring Boot Configuration is in [application.properties](../../../sr
 * Add the Mapper as a Spring component (with the `@Component` annotation), use it in the Service class to map between both types of objects.
 * See [CustomerMapperTest](../../../src/test/java/dev/wcs/nad/tariffmanager/customer/CustomerMapperTest.java) unit test to understand how test can be written for Spring components. 
 * Extend the `CustomerMapperTest.shouldMapObjects` unit test for the Service methods `convertEntityToDto` and `mapDtoToEntity` with the injected Mapper object.
-
-_TODO: Add 2 solutions: manual/Lombok and MapStruct_
-
