@@ -20,6 +20,7 @@
                     <td th:text="${customer.birthdate}" />
                     <td><a th:href="@{/public/customer/{id}/contracts/view(id=${customer.id})}">Show</a></td>
                     <td><a th:href="@{/public/customer/edit/{id}(id=${customer.id})}">Edit</a></td>
+                    <!-- Challenge: Add the new column here with a link to /public/customer/{customerId}/contracts/view -->
                 </tr>
                 </table>
             </div>

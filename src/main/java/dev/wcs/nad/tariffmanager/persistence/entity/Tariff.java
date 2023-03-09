@@ -3,7 +3,7 @@ package dev.wcs.nad.tariffmanager.persistence.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -27,5 +27,9 @@ public class Tariff {
             joinColumns = @JoinColumn(name = "tariff_id"),
             inverseJoinColumns = @JoinColumn(name = "options_id"))
     private Set<Option> possibleOptions = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 }
