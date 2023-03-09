@@ -11,13 +11,16 @@
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Birthdate</th>
+                    <th>Show Contracts</th>
                     <th>Edit...</th>
                 </tr>
                 <tr th:each="customer: ${customers}">
                     <td th:text="${customer.firstname}" />
                     <td th:text="${customer.lastname}" />
                     <td th:text="${customer.birthdate}" />
+                    <td><a th:href="@{/public/customer/{id}/contracts/view(id=${customer.id})}">Show</a></td>
                     <td><a th:href="@{/public/customer/edit/{id}(id=${customer.id})}">Edit</a></td>
+                    <!-- Challenge: Add the new column here with a link to /public/customer/{customerId}/contracts/view -->
                 </tr>
                 </table>
                 <br/>
