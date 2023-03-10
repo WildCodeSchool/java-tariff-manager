@@ -9,16 +9,15 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
     private final SecurityUserService userService;
-
     private final PasswordEncoder passwordEncoder;
 
     public WebSecurityConfig(SecurityUserService userService, PasswordEncoder passwordEncoder) {
@@ -26,17 +25,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        
         http.csrf().disable();
         // Only allow frames if using h2 as the database for console
         http.headers().frameOptions().disable();
-        http.authorizeRequests()
-            .antMatchers("/public/*.html").denyAll()
-            .antMatchers("/public/restricted/**").authenticated()
-            .antMatchers("/public/admin/**").hasRole("ADMIN")
-            .antMatchers("/public/customer/**").hasRole("BACKOFFICE")
-            .antMatchers("/public/**", "/", "/webjars/**", "/api/**", "/v3/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
+        http.authorizeHttpRequests()
+            .requestMatchers("/public/*.html").denyAll()
+                // add authentication & authorization for admin, backoffice and user settings here
+            .requestMatchers("/public/**", "/", "/webjars/**", "/api/**", "/v3/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
             .permitAll()
             .anyRequest()
             .authenticated()
@@ -55,6 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/public/index")
                 .deleteCookies("JSESSIONID");
+
+
+        return http.build();
     }
 
     @Autowired
