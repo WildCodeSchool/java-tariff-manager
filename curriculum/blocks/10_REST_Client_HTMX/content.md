@@ -55,6 +55,8 @@ public List<CustomerDto> displayCustomers() {
 }
 ```
 
+_Note: Before testing, be sure to have data populated in the database. You can always recreate test data by executing unit test `InitialDatabaseSetupManualTest`._
+
 #### Calling the Service with Server-Side processing MVC and Client-side HTML Rendering
 
 We use Thymeleaf for server-side rendering, ie. a simple markup language is used in the HTML to process the content on the server and deliver the result as a HTTP Response in HTML.
@@ -69,3 +71,17 @@ _Note: We use htmx for augmenting the HTML with server-side data, you can ignore
 ![](../../../docs/img/thymeleaf_htmx.png)
 
 The server-side rendering uses Thymeleaf as a Template Engine. The Template Engine is responsible for augmenting the View (in our case HTML) with the current state of the Model (in our case Java Beans). Responsible for associating the View and the Model is the Controller (in our case Spring MVC).
+
+## Challenge: Add a Contracts View Page
+
+We want to add an overview of all `Contracts` which are associated to a `Customer`.
+
+1. Add a new column *Show Contracts* to the Customer table with each link pointing to the `Controller` GET method.
+
+![](../../../docs/img/contractsListView.png)
+
+2. Add a new View page similar to the Customer page
+
+![](../../../docs/img/contractsDetailsView.png)
+
+3. Implement the `ContractService` method for retrieving the `Contracts` for a `Customer`.

@@ -8,8 +8,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.mail.AuthenticationFailedException;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.mail.AuthenticationFailedException;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.BAD_PASSWORD_RESET;

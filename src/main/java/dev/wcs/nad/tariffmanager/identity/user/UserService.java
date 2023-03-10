@@ -7,7 +7,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.mail.AuthenticationFailedException;
+import jakarta.mail.AuthenticationFailedException;
 import java.util.Optional;
 
 import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.*;
