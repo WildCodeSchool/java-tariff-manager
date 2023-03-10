@@ -23,7 +23,7 @@ public class CustomerService {
     // Challenge: Make legalAge configurable
     private final int legalAge = 18;
 
-    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository, ContactRepository contactRepository, @Value("${maturity.age}") int maturityAge) {
+    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository, ContactRepository contactRepository) {
         this.customerRepository = customerRepository;
         this.addressRepository = addressRepository;
         this.contactRepository = contactRepository;
