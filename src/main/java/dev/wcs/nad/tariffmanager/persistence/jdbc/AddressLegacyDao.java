@@ -21,7 +21,22 @@ public class AddressLegacyDao {
     }
 
     public Optional<Address> getByIdJava7Syntax(long id) {
-        // Challenge: Add the retrieval of the Address ResultSet and the Mapping to an instance of Address here.
+        
+        try (Connection connection = dataSource.getConnection();
+ 
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ADDRESS WHERE ID=?")) {
+            stmt.setLong(1, id);
+
+            try (ResultSet resultSet = stmt.executeQuery()) {
+                while (resultSet.next()) {
+                    Address address = new Address();
+                    address.setId(id);
+                    return Optional.of(address);
+                }
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
         return Optional.empty();
     }
 
