@@ -20,7 +20,7 @@ public class CustomerJdbcTest {
     public void shouldLoadCustomerWithId1() {
         Optional<Customer> firstCustomer = customerLegacyDao.getByIdJava7Syntax(1);
         assertThat(firstCustomer.isEmpty()).isFalse();
-        assertThat(firstCustomer.get().getId().equals("1"));
+        assertThat(firstCustomer.get().getId().equals("1")).isTrue();
     }
 
 

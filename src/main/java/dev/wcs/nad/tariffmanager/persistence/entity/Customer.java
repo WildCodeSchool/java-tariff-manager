@@ -3,7 +3,7 @@ package dev.wcs.nad.tariffmanager.persistence.entity;
 import dev.wcs.nad.tariffmanager.customer.model.shared.CustomerType;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
