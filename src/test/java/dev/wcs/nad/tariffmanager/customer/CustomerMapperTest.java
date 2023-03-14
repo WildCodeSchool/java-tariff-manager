@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
 import dev.wcs.nad.tariffmanager.mapper.simple.CustomerMapper;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
+import org.apache.commons.lang3.NotImplementedException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
