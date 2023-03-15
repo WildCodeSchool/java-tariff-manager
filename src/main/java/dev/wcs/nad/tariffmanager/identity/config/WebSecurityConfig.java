@@ -32,12 +32,7 @@ public class WebSecurityConfig {
         // Only allow frames if using h2 as the database for console
         http.headers().frameOptions().disable();
         http.authorizeHttpRequests()
-            .requestMatchers("/public/*.html").denyAll()
-                // add authentication & authorization for admin, backoffice and user settings here
-            .requestMatchers("/public/**", "/", "/webjars/**", "/api/**", "/v3/**", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
+        .anyRequest().permitAll()
         .and()
             .formLogin()
                 .loginPage("/public/sign-in").permitAll()

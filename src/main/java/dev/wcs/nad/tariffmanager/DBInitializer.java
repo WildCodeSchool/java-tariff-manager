@@ -1,14 +1,33 @@
 package dev.wcs.nad.tariffmanager;
 
-import com.github.javafaker.Faker;
-import dev.wcs.nad.tariffmanager.persistence.entity.*;
-import dev.wcs.nad.tariffmanager.persistence.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.github.javafaker.Faker;
+
+import dev.wcs.nad.tariffmanager.identity.user.UserRepository;
+import dev.wcs.nad.tariffmanager.persistence.entity.Address;
+import dev.wcs.nad.tariffmanager.persistence.entity.Contact;
+import dev.wcs.nad.tariffmanager.persistence.entity.Contract;
+import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
+import dev.wcs.nad.tariffmanager.persistence.entity.Department;
+import dev.wcs.nad.tariffmanager.persistence.entity.Option;
+import dev.wcs.nad.tariffmanager.persistence.entity.Tariff;
+import dev.wcs.nad.tariffmanager.identity.entity.User;
+import dev.wcs.nad.tariffmanager.persistence.repository.AddressRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.ContactRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.ContractRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.CustomerRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.DepartmentRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.OptionRepository;
+import dev.wcs.nad.tariffmanager.persistence.repository.TariffRepository;
 
 @Service
 public class DBInitializer {
@@ -22,10 +41,23 @@ public class DBInitializer {
     @Autowired private OptionRepository optionRepository;
     @Autowired private TariffRepository tariffRepository;
     @Autowired private DepartmentRepository departmentRepository;
+    
+    @Autowired private UserRepository userRepository;
+    @Autowired private PasswordEncoder passwordEncoder;
 
     private final static int FAKE_COUNT = 50;
 
     public void setupDatabaseIfNotDoneYet() {
+        userRepository.deleteAll();
+        if (userRepository.count() <= 0) {
+            var user = new User("user@wcs.com", passwordEncoder.encode("user"));
+            var admin = new User("admin@wcs.com", passwordEncoder.encode("admin"));
+            var backofficeUser = new User("backoffice@wcs.com", passwordEncoder.encode("backoffice"));
+            userRepository.save(user);
+            userRepository.save(admin);
+            userRepository.save(backofficeUser);
+        }
+
         if (customerRepository.count() > 0) {
             return;
         }
