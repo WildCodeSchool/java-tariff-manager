@@ -7,8 +7,13 @@
 <section layout:fragment="content">
     <p><span style="color: red; ">Welcome Admin!</span></p>
     <div>
-        Logged user: <b><span sec:authentication="name"></span></b><br/>
-        Assigned Roles: <b><span sec:authentication="principal.authorities"></span></b>
+        
+        <div th:each="user: ${users}">
+
+            <div th:text="${user.username}"></div>
+
+        </div>
+
     </div>
     <br/>
     <a th:href="@{/public/index}">Back</a>

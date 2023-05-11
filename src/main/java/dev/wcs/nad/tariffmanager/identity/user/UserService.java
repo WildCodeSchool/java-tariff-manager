@@ -1,16 +1,22 @@
 package dev.wcs.nad.tariffmanager.identity.user;
 
-import dev.wcs.nad.tariffmanager.identity.entity.User;
-import dev.wcs.nad.tariffmanager.identity.entity.UserValidation;
+import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.BAD_EMAIL;
+import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.BAD_LOGIN;
+import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.BAD_PASSWORD;
+import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.BAD_PASSWORD_RESET;
+import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.BAD_TOKEN;
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import dev.wcs.nad.tariffmanager.identity.entity.User;
+import dev.wcs.nad.tariffmanager.identity.entity.UserValidation;
 import jakarta.mail.AuthenticationFailedException;
-import java.util.Optional;
-
-import static dev.wcs.nad.tariffmanager.identity.user.IdentityServiceException.Reason.*;
 
 @Service
 public class UserService {
@@ -184,6 +190,15 @@ public class UserService {
 
     public Optional<User> findUser(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    public List<User> findUsers(Optional<String> roleFilter) {
+        if (roleFilter.isPresent()) {
+            String emailPrefix = roleFilter.get() + "@";
+            return userRepository.findByUsernameStartingWithIgnoreCase(emailPrefix);
+        } else {
+            return userRepository.findAll();
+        }
     }
 
     public User update(User user) {

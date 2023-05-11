@@ -31,8 +31,13 @@ public class WebSecurityConfig {
         http.csrf().disable();
         // Only allow frames if using h2 as the database for console
         http.headers().frameOptions().disable();
-        http.authorizeHttpRequests()
-        .anyRequest().permitAll()
+        http
+            .authorizeHttpRequests()
+            .requestMatchers("/public/admin")
+                .hasAnyRole("ADMIN")
+            .requestMatchers("/public/customer/**")
+                .hasAnyRole("ADMIN", "BACKOFFICE")
+            .anyRequest().permitAll()
         .and()
             .formLogin()
                 .loginPage("/public/sign-in").permitAll()

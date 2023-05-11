@@ -34,15 +34,12 @@ dependencies {
 	// TODO: change to testImpl again
 	implementation ('com.github.javafaker:javafaker:1.0.2') { exclude module: 'snakeyaml' }
 	runtimeOnly 'com.h2database:h2'
+	testImplementation 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-	// hot reload in development
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.named('test') {
