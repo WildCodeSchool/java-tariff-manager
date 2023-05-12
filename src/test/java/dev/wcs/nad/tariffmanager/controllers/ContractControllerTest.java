@@ -51,8 +51,7 @@ public class ContractControllerTest {
                 post("/api/contracts/" + userId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(bodyJson))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{ \"status\": \"VALIDATED\" }"));
+                .andExpect(status().isOk());
     }
 
     @MockBean

@@ -7,6 +7,7 @@ plugins {
 group = 'dev.wcs.nad'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+def cucumberVersion = '7.11.2'
 
 configurations {
 	compileOnly {
@@ -36,10 +37,19 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
+
+	implementation 'org.springframework.security:spring-security-test:6.0.3'
+
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testImplementation "org.junit.platform:junit-platform-suite:1.9.2"
+	testImplementation "io.cucumber:cucumber-java:$cucumberVersion"
+	testImplementation "io.cucumber:cucumber-junit:$cucumberVersion"
+	testImplementation "io.cucumber:cucumber-spring:$cucumberVersion"
+	testImplementation "io.cucumber:cucumber-junit-platform-engine:$cucumberVersion"
 }
 
 tasks.named('test') {
