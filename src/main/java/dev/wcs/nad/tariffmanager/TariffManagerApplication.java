@@ -13,14 +13,14 @@ public class TariffManagerApplication {
 		SpringApplication.run(TariffManagerApplication.class, args);
 	}
 
-	//@Autowired
+	@Autowired
 	DBInitializer dbInitializer;
 
 	@EventListener 
 	public void onAppStarted(ApplicationStartedEvent event) {
 		System.out.println("started app - init data");
 		// generate some data for customers and contracts
-	//	dbInitializer.setupDatabaseIfNotDoneYet();
+		dbInitializer.setupDatabaseIfNotDoneYet();
 	}
 
 }

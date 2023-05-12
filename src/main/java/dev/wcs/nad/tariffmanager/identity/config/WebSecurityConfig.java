@@ -1,9 +1,9 @@
 package dev.wcs.nad.tariffmanager.identity.config;
 
-import dev.wcs.nad.tariffmanager.identity.user.SecurityUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import dev.wcs.nad.tariffmanager.identity.user.SecurityUserService;
 
 @Configuration
 @EnableWebSecurity
@@ -25,9 +27,25 @@ public class WebSecurityConfig {
         this.passwordEncoder = passwordEncoder;
     }
 
+
+    @Profile("tests")
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        
+	public SecurityFilterChain filterChainTest(HttpSecurity http) throws Exception {
+        System.out.println("enable TEST security configuration");
+        http.csrf().disable();
+        http
+            .authorizeHttpRequests()
+            .anyRequest().permitAll();
+
+
+        return http.build();
+    }
+
+    @Profile("!tests")
+    @Bean
+	public SecurityFilterChain filterChainNormal(HttpSecurity http) throws Exception {
+        System.out.println("enable NORMAL security configuration");
+
         http.csrf().disable();
         // Only allow frames if using h2 as the database for console
         http.headers().frameOptions().disable();

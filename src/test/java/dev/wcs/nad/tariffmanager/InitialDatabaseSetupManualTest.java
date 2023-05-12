@@ -1,11 +1,15 @@
 package dev.wcs.nad.tariffmanager;
 
 import com.github.javafaker.Faker;
+
+import dev.wcs.nad.tariffmanager.identity.user.EmailSenderService;
+import dev.wcs.nad.tariffmanager.identity.user.UserService;
 import dev.wcs.nad.tariffmanager.persistence.entity.*;
 import dev.wcs.nad.tariffmanager.persistence.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.math.BigDecimal;
 import java.time.ZoneId;
@@ -23,7 +27,8 @@ public class InitialDatabaseSetupManualTest {
     @Autowired private OptionRepository optionRepository;
     @Autowired private TariffRepository tariffRepository;
     @Autowired private DepartmentRepository departmentRepository;
-
+    @MockBean UserService userService;
+    
     @Test
     public void setupDatabase() {
         // Create customers

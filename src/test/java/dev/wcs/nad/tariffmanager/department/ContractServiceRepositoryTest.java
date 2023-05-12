@@ -1,24 +1,28 @@
 package dev.wcs.nad.tariffmanager.department;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.wcs.nad.tariffmanager.DBInitializer;
 import dev.wcs.nad.tariffmanager.persistence.entity.Contract;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 import dev.wcs.nad.tariffmanager.persistence.repository.ContractRepository;
 import dev.wcs.nad.tariffmanager.persistence.repository.CustomerRepository;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 @DataJpaTest
+
 public class ContractServiceRepositoryTest {
 
     @Autowired
@@ -26,6 +30,8 @@ public class ContractServiceRepositoryTest {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @MockBean DBInitializer dbInitializer;
 
     private Customer testCustomer;
     private StopWatch watch = new StopWatch();
