@@ -16,7 +16,7 @@ import io.cucumber.java.fr.Quand;
 
 public class ContractSteps {
 
-    @Autowired CustomerRepository customerRepository;
+    @Autowired ParamHelper paramHelper;
     @Autowired ContractService contractService;
     @Autowired TariffRepository tariffRepository;
 
@@ -25,7 +25,7 @@ public class ContractSteps {
     public void createContract(String customerName, String tariffName) {
         System.out.println("createContract - customerName=" + customerName + " tariffName=" + tariffName);
         Tariff tariff = tariffRepository.findByName(tariffName).get();
-        Customer customer = getCustomerByName(customerName);
+        Customer customer = paramHelper.getCustomerByName(customerName);
         contractService.assignContractToCustomer(customer.getId(), tariff.getId(),tariff.getPossibleOptions().stream().map(o -> o.getId()).findFirst().orElse(null));
     }
 
@@ -33,7 +33,7 @@ public class ContractSteps {
     @Transactional
     public void assertCustomerContractsCount(String customerName, int contractCount) {
         System.out.println("assertCustomerContractsCount - customerName=" + customerName + " contractCount=" + contractCount);
-        Customer customer = getCustomerByName(customerName);
+        Customer customer = paramHelper.getCustomerByName(customerName);
         assertEquals(contractCount, customer.getContracts().size());
     }
 
@@ -41,15 +41,9 @@ public class ContractSteps {
     @Transactional
     public void assertCustomerContractTariffName(int contractIndex, String customerName, String tariffName) {
         System.out.println("assertCustomerContractTariffName - contractIndex=" + contractIndex + " customerName=" + customerName + " tariffName=" + tariffName);
-        Customer customer = getCustomerByName(customerName);
+        Customer customer = paramHelper.getCustomerByName(customerName);
         assertTrue(contractIndex <= customer.getContracts().size());
         assertEquals(tariffName, customer.getContracts().get(contractIndex - 1).getTariff().getName());
     }
 
-    private Customer getCustomerByName(String name) {
-        String firstName = name.split("[ ]")[0];
-        String lastName = name.split("[ ]")[1];
-        Customer customer = customerRepository.findByFirstnameAndLastname(firstName, lastName).get();
-        return customer;
-    }
 }
