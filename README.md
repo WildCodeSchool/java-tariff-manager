@@ -225,6 +225,18 @@ spring.h2.console.enabled=true
 spring.jpa.hibernate.ddl-auto=update
 ```
 
+## Tests 
+
+Run all tests with :
+```
+./gradlew clean test --stacktrace --info
+```
+
+Run constantly cucumber tests only with :
+```
+./gradlew clean test --stacktrace --continuous --info --tests 'dev.wcs.nad.tariffmanager.cucumber.CucumberTestSuite'
+```
+
 ## Spring Boot Specifics
 
 ### Developer Database

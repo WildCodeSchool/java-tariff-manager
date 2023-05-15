@@ -3,6 +3,7 @@ package dev.wcs.nad.tariffmanager.department;
 
 import java.util.List;
 
+import dev.wcs.nad.tariffmanager.DBInitializer;
 import dev.wcs.nad.tariffmanager.persistence.entity.Contract;
 import dev.wcs.nad.tariffmanager.persistence.entity.Tariff;
 import dev.wcs.nad.tariffmanager.persistence.repository.ContractRepository;
@@ -22,8 +23,8 @@ public class ContractServiceTest {
     @Autowired
     private ContractService contractService;
 
-    @MockBean
-    private ContractRepository contractRepository;
+    @MockBean ContractRepository contractRepository;
+    @MockBean DBInitializer dbInitializer;
     @Mock
     private Contract c1;
     @Mock
@@ -42,5 +43,7 @@ public class ContractServiceTest {
         
         assertEquals(2, contracts.size());
         assertEquals("My tariff", contracts.get(0).getTariff().getName());
+
+        
     }
 }

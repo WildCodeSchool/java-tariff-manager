@@ -17,7 +17,7 @@ public class CustomerSteps {
 
     @Etantdonné("le(s) client(s) suivant(s):")
     public void givenCustomers(List<List<String>> data) {
-        System.out.println("customersData: " + data);
+        System.out.println("customersData:  " + data);
 
         for (List<String> customerData : data) {
             var customer = new Customer();

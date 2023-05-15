@@ -1,16 +1,16 @@
 package dev.wcs.nad.tariffmanager.persistence.repository;
 
-import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
+import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
+import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+    Optional<Customer> findByFirstnameAndLastname(String firstname,String lastname);
 
     Iterable<Customer> findAllByBirthdateIsBefore(LocalDate maturityDate);
 
