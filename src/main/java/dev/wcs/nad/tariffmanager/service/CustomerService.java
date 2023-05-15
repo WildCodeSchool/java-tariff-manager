@@ -37,18 +37,22 @@ public class CustomerService {
     public Customer createCustomer(Customer customerEntity) {
         return customerRepository.save(customerEntity);
     }
-
+    
     public Customer assignAddress(Long customerId, Address mapAddressDto) {
-        Address addressEntity = addressRepository.save(mapAddressDto);
+        Address addressEntity = addressRepository.saveAndFlush(mapAddressDto);
         Customer customer = customerRepository.findById(customerId).get();
         Contact contact = customer.getContact();
         if (contact == null) {
             contact = new Contact();
         }
         contact.getAddresses().add(addressEntity);
-        contact = contactRepository.save(contact);
+        contact = contactRepository.saveAndFlush(contact);
         customer.setContact(contact);
-        return customerRepository.save(customer);
+        customer = customerRepository.saveAndFlush(customer);
+        
+        addressEntity.setContact(contact);
+        addressRepository.saveAndFlush(addressEntity);
+        return customer;
     }
 
     //After retrieving all customers from the database, create a Stream and filter for all customers aged 18 or older.
