@@ -1,10 +1,16 @@
 package dev.wcs.nad.tariffmanager;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @SpringBootApplication
 public class TariffManagerApplication {
@@ -16,11 +22,21 @@ public class TariffManagerApplication {
 	@Autowired
 	DBInitializer dbInitializer;
 
-	@EventListener 
+	@EventListener
 	public void onAppStarted(ApplicationStartedEvent event) {
 		System.out.println("started app - init data");
 		// generate some data for customers and contracts
 		dbInitializer.setupDatabaseIfNotDoneYet();
 	}
 
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		System.out.println("LOUIS BUILD CORS CONF");
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("https://example.com"));
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 }
