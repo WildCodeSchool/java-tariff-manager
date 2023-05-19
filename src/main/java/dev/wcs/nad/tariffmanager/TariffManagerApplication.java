@@ -31,10 +31,20 @@ public class TariffManagerApplication {
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
-		System.out.println("LOUIS BUILD CORS CONF");
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://example.com"));
-		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS"));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+		configuration.setAllowCredentials(true);
+		configuration.setAllowedHeaders(Arrays.asList(
+                "Authorization",
+                "Accept",
+                "Cache-Control",
+                "Content-Type",
+                "Origin",
+                "x-csrf-token",
+                "x-requested-with"
+        ));
+
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;

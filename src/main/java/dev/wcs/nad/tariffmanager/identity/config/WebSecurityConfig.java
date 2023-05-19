@@ -1,6 +1,7 @@
 package dev.wcs.nad.tariffmanager.identity.config;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.OPTIONS;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,17 +32,17 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
-        System.out.println("LOUIS BUILD SECURITY CHAIN");
-
         http.httpBasic();
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-        http.csrf().disable(); // TODO
+        http.csrf().disable();
         // H2 console needs frames
         http.headers().frameOptions().disable();
-        http.cors().disable(); // to enable CORS, use https://docs.spring.io/spring-security/reference/reactive/integrations/cors.html
-        http.authorizeHttpRequests()
-            .requestMatchers(GET, "/auth").hasRole("ADMIN")
-            .anyRequest().permitAll()
+        http.cors() // CORS is configured in corsConfigurationSource bean
+            .and()
+                .authorizeHttpRequests()
+                .requestMatchers(GET, "/auth").hasRole("ADMIN")
+                .requestMatchers("/api/tariffs").hasRole("USER")
+                .anyRequest().permitAll()
             .and()
                 .formLogin()
                     .loginPage("/public/sign-in").permitAll()
@@ -58,8 +59,6 @@ public class WebSecurityConfig {
                     .logoutSuccessUrl("/public/index")
                     .deleteCookies("JSESSIONID");
     
-
-
         return http.build();
     }
 

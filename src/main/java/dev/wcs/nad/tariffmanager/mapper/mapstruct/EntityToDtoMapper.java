@@ -4,6 +4,7 @@ import dev.wcs.nad.tariffmanager.adapter.rest.dto.contract.ContractInfoDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.AddressDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CreateCustomerDto;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
+import dev.wcs.nad.tariffmanager.adapter.rest.dto.tariff.TariffDto;
 import dev.wcs.nad.tariffmanager.persistence.entity.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -41,6 +42,7 @@ public interface EntityToDtoMapper {
     }
 
     List<ContractInfoDto> contractsToContractInfosDto(List<Contract> customers);
+    List<TariffDto> tariffsToDto(List<Tariff> tariffs);
 
     default String mapAddress(Address address) {
         return address.getStreet() + " " + address.getNumber() + " " + address.getPostalcode() + " " + address.getCity();
